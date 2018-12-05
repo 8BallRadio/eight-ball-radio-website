@@ -1,5 +1,5 @@
 <template>
-  <footer>
+  <footer id="footer">
     <div class="footer-wrapper">
       <section class="footer__col about">
         <h3>8 BALL RADIO</h3>
