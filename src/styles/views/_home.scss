@@ -1,0 +1,150 @@
+#main-slide {
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slideshow {
+  height: 100%;
+  width: 100%;
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  font-size: 0;
+  line-height: 0;
+  position: relative;
+}
+
+.slideshow li {
+  height: 100%;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.slideshow__image {
+  display: block;
+  margin: 0;
+  padding: 0;
+  height: 60vh;
+  width: 840px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+#latest-shows,
+#shows,
+#inside-show {
+  text-align: center;
+}
+
+#latest-shows h2,
+#shows h2,
+#inside-show h2 {
+  margin: 2.8125rem 0;
+}
+
+.title__left {
+  padding-right: 1.5625rem;
+  display: block;
+}
+
+.title__right {
+  padding-left: 1.5625rem;
+  display: block;
+}
+
+.title__left img,
+.title__right img {
+  width: 255px;
+}
+
+.latest-shows,
+.shows,
+.archive-shows {
+  max-width: 840px;
+  margin: 0 auto 4rem;
+}
+
+.archive-shows {
+  margin-bottom: 2rem;
+}
+
+.shows {
+  margin-bottom: 0;
+}
+
+.show {
+  background-color: #666;
+  padding: 60px 20px;
+  margin-bottom: 2rem;
+}
+
+.shows .show {
+  margin: 2rem auto 0;
+  padding: 0;
+  position: relative;
+  max-width: 320px;
+  background-color: transparent;
+}
+
+.arrows {
+  margin-bottom: 3rem;
+  text-align: right;
+  margin-right: 1rem;
+  max-width: 840px;
+}
+
+.arrow {
+  padding: 1rem 0.5rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+@media (min-width: 600px) {
+  @supports (display: grid) {
+    .latest-shows,
+    .archive-shows {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+    }
+
+    .shows .show img {
+      max-width: 285px;
+    }
+  }
+}
+
+@media (min-width: 900px) {
+  .slideshow__image {
+    height: 400px;
+  }
+
+  .title__left,
+  .title__right {
+    display: inline-block;
+  }
+
+  #shows h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  .arrows {
+    margin: 1rem auto 3rem;
+  }
+
+  @supports (display: grid) {
+    .latest-shows {
+      grid-gap: 40px;
+    }
+
+    .shows .show img {
+      max-width: 100%;
+    }
+  }
+}
