@@ -1,0 +1,10 @@
+@import 'setup/reset';
+@import 'setup/typography';
+@import 'setup/variables';
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $font-family-display;
+}
