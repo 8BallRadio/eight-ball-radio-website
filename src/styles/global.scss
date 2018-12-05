@@ -1,10 +1,8 @@
-@import 'setup/reset';
 @import 'setup/typography';
 @import 'setup/variables';
+@import 'setup/reset';
 
-h1,
-h2,
-h3,
-h4 {
-  font-family: $font-family-display;
-}
+@import 'components/header';
+@import 'components/footer';
+
+@import 'views/home';
