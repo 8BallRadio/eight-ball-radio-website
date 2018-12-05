@@ -23,11 +23,11 @@
     <section id="latest-shows">
       <h2>
         <span class="title__left">
-          <img src="images/stick-left.svg" alt>
+          <img src="../assets/content/stick-left.svg" alt>
         </span>
         LATEST SHOWS
         <span class="title__right">
-          <img src="images/stick-right.svg" alt>
+          <img src="../assets/content/stick-right.svg" alt>
         </span>
       </h2>
       <ul class="latest-shows">
