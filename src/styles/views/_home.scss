@@ -30,7 +30,7 @@
   margin: 0;
   padding: 0;
   height: 60vh;
-  width: 840px;
+  width: $max-width;
   background-size: cover;
   background-position: center;
   position: relative;
@@ -46,6 +46,7 @@
 #shows h2,
 #inside-show h2 {
   margin: 2.8125rem 0;
+  color: map-get($colors, dark-gray);
 }
 
 .title__left {
@@ -66,7 +67,7 @@
 .latest-shows,
 .shows,
 .archive-shows {
-  max-width: 840px;
+  max-width: $max-width;
   margin: 0 auto 4rem;
 }
 
@@ -79,7 +80,7 @@
 }
 
 .show {
-  background-color: #666;
+  background-color: map-get($colors, regular-gray);
   padding: 60px 20px;
   margin-bottom: 2rem;
 }
@@ -96,12 +97,12 @@
   margin-bottom: 3rem;
   text-align: right;
   margin-right: 1rem;
-  max-width: 840px;
+  max-width: $max-width;
 }
 
 .arrow {
   padding: 1rem 0.5rem;
-  font-size: 2rem;
+  font-size: $font-size-xxx-large;
   font-weight: bold;
 }
 

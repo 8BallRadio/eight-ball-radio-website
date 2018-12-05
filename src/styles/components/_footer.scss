@@ -1,5 +1,5 @@
 footer {
-  background-color: #323232;
+  background-color: map-get($colors, dark-gray);
   padding: 40px 0 80px;
 }
 
@@ -9,13 +9,13 @@ footer {
 }
 
 .footer__col {
-  color: #f2f2f2;
+  color: map-get($colors, primary);
   padding: 2rem;
 }
 
 .family__link,
 .contact__link {
-  color: #b6c8c3;
+  color: map-get($colors, light-green);
   display: block;
   padding: 15px 0 0;
   text-decoration: none;
@@ -23,7 +23,7 @@ footer {
 
 a.family__link:hover,
 a.contact__link:hover {
-  color: #ffa6a6;
+  color: map-get($colors, light-red);
   text-decoration: underline;
 }
 
@@ -42,7 +42,7 @@ a.contact__link:hover {
 
 .visit__text {
   margin: 0;
-  color: #b6c8c3;
+  color: map-get($colors, light-green);
 }
 
 @media (min-width: 600px) {

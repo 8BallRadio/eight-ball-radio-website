@@ -13,7 +13,7 @@ header {
 }
 
 .top {
-  max-width: 840px;
+  max-width: $max-width;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
@@ -23,7 +23,7 @@ header {
 .top__onair {
   background-color: #ce1126;
   color: #f2f2f2;
-  font-size: 0.875rem;
+  font-size: $font-size-small;
   padding: 0 0.5rem 0.5rem;
   letter-spacing: 4px;
   height: 37px;
@@ -68,7 +68,7 @@ header {
 }
 
 .info__top {
-  font-size: 0.875rem;
+  font-size: $font-size-small;
 }
 
 .ticker-wrapper {
@@ -107,13 +107,17 @@ header {
   display: none;
 }
 
+.top .top__social a {
+  padding: 0 5px;
+}
+
 .social__icon {
   height: 27px;
 }
 
 #header-middle {
   width: 100%;
-  background-color: #323232;
+  background-color: map-get($colors, dark-gray);
   height: 53px;
   position: fixed;
   top: 0;
@@ -122,7 +126,7 @@ header {
 
 .main-menu {
   display: flex;
-  max-width: 840px;
+  max-width: $max-width;
   margin: 0 auto;
   padding: 0;
 }
@@ -150,26 +154,27 @@ header {
 
 .nav li a {
   font-family: 'Anton', sans-serif;
-  color: #f2f2f2;
+  color: map-get($colors, primary);
   letter-spacing: 4px;
   text-decoration: none;
 }
 
 .btn-donate {
-  color: #8faaa1;
-  font-size: 1.5rem;
+  color: map-get($colors, dark-green);
+  font-size: $font-size-xx-large;
   text-decoration: none;
   padding-top: 8px;
   padding-right: 9px;
+  font-family: $font-family-display;
 }
 
 a.btn-donate:hover {
-  color: #ffa6a6;
+  color: map-get($colors, light-red);
   text-decoration: underline;
 }
 
 a:focus {
-  outline: 1px solid #ce1126;
+  outline: 1px solid map-get($colors, dark-red);
 }
 
 #header-bottom {
@@ -184,7 +189,7 @@ a:focus {
 .quick-access,
 .access {
   margin: 0 auto;
-  max-width: 840px;
+  max-width: $max-width;
   text-align: center;
 }
 
@@ -200,11 +205,11 @@ a:focus {
 .btn-access {
   display: inline-block;
   width: 48%;
-  background-color: #323232;
-  // background-image: url(../../../assets/header/btn-pattern.svg);
+  background-color: map-get($colors, dark-gray);
+  background-image: url(~/assets/header/btn-pattern.svg);
   height: 50px;
   padding: 12px 0;
-  font-size: 1.125rem;
+  font-size: $font-size-large;
   font-family: 'Anton';
   text-decoration: none;
   color: white;
@@ -258,7 +263,7 @@ a:focus {
   }
 
   .btn-donate {
-    font-size: 1.875rem;
+    font-size: $font-size-xx-large;
     padding-top: 10px;
   }
 
