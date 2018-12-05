@@ -56,7 +56,7 @@
     </section>
     <section id="header-middle">
       <div class="main-menu">
-        <button class="open-menu btn" id="btn-menu">MENU</button>
+        <button class="open-menu btn" id="btn-menu" @click="openMenu">MENU</button>
         <h1>
           <img
             class="logo"
@@ -96,5 +96,28 @@
         </div>
       </div>
     </section>
+    <app-mobile-menu></app-mobile-menu>
   </header>
 </template>
+<script>
+import AppMobileMenu from "./AppMobileMenu.vue";
+export default {
+  name: "header",
+  data() {
+    return {
+      isSideBarOpen: false
+    };
+  },
+  components: {
+    "app-mobile-menu": AppMobileMenu
+  },
+  methods: {
+    openMenu() {
+      this.$emit("openMenu");
+      this.isSideBarOpen = true;
+      document.querySelector("#mobile-menu").className += " active";
+      document.body.style.overflow = "hidden";
+    }
+  }
+};
+</script>
