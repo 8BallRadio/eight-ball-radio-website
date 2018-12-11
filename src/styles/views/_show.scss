@@ -1,10 +1,12 @@
-.archive-shows {
-  margin-bottom: 2rem;
-}
-
 .back {
   max-width: $max-width;
   margin: 2.5rem auto;
+  text-align: center;
+}
+
+.more-archives {
+  max-width: $max-width;
+  margin: 0 auto 2rem;
   text-align: center;
 }
 
@@ -33,21 +35,21 @@
   width: 100vw;
 }
 
-.archive-shows .show {
-  margin: 2rem auto 0;
-  padding: 0;
-  max-width: 285px;
-  background-color: transparent;
+.archive-shows {
+  margin-bottom: 2rem;
 }
 
-.archive-shows .show img {
-  max-width: 285px;
-}
+.archive-shows {
+  & .show {
+    margin: 2rem auto 0;
+    padding: 0;
+    max-width: 285px;
+    background-color: transparent;
 
-.more-archives {
-  max-width: $max-width;
-  margin: 0 auto 2rem;
-  text-align: center;
+    & img {
+      max-width: 285px;
+    }
+  }
 }
 
 @media (min-width: 600px) {
@@ -62,9 +64,10 @@
 
     .archive-shows .show {
       margin: 0;
-    }
-    .archive-shows .show img {
-      max-width: 180px;
+
+      & img {
+        max-width: 180px;
+      }
     }
   }
 }
@@ -77,10 +80,10 @@
 
     .archive-shows {
       grid-template-columns: repeat(4, 1fr);
-    }
 
-    .archive-shows .show img {
-      max-width: 190px;
+      & img {
+        max-width: 190px;
+      }
     }
   }
 }
