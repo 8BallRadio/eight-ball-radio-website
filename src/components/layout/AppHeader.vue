@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="top__social">
-          <a href="https://www.facebook.com/eightballradio/" target="_blank">
+          <a href="https://www.facebook.com/eightballradio/" target="_blank" rel="noopener">
             <img
               class="social__icon"
               src="../../assets/header/facebook.svg"
@@ -35,7 +35,7 @@
               alt="Facebook Fan Page"
             >
           </a>
-          <a href="https://www.instagram.com/8ballradio/" target="_blank">
+          <a href="https://www.instagram.com/8ballradio/" target="_blank" rel="noopener">
             <img
               class="social__icon"
               src="../../assets/header/instagram.svg"
@@ -43,7 +43,7 @@
               alt="Instagram"
             >
           </a>
-          <a href="https://www.mixcloud.com/8ballradio/" target="_blank">
+          <a href="https://www.mixcloud.com/8ballradio/" target="_blank" rel="noopener">
             <img
               class="social__icon"
               src="../../assets/header/mixcloud.svg"
@@ -58,12 +58,14 @@
       <div class="main-menu">
         <button class="open-menu btn" id="btn-menu" @click="openMenu">MENU</button>
         <h1>
-          <img
-            class="logo"
-            src="../../assets/header/logo.svg"
-            onerror="this.src='../../assets/header/logo.png'"
-            alt="8 Ball Radio"
-          >
+          <router-link to="/">
+            <img
+              class="logo"
+              src="../../assets/header/logo.svg"
+              onerror="this.src='../../assets/header/logo.png'"
+              alt="8 Ball Radio"
+            >
+          </router-link>
         </h1>
         <nav class="nav">
           <ul>
@@ -81,7 +83,12 @@
             </li>
           </ul>
         </nav>
-        <a href class="btn btn-donate" target="_blank">DONATE</a>
+        <a
+          href="https://8ballcommunity.club/DONATE"
+          class="btn btn-donate"
+          target="_blank"
+          rel="noopener"
+        >DONATE</a>
       </div>
     </section>
     <section id="header-bottom">
@@ -91,7 +98,7 @@
           SUPPORT US!
         </p>
         <div class="access">
-          <a href class="btn btn-access">SHOWS</a>
+          <router-link to="/shows" class="btn btn-access">SHOWS</router-link>
           <a href class="btn btn-access">SCHEDULE</a>
         </div>
       </div>
