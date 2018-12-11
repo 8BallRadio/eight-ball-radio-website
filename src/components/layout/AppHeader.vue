@@ -109,7 +109,7 @@
 <script>
 import AppMobileMenu from "./AppMobileMenu.vue";
 export default {
-  name: "header",
+  name: "top",
   data() {
     return {
       isSideBarOpen: false
