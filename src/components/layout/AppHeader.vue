@@ -99,7 +99,7 @@
         </p>
         <div class="access">
           <router-link to="/shows" class="btn btn-access">SHOWS</router-link>
-          <a href class="btn btn-access">SCHEDULE</a>
+          <router-link to="/schedule" class="btn btn-access">SCHEDULE</router-link>
         </div>
       </div>
     </section>
