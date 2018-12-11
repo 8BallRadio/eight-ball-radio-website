@@ -5,7 +5,7 @@
         <router-link to="/shows" class="btn back__btn">BACK TO LIST</router-link>
       </div>
       <div class="show__image">
-        <img src="images/show.png">
+        <img src="../assets/show.png">
       </div>
       <h2>
         <span class="title__left">
