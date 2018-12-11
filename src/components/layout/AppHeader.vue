@@ -128,3 +128,8 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.btn-access {
+  background-image: url(../../assets/header/btn-pattern.svg);
+}
+</style>
