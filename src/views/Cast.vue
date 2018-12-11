@@ -26,12 +26,13 @@ export default {
     Mixcloud
   },
   beforeRouteEnter(to, from, next) {
-    // We can check if the id passed is real
+    // Initialize variables/objects
     const showsEmitter = new EventEmitter();
     let slugCheck = to.params.cast;
     let showLinks = [];
     let showKey = null;
 
+    // Request function
     const getRequest = show => {
       try {
         return axios.get(show);

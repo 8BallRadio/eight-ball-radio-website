@@ -1,11 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import Shows from "@/views/Shows.vue";
-import Show from "@/views/Show.vue";
+// import Shows from "@/views/Shows.vue";
+// import Show from "@/views/Show.vue";
 import Cast from "@/views/Cast.vue";
 import Contact from "@/views/Contact.vue";
-import Schedule from "@/views/Schedule.vue";
+// import Schedule from "@/views/Schedule.vue";
 
 Vue.use(Router);
 
@@ -19,16 +19,6 @@ export default new Router({
       component: Home
     },
     {
-      path: "/shows",
-      name: "Shows",
-      component: Shows
-    },
-    {
-      path: "/show/:id",
-      name: "Show",
-      component: Show
-    },
-    {
       path: "/show/:id/:cast",
       name: "Cast",
       component: Cast
@@ -39,18 +29,28 @@ export default new Router({
       component: Contact
     },
     {
-      path: "/schedule",
-      name: "Schedule",
-      component: Schedule
-    },
-    {
-      path: "/about",
-      name: "about",
+      path: "/shows",
+      name: "Shows",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+        import(/* webpackChunkName: "shows" */ "./views/Shows.vue")
+    },
+    {
+      path: "/show/:id",
+      name: "Show",
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () =>
+        import(/* webpackChunkName: "shows" */ "./views/Show.vue")
+    },
+    {
+      path: "/schedule",
+      name: "Schedule",
+      component: () =>
+        import(/* webpackChunkName: "shows" */ "./views/Schedule.vue")
     }
   ]
 });

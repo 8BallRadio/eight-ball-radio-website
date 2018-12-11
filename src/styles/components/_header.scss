@@ -206,7 +206,6 @@ a:focus {
   display: inline-block;
   width: 48%;
   background-color: map-get($colors, dark-gray);
-  background-image: url(~/assets/header/btn-pattern.svg);
   height: 50px;
   padding: 12px 0;
   font-size: $font-size-large;
@@ -214,6 +213,7 @@ a:focus {
   text-decoration: none;
   color: white;
   letter-spacing: 4px;
+  margin: 0 5px;
 }
 
 @media (min-width: 600px) {
