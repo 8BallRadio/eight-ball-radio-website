@@ -30,6 +30,12 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "shows" */ "./views/Show.vue")
+    },
+    {
+      path: "/schedule",
+      name: "schedule",
+      component: () =>
+        import(/* webpackChunkName: "shows" */ "./views/Schedule.vue")
     }
   ]
 });
