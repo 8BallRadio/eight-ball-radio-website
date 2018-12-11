@@ -16,7 +16,7 @@ import AppHeader from "./components/layout/AppHeader.vue";
 import AppFooter from "./components/layout/AppFooter.vue";
 
 export default {
-  name: "8 Ball Radio",
+  name: "Eight-Ball-Radio",
   components: {
     "app-header": AppHeader,
     "app-footer": AppFooter
