@@ -1,6 +1,7 @@
 @import 'setup/typography';
 @import 'setup/variables';
 @import 'setup/reset';
+@import 'setup/common';
 
 @import 'components/header';
 @import 'components/footer';
@@ -9,3 +10,4 @@
 @import 'views/home';
 @import 'views/shows';
 @import 'views/show';
+@import 'views/schedule';
