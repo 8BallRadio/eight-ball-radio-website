@@ -91,7 +91,11 @@
           SUPPORT US!
         </p>
         <div class="access">
-          <a href class="btn btn-access">SHOWS</a>
+          <div class="btn btn-access">
+            <router-link :to="{ path: '/shows'}">
+              SHOWS
+            </router-link>
+          </div>
           <a href class="btn btn-access">SCHEDULE</a>
         </div>
       </div>

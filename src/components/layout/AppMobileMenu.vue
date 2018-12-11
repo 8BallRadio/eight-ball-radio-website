@@ -4,7 +4,12 @@
     <div class="nav-content">
       <button class="close-menu btn" @click="closeMenu">CLOSE X</button>
       <nav class="nav__items">
-        <a href class="nav__link">SHOWS</a>
+        <router-link :to="{ path: '/shows'}">
+          <div class="nav__link">
+            SHOWS
+          </div>
+        </router-link>
+        <!-- <a href class="nav__link">SHOWS</a> -->
         <a href class="nav__link">SCHEDULE</a>
         <a href class="nav__link">EVENTS</a>
         <a href class="nav__link">ABOUT</a>
