@@ -16,10 +16,10 @@
             <th v-for="(btn, index) in daysButtons" :key="index">
               <button
                 class="btn"
-                :id="'btn'+index"
-                @click="showSchedule(index, $event)"
+                :id="btn.name"
+                @click="showSchedule(btn.name, $event)"
                 :class="{ 'active': btn.isActive }"
-              >{{btn.name}}</button>
+              >{{btn.name.toUpperCase().trim()}}</button>
             </th>
           </tr>
         </thead>
@@ -55,23 +55,23 @@ export default {
     return {
       currentDay: 0,
       daysButtons: [
-        { name: "SUNDAY" },
-        { name: "MONDAY" },
-        { name: "TUESDAY" },
-        { name: "WEDNESDAY" },
-        { name: "THURSDAY" },
-        { name: "FRIDAY" },
-        { name: "SATURDAY" }
+        { name: "sunday", isActive: true },
+        { name: "monday" },
+        { name: "tuesday" },
+        { name: "wednesday" },
+        { name: "thursday" },
+        { name: "friday" },
+        { name: "saturday" }
       ]
     };
   },
   methods: {
     showSchedule(btn, evt) {
-      console.log(evt.target.id);
-      this.daysButtons.forEach((day, index) => {
-        day.isActive = "btn" + index === "btn" + btn;
-        console.log(day.isActive, "btn" + btn);
+      evt.preventDefault();
+      this.daysButtons.forEach(day => {
+        document.getElementById(day.name).classList.remove("active");
       });
+      evt.currentTarget.className += " active";
     }
   }
 };
