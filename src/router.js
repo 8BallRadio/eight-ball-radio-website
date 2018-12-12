@@ -4,7 +4,7 @@ import Home from "./views/Home.vue";
 // import Shows from "@/views/Shows.vue";
 // import Show from "@/views/Show.vue";
 import Cast from "@/views/Cast.vue";
-import Contact from "@/views/Contact.vue";
+//import Contact from "@/views/Contact.vue";
 // import Schedule from "@/views/Schedule.vue";
 
 Vue.use(Router);
@@ -26,14 +26,12 @@ export default new Router({
     {
       path: "/contact",
       name: "Contact",
-      component: Contact
+      component: () =>
+        import(/* webpackChunkName: "contact" */ "./views/Contact.vue")
     },
     {
       path: "/shows",
       name: "Shows",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () =>
         import(/* webpackChunkName: "shows" */ "./views/Shows.vue")
     },
@@ -43,14 +41,13 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "shows" */ "./views/Show.vue")
+      component: () => import(/* webpackChunkName: "show" */ "./views/Show.vue")
     },
     {
       path: "/schedule",
       name: "Schedule",
       component: () =>
-        import(/* webpackChunkName: "shows" */ "./views/Schedule.vue")
+        import(/* webpackChunkName: "schedule" */ "./views/Schedule.vue")
     }
   ]
 });
