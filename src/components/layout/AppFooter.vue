@@ -12,7 +12,7 @@
       <section class="footer__col contact">
         <h3>CONTACT</h3>
         <p class="contact__title">General Inquiries + Show submissions:</p>
-        <a href class="contact__link">Drop us a line HERE</a>
+        <router-link to="/contact" class="contact__link">Drop us a line HERE</router-link>
         <p class="visit">Visit Us:</p>
         <p class="visit__text">327 Canal St.</p>
         <p class="visit__text">New York, NY</p>
