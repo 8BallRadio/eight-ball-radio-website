@@ -16,7 +16,10 @@
     margin: 2.8125rem 0 2rem;
     color: map-get($colors, dark-gray);
   }
-
+  & .title__left,
+  & .title__right {
+    display: inline-block;
+  }
   & .title__left {
     padding-right: 10px;
   }
