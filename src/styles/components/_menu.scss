@@ -11,59 +11,74 @@
   letter-spacing: 2px;
 }
 
-.mobile-menu .nav-content,
-.mobile-menu .overlay {
-  top: 0;
-  left: 0;
-  bottom: 0;
-  position: absolute;
-  transition: all 0.3s ease-in-out 0s;
+.mobile-menu {
+  & .nav-content,
+  & .overlay {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    transition: all 0.3s ease-in-out 0s;
+  }
 }
 
-.mobile-menu .overlay {
-  right: 0;
-  opacity: 0;
-  width: 100%;
-  z-index: 999;
-  transform: scale(0);
-  background: rgba(0, 0, 0, 0.4);
+.mobile-menu {
+  & .overlay {
+    right: 0;
+    opacity: 0;
+    width: 100%;
+    z-index: 999;
+    transform: scale(0);
+    background: rgba(0, 0, 0, 0.4);
+  }
 }
 
-.mobile-menu .nav-content {
-  width: 80%;
-  color: map-get($colors, light-gray);
-  padding: 15px 0;
-  z-index: 9999;
-  background: map-get($colors, primary);
-  transform: translateX(-100%);
+.mobile-menu {
+  & .nav-content {
+    width: 80%;
+    color: map-get($colors, light-gray);
+    padding: 15px 0;
+    z-index: 9999;
+    background: map-get($colors, primary);
+    transform: translateX(-100%);
+  }
 }
 
-.mobile-menu.active .nav-content {
-  transform: translateX(0);
+.mobile-menu.active {
+  & .nav-content {
+    transform: translateX(0);
+  }
 }
 
-.mobile-menu.active .overlay {
-  opacity: 1;
-  transform: scale(1);
+.mobile-menu.active {
+  & .overlay {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .mobile-menu .nav__items {
   margin-top: 2rem;
   margin-bottom: 1.5rem;
-}
 
-.mobile-menu .nav__items .nav__link {
-  display: block;
-  padding: 15px;
-  color: map-get($colors, regular-gray);
-  font-family: $font-family-display;
-  text-decoration: none;
-  font-size: $font-size-large;
-  letter-spacing: 1px;
-}
+  & .nav__link {
+    display: block;
+    padding: 15px;
+    color: map-get($colors, regular-gray);
+    font-family: $font-family-display;
+    text-decoration: none;
+    font-size: $font-size-large;
+    letter-spacing: 1px;
+  }
 
-.mobile-menu .nav__items .nav__link:hover {
-  background-color: map-get($colors, light-green);
+  & .nav__link:hover {
+    background-color: map-get($colors, light-green);
+  }
+
+  & .router-link-active {
+    background-color: map-get($colors, dark-gray);
+    color: white;
+  }
 }
 
 .mobile-menu .top__social a {
