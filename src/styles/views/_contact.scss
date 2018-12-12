@@ -1,0 +1,62 @@
+#contact {
+  margin: auto;
+  max-width: $max-width;
+
+  & .title__left,
+  & .title__right {
+    position: relative;
+    top: 4px;
+
+    & img {
+      width: 20px;
+    }
+  }
+
+  & h2 {
+    margin: 2.8125rem 0 2rem;
+    color: map-get($colors, dark-gray);
+  }
+
+  & .title__left {
+    padding-right: 10px;
+  }
+  & .title__right {
+    padding-left: 7px;
+  }
+}
+
+.contact-form {
+  text-align: left;
+  margin: 2rem auto;
+
+  & input {
+    width: 60%;
+    background-color: map-get($colors, dark-gray);
+    border: none;
+    height: 35px;
+    color: white;
+    font-family: $font-family-text;
+    font-size: $font-size-large;
+    padding-left: 0.625rem;
+  }
+
+  & textarea {
+    width: 100%;
+    background-color: map-get($colors, dark-gray);
+    border: none;
+    color: white;
+    font-family: $font-family-text;
+    font-size: $font-size-large;
+    padding-left: 0.625rem;
+  }
+
+  & .contact__btn {
+    border: none;
+    background-color: map-get($colors, dark-gray);
+    cursor: pointer;
+    font-family: $font-family-text;
+    font-size: $font-size-x-large;
+    color: white;
+    padding: 0.5rem;
+  }
+}
