@@ -17,6 +17,10 @@ $break-large: 900px;
   overflow: hidden;
 }
 
+a:focus {
+  outline: 1px solid map-get($colors, dark-red);
+}
+
 main {
   text-align: center;
   padding-bottom: 858px;
