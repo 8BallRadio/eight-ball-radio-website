@@ -129,12 +129,12 @@ header {
   max-width: $max-width;
   margin: 0 auto;
   padding: 0;
-}
 
-.main-menu h1 {
-  flex: 1;
-  text-align: center;
-  padding-top: 2px;
+  h1 {
+    flex: 1;
+    text-align: center;
+    padding-top: 2px;
+  }
 }
 
 .logo {
@@ -145,18 +145,23 @@ header {
   flex: 2;
   text-align: center;
   display: none;
-}
 
-.nav li {
-  display: inline-block;
-  padding: 0 1rem;
-}
+  li {
+    display: inline-block;
+    padding: 0 1rem;
+    a {
+      font-family: 'Anton', sans-serif;
+      color: map-get($colors, primary);
+      letter-spacing: 4px;
+      text-decoration: none;
 
-.nav li a {
-  font-family: 'Anton', sans-serif;
-  color: map-get($colors, primary);
-  letter-spacing: 4px;
-  text-decoration: none;
+      &.router-link-exact-active,
+      &:hover {
+        color: #8faaa1;
+        border-bottom: 3px solid;
+      }
+    }
+  }
 }
 
 .btn-donate {
@@ -166,11 +171,11 @@ header {
   padding-top: 8px;
   padding-right: 9px;
   font-family: $font-family-display;
-}
 
-a.btn-donate:hover {
-  color: map-get($colors, light-red);
-  text-decoration: underline;
+  &:hover {
+    color: map-get($colors, light-red);
+    text-decoration: underline;
+  }
 }
 
 a:focus {
