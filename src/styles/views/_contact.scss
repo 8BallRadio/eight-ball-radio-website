@@ -1,11 +1,12 @@
 #contact {
-  margin: auto;
+  margin: auto auto 4rem;
   max-width: $max-width;
 
   & .title__left,
   & .title__right {
     position: relative;
     top: 4px;
+    display: inline-block;
 
     & img {
       width: 20px;
@@ -13,7 +14,7 @@
   }
 
   & h2 {
-    margin: 2.8125rem 0 2rem;
+    margin-bottom: 2rem;
     color: map-get($colors, dark-gray);
   }
 
@@ -23,40 +24,69 @@
   & .title__right {
     padding-left: 7px;
   }
-}
 
-.contact-form {
-  text-align: left;
-  margin: 2rem auto;
+  & .contact-form {
+    text-align: justify;
+    margin: 2rem 1rem;
 
-  & input {
-    width: 60%;
-    background-color: map-get($colors, dark-gray);
-    border: none;
-    height: 35px;
-    color: white;
-    font-family: $font-family-text;
-    font-size: $font-size-large;
-    padding-left: 0.625rem;
+    & input {
+      width: 100%;
+      background-color: map-get($colors, dark-gray);
+      border: none;
+      height: 35px;
+      color: white;
+      font-family: $font-family-text;
+      font-size: $font-size-large;
+      padding-left: 0.625rem;
+    }
+
+    & textarea {
+      width: 100%;
+      background-color: map-get($colors, dark-gray);
+      border: none;
+      color: white;
+      font-family: $font-family-text;
+      font-size: $font-size-large;
+      padding: 1rem 0.625rem;
+    }
+
+    & .contact__btn {
+      border: none;
+      background-color: map-get($colors, dark-gray);
+      cursor: pointer;
+      font-family: $font-family-text;
+      font-size: $font-size-x-large;
+      color: white;
+      padding: 0.5rem;
+      margin-left: auto;
+      margin-right: 0;
+      display: block;
+    }
   }
 
-  & textarea {
-    width: 100%;
-    background-color: map-get($colors, dark-gray);
-    border: none;
-    color: white;
-    font-family: $font-family-text;
-    font-size: $font-size-large;
-    padding-left: 0.625rem;
+  @media screen and (min-width: $break-small) {
+    & h2 {
+      margin: 1.125rem 0 2rem;
+    }
+
+    & .contact-form {
+      text-align: left;
+
+      & .contact__name,
+      & .contact__email {
+        display: inline-block;
+        width: 49%;
+      }
+
+      & .contact__email {
+        float: right;
+      }
+    }
   }
 
-  & .contact__btn {
-    border: none;
-    background-color: map-get($colors, dark-gray);
-    cursor: pointer;
-    font-family: $font-family-text;
-    font-size: $font-size-x-large;
-    color: white;
-    padding: 0.5rem;
+  @media screen and (min-width: $break-large) {
+    & h2 {
+      margin-top: 2.8125rem;
+    }
   }
 }
