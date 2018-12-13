@@ -2,34 +2,34 @@
   margin: auto auto 4rem;
   max-width: $max-width;
 
-  & .title__left,
-  & .title__right {
+  .title__left,
+  .title__right {
     position: relative;
     top: 4px;
     display: inline-block;
 
-    & img {
+    img {
       width: 20px;
     }
   }
 
-  & h2 {
+  h2 {
     margin-bottom: 2rem;
     color: map-get($colors, dark-gray);
   }
 
-  & .title__left {
+  .title__left {
     padding-right: 10px;
   }
-  & .title__right {
+  .title__right {
     padding-left: 7px;
   }
 
-  & .contact-form {
+  .contact-form {
     text-align: justify;
     margin: 2rem 1rem;
 
-    & input {
+    input {
       width: 100%;
       background-color: map-get($colors, dark-gray);
       border: none;
@@ -40,7 +40,7 @@
       padding-left: 0.625rem;
     }
 
-    & textarea {
+    textarea {
       width: 100%;
       background-color: map-get($colors, dark-gray);
       border: none;
@@ -50,7 +50,7 @@
       padding: 1rem 0.625rem;
     }
 
-    & .contact__btn {
+    .contact__btn {
       border: none;
       background-color: map-get($colors, dark-gray);
       cursor: pointer;
@@ -65,27 +65,27 @@
   }
 
   @media screen and (min-width: $break-small) {
-    & h2 {
+    h2 {
       margin: 1.125rem 0 2rem;
     }
 
-    & .contact-form {
+    .contact-form {
       text-align: left;
 
-      & .contact__name,
-      & .contact__email {
+      .contact__name,
+      .contact__email {
         display: inline-block;
         width: 49%;
       }
 
-      & .contact__email {
+      .contact__email {
         float: right;
       }
     }
   }
 
   @media screen and (min-width: $break-large) {
-    & h2 {
+    h2 {
       margin-top: 2.8125rem;
     }
   }

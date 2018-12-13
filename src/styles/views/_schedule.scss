@@ -2,32 +2,32 @@
   margin: auto;
   max-width: $max-width;
 
-  & .title__left,
-  & .title__right {
+  .title__left,
+  .title__right {
     position: relative;
     top: 4px;
 
-    & img {
+    img {
       width: 20px;
     }
   }
 
-  & h2 {
+  h2 {
     margin: 1rem 0 2rem;
     color: map-get($colors, dark-gray);
   }
-  & .title__left,
-  & .title__right {
+  .title__left,
+  .title__right {
     display: inline-block;
   }
-  & .title__left {
+  .title__left {
     padding-right: 10px;
   }
-  & .title__right {
+  .title__right {
     padding-left: 7px;
   }
 
-  & .schedule__table {
+  .schedule__table {
     max-width: 840px;
     margin: 0 auto 3rem;
     overflow-x: auto;
@@ -36,16 +36,16 @@
     border-spacing: 0 3px;
     display: inline-block;
 
-    & tr {
+    tr {
       height: 55px;
       background-color: #8d8d8d;
     }
 
-    & thead tr {
+    thead tr {
       background-color: transparent;
     }
 
-    & th button {
+    th button {
       font-family: $font-family-display;
       color: map-get($colors, dark-gray);
       letter-spacing: 2px;
@@ -56,17 +56,17 @@
       }
     }
 
-    & tr:nth-child(2n) {
+    tr:nth-child(2n) {
       background-color: map-get($colors, dark-gray);
       color: white;
     }
 
-    & tbody td {
+    tbody td {
       text-align: left;
       padding: 0 10px;
     }
 
-    & tbody td:first-child {
+    tbody td:first-child {
       text-align: center;
     }
 
@@ -82,6 +82,9 @@
   }
 
   @media screen and (min-width: $break-large) {
+    h2 {
+      margin-top: 2.8125rem;
+    }
     .schedule__table {
       width: 100%;
       display: inline-table;

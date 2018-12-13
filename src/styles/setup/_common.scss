@@ -21,15 +21,15 @@ main {
   text-align: center;
   padding-bottom: 858px;
 
-  & #latest-shows,
-  & #shows,
-  & #inside-show {
+  #latest-shows,
+  #shows,
+  #inside-show {
     text-align: center;
   }
 
-  & #latest-shows h2,
-  & #shows h2,
-  & #inside-show h2 {
+  #latest-shows h2,
+  #shows h2,
+  #inside-show h2 {
     margin: 2.8125rem 0;
     color: map-get($colors, dark-gray);
   }
