@@ -73,6 +73,9 @@ export default {
       });
       evt.currentTarget.className += " active";
     }
+  },
+  mounted() {
+    window.scroll(0, 0);
   }
 };
 </script>
