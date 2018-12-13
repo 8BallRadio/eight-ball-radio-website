@@ -10,7 +10,7 @@
           <img src="../assets/content/stick-right.svg" alt>
         </span>
       </h2>
-      <ul class="shows">
+      <ul class="shows__list">
         <li class="show">
           <img
             src="https://thumbnailer.mixcloud.com/unsafe/320x320/extaudio/a/6/9/4/13b2-ef57-4fd8-910d-f66253cf7da8"
