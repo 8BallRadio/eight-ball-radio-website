@@ -1,3 +1,6 @@
+$break-small: 600px;
+$break-large: 900px;
+
 .sr-only:not(:focus):not(:active) {
   position: absolute;
 
@@ -16,6 +19,7 @@
 
 main {
   text-align: center;
+  padding-bottom: 858px;
 
   & #latest-shows,
   & #shows,
@@ -31,42 +35,50 @@ main {
   }
 }
 
-.title__left {
-  padding-right: 1.5625rem;
-  display: block;
-}
+@media (min-width: $break-small) {
+  main {
+    padding-bottom: 520px;
 
-.title__right {
-  padding-left: 1.5625rem;
-  display: block;
-}
+    @supports (display: grid) {
+      .latest-shows,
+      .archive-shows {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+      }
+    }
 
-.title__left img,
-.title__right img {
-  width: 255px;
-}
+    .title__left {
+      padding-right: 1.5625rem;
+      display: block;
+    }
 
-.latest-shows,
-.shows,
-.archive-shows {
-  max-width: $max-width;
-  margin: 0 auto 4rem;
-}
+    .title__right {
+      padding-left: 1.5625rem;
+      display: block;
+    }
 
-@media (min-width: 600px) {
-  @supports (display: grid) {
+    .title__left img,
+    .title__right img {
+      width: 255px;
+    }
+
     .latest-shows,
+    .shows,
     .archive-shows {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 20px;
+      max-width: $max-width;
+      margin: 0 auto 4rem;
     }
   }
 }
 
-@media (min-width: 900px) {
-  .title__left,
-  .title__right {
-    display: inline-block;
+@media (min-width: $break-large) {
+  main {
+    padding-bottom: 330px;
+
+    .title__left,
+    .title__right {
+      display: inline-block;
+    }
   }
 }
