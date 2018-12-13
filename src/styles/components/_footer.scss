@@ -1,6 +1,9 @@
 footer {
   background-color: map-get($colors, dark-gray);
   padding: 40px 0 80px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 
 .footer-wrapper {
