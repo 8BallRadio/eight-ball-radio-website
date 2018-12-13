@@ -41,6 +41,7 @@
     z-index: 9999;
     background: map-get($colors, primary);
     transform: translateX(-100%);
+    position: fixed;
   }
 }
 
