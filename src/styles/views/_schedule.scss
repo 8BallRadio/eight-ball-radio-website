@@ -13,7 +13,7 @@
   }
 
   & h2 {
-    margin: 2.8125rem 0 2rem;
+    margin: 1rem 0 2rem;
     color: map-get($colors, dark-gray);
   }
   & .title__left,
@@ -32,8 +32,9 @@
     margin: 0 auto 3rem;
     overflow-x: auto;
     table-layout: auto;
-    width: 100%;
+    width: 93%;
     border-spacing: 0 3px;
+    display: inline-block;
 
     & tr {
       height: 55px;
@@ -62,16 +63,31 @@
 
     & tbody td {
       text-align: left;
-      padding-left: 21px;
+      padding: 0 10px;
     }
 
     & tbody td:first-child {
       text-align: center;
-      padding-left: 0;
     }
 
-    & tbody td:last-child {
+    tbody td:last-child {
       text-align: right;
+    }
+  }
+
+  @media screen and (min-width: $break-small) {
+    .schedule__table {
+      width: 98%;
+    }
+  }
+
+  @media screen and (min-width: $break-large) {
+    .schedule__table {
+      width: 100%;
+      display: inline-table;
+    }
+
+    tbody td:last-child {
       padding-right: 23px;
     }
   }
