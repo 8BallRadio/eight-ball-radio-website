@@ -3,53 +3,73 @@
   width: 100%;
   margin: 0 auto;
   overflow: hidden;
-}
 
-.slideshow {
-  height: 100%;
-  width: 100%;
-  list-style: none;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  white-space: nowrap;
-  font-size: 0;
-  line-height: 0;
-  position: relative;
-}
+  .slideshow {
+    height: 100%;
+    width: 100%;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    font-size: 0;
+    line-height: 0;
+    position: relative;
 
-.slideshow li {
-  height: 100%;
-  width: 100%;
-  display: inline-block;
-  position: relative;
-}
+    li {
+      height: 100%;
+      width: 100%;
+      display: inline-block;
+      position: relative;
 
-.slideshow__image {
-  display: block;
-  margin: 0;
-  padding: 0;
-  height: 60vh;
-  width: $max-width;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
+      .slideshow__image {
+        display: block;
+        margin: 0;
+        padding: 0;
+        height: 60vh;
+        width: $max-width;
+        background-size: cover;
+        background-position: center;
+        position: relative;
 
-.latest-shows .show {
-  background-color: map-get($colors, regular-gray);
-  padding: 60px 20px;
-  margin-bottom: 2rem;
-}
-
-@media (min-width: 900px) {
-  .slideshow__image {
-    height: 400px;
+        @media screen and (min-width: $break-large) {
+          height: 400px;
+        }
+      }
+    }
   }
+}
 
-  @supports (display: grid) {
-    .latest-shows {
-      grid-gap: 40px;
+#latest-shows {
+  h2 {
+    margin: 2.8125rem 0;
+    color: map-get($colors, dark-gray);
+  }
+  .latest-shows {
+    .show {
+      background-color: map-get($colors, regular-gray);
+      padding: 60px 20px;
+      margin-bottom: 2rem;
+    }
+
+    @media screen and (min-width: $break-small) {
+      max-width: $max-width;
+      margin: 0 auto 4rem;
+      @supports (display: grid) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+
+        .show {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @media screen and (min-width: $break-large) {
+      @supports (display: grid) {
+        grid-gap: 40px;
+      }
     }
   }
 }
