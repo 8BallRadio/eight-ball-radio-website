@@ -41,15 +41,12 @@
 }
 
 #latest-shows {
-  h2 {
-    margin: 2.8125rem 0;
-    color: map-get($colors, dark-gray);
-  }
   .latest-shows {
     .show {
       background-color: map-get($colors, regular-gray);
       padding: 60px 20px;
-      margin-bottom: 2rem;
+      margin: 2rem auto;
+      max-width: 320px;
     }
 
     @media screen and (min-width: $break-small) {
