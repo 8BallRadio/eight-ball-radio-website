@@ -10,72 +10,77 @@
           <img src="../assets/content/wave-gray-right.svg" alt>
         </span>
       </h2>
-      <table class="schedule__table">
-        <thead>
-          <tr>
-            <th v-for="(btn, index) in daysButtons" :key="index">
-              <button
-                class="btn"
-                :id="btn.name"
-                @click="showSchedule(btn.name, $event)"
-                :class="{ 'active': btn.isActive }"
-              >{{btn.name.toUpperCase().trim()}}</button>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>12 noon</td>
-            <td colspan="3">Show #1 - Name of show</td>
-            <td colspan="3">Talk, Indie, Psychdelic</td>
-          </tr>
-          <tr>
-            <td>2pm-4pm</td>
-            <td colspan="3">Show #2 - Name of show</td>
-            <td colspan="3">Ambient, Folk, Drone</td>
-          </tr>
-          <tr>
-            <td>4pm-6pm</td>
-            <td colspan="3">Show #3 - Name of show</td>
-            <td colspan="3">Hip Hop, Beats, Jazz</td>
-          </tr>
-          <tr>
-            <td>6pm-8pm</td>
-            <td colspan="3">Show #4 - Name of show</td>
-            <td colspan="3">Ambient, Folk, Drone</td>
-          </tr>
-        </tbody>
-      </table>
+      <div
+        v-if="errored"
+        class="error__msg"
+      >We're sorry, we're not able to retrieve this information at the moment, please try back later</div>
+      <div class="schedule__container" v-else>
+        <div v-if="loading">Loading...</div>
+        <table class="schedule__table" v-else>
+          <thead>
+            <tr>
+              <th v-for="(btn, index) in days" :key="index">
+                <button
+                  class="btn"
+                  :id="btn.name"
+                  @click="getCurrentDaySchedule(btn.name)"
+                  :class="[btn.name == currentDay ? 'active' : '']"
+                >{{btn.name.toUpperCase().trim()}}</button>
+              </th>
+            </tr>
+          </thead>
+          <!-- Remove :day when we get the real data -->
+          <day-schedule :shows="dayShows" :day="currentDay"></day-schedule>
+        </table>
+      </div>
     </section>
   </main>
 </template>
 <script>
+import axios from "axios";
+import DaySchedule from "@/components/DaySchedule.vue";
+
 export default {
+  components: {
+    "day-schedule": DaySchedule
+  },
   data() {
     return {
-      currentDay: 0,
-      daysButtons: [
-        { name: "sunday", isActive: true },
-        { name: "monday" },
+      currentDay: "monday",
+      days: [
+        { name: "monday", isActive: true },
         { name: "tuesday" },
         { name: "wednesday" },
         { name: "thursday" },
         { name: "friday" },
-        { name: "saturday" }
-      ]
+        { name: "saturday" },
+        { name: "sunday" }
+      ],
+      week: null,
+      dayShows: null,
+      loading: true,
+      errored: false
     };
-  },
-  methods: {
-    showSchedule(btn, evt) {
-      evt.preventDefault();
-      this.daysButtons.forEach(day => {
-        document.getElementById(day.name).classList.remove("active");
-      });
-      evt.currentTarget.className += " active";
-    }
   },
   mounted() {
     window.scroll(0, 0);
+    axios
+      .get("http://sourcefabric.airtime.pro/api/week-info")
+      .then(response => this.getSchedule(response.data))
+      .catch(error => {
+        console.log(error), (this.errored = true);
+      })
+      .finally(() => (this.loading = false));
+  },
+  methods: {
+    getSchedule(res) {
+      this.week = res;
+      this.getCurrentDaySchedule(this.days[0].name);
+    },
+    getCurrentDaySchedule(currentDay) {
+      this.currentDay = currentDay;
+      this.dayShows = this.week[this.currentDay];
+    }
   }
 };
 </script>
