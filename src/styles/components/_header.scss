@@ -222,23 +222,6 @@ header {
 #header-bottom {
   padding-top: 90px;
 
-  @media only screen and (min-width: $break-small) {
-    padding-top: 0;
-
-    .quick-access {
-      text-align: center;
-      margin: 1.6875rem auto;
-      max-width: 500px;
-
-      .info {
-        max-width: 100%;
-      }
-      .access {
-        display: block;
-      }
-    }
-  }
-
   .quick-access,
   .access {
     margin: 0 auto;
@@ -267,62 +250,23 @@ header {
       }
     }
   }
+  @media only screen and (min-width: $break-large) {
+    padding-top: 0;
+
+    .quick-access {
+      text-align: center;
+      margin: 1.6875rem auto 3px;
+      max-width: 840px;
+
+      .info {
+        max-width: 100%;
+      }
+      .access {
+        display: block;
+      }
+    }
+  }
 }
-
-// @media (min-width: 900px) {
-//   #header-top,
-//   #header-middle {
-//     position: unset;
-//   }
-
-//   .top__player {
-//     flex: 1;
-//   }
-
-//   .top .top__social {
-//     display: block;
-//   }
-
-//   #header-middle {
-//     height: 67px;
-//   }
-
-//   .logo {
-//     height: 60px;
-//   }
-
-//   .main-menu h1 {
-//     flex: 0;
-//   }
-
-//   .nav {
-//     display: block;
-//   }
-
-//   .nav ul {
-//     padding: 6px;
-//   }
-
-//   .btn-donate {
-//     font-size: $font-size-xx-large;
-//     padding-top: 10px;
-//   }
-
-//   #header-bottom {
-//     padding-top: 0;
-//   }
-
-//   .quick-access .info {
-//     max-width: 100%;
-//   }
-//   .quick-access .access {
-//     display: block;
-//   }
-
-//   .main-menu {
-//     padding: 0.1875rem 1.375rem 0;
-//   }
-// }
 
 /***/
 @-webkit-keyframes ticker {

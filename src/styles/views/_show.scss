@@ -2,6 +2,14 @@
   max-width: $max-width;
   margin: 2.5rem auto;
   text-align: center;
+
+  @media only screen and (min-width: $break-small) {
+    text-align: left;
+
+    .back__btn {
+      margin-left: 2rem;
+    }
+  }
 }
 
 .more-archives {
@@ -33,55 +41,47 @@
 
 .show__image img {
   width: 100vw;
+
+  @media only screen and (min-width: $break-large) {
+    width: $max-width;
+  }
 }
 
 .archive-shows {
   margin-bottom: 2rem;
-}
-
-.archive-shows {
-  & .show {
+  .show {
     margin: 2rem auto 0;
     padding: 0;
     max-width: 285px;
     background-color: transparent;
 
-    & img {
+    img {
       max-width: 285px;
     }
   }
-}
 
-@media (min-width: 600px) {
-  @supports (display: grid) {
-    .back {
-      text-align: left;
-    }
+  @media only screen and (min-width: $break-small) {
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+      max-width: $max-width;
+      margin: 0 auto 4rem;
 
-    .back__btn {
-      margin-left: 2rem;
-    }
+      .show {
+        margin: 0;
 
-    .archive-shows .show {
-      margin: 0;
-
-      & img {
-        max-width: 180px;
+        img {
+          max-width: 180px;
+        }
       }
     }
   }
-}
-
-@media (min-width: 900px) {
-  @supports (display: grid) {
-    .show__image img {
-      width: $max-width;
-    }
-
-    .archive-shows {
+  @media only screen and (min-width: $break-large) {
+    @supports (display: grid) {
       grid-template-columns: repeat(4, 1fr);
 
-      & img {
+      img {
         max-width: 190px;
       }
     }

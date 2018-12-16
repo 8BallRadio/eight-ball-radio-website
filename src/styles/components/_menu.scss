@@ -12,18 +12,15 @@
 }
 
 .mobile-menu {
-  & .nav-content,
-  & .overlay {
+  .nav-content,
+  .overlay {
     top: 0;
     left: 0;
     bottom: 0;
     position: absolute;
     transition: all 0.3s ease-in-out 0s;
   }
-}
-
-.mobile-menu {
-  & .overlay {
+  .overlay {
     right: 0;
     opacity: 0;
     width: 100%;
@@ -31,10 +28,8 @@
     transform: scale(0);
     background: rgba(0, 0, 0, 0.4);
   }
-}
 
-.mobile-menu {
-  & .nav-content {
+  .nav-content {
     width: 80%;
     color: map-get($colors, light-gray);
     padding: 15px 0;
@@ -43,59 +38,50 @@
     transform: translateX(-100%);
     position: fixed;
   }
-}
+  &.active {
+    .nav-content {
+      transform: translateX(0);
+    }
 
-.mobile-menu.active {
-  & .nav-content {
-    transform: translateX(0);
+    .overlay {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
-}
+  .nav__items {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
 
-.mobile-menu.active {
-  & .overlay {
-    opacity: 1;
-    transform: scale(1);
+    .nav__link {
+      display: block;
+      padding: 15px;
+      color: map-get($colors, regular-gray);
+      font-family: $font-family-display;
+      text-decoration: none;
+      font-size: $font-size-large;
+      letter-spacing: 1px;
+    }
+
+    .nav__link:hover {
+      background-color: map-get($colors, light-green);
+    }
+
+    .router-link-active {
+      background-color: map-get($colors, dark-gray);
+      color: white;
+    }
   }
-}
-
-.mobile-menu .nav__items {
-  margin-top: 2rem;
-  margin-bottom: 1.5rem;
-
-  & .nav__link {
-    display: block;
-    padding: 15px;
-    color: map-get($colors, regular-gray);
-    font-family: $font-family-display;
-    text-decoration: none;
-    font-size: $font-size-large;
-    letter-spacing: 1px;
+  .top__social a {
+    padding: 10px;
+  }
+  .social__icon {
+    height: 35px;
   }
 
-  & .nav__link:hover {
-    background-color: map-get($colors, light-green);
-  }
-
-  & .router-link-active {
-    background-color: map-get($colors, dark-gray);
-    color: white;
-  }
-}
-
-.mobile-menu .top__social a {
-  padding: 10px;
-}
-
-.mobile-menu .social__icon {
-  height: 35px;
-}
-
-@media (min-width: 900px) {
-  .open-menu {
+  @media (min-width: 900px) {
     display: none;
-  }
-
-  .mobile-menu {
-    display: none;
+    .open-menu {
+      display: none;
+    }
   }
 }
