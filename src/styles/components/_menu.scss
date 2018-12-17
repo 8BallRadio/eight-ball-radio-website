@@ -3,6 +3,10 @@
   font-size: $font-size-x-large;
   color: white;
   letter-spacing: 2px;
+
+  @media only screen and (min-width: $break-large) {
+    display: none;
+  }
 }
 
 .close-menu {
@@ -78,10 +82,7 @@
     height: 35px;
   }
 
-  @media (min-width: 900px) {
+  @media only screen and (min-width: $break-large) {
     display: none;
-    .open-menu {
-      display: none;
-    }
   }
 }
