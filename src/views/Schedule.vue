@@ -80,6 +80,7 @@ export default {
     getCurrentDaySchedule(currentDay) {
       this.currentDay = currentDay;
       this.dayShows = this.week[this.currentDay];
+      console.log(this.dayShows);
     }
   }
 };
