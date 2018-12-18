@@ -168,11 +168,13 @@
     }
 
     @supports (display: grid) {
-      display: grid;
-      grid-template-columns: 0.5fr 1fr;
-      grid-gap: 1rem;
-      .show__tags {
-        grid-column: span 2;
+      & {
+        display: grid;
+        grid-template-columns: 0.5fr 1fr;
+        grid-gap: 1rem;
+        .show__tags {
+          grid-column: span 2;
+        }
       }
     }
   }
@@ -193,27 +195,31 @@
 
   @media only screen and (min-width: $break-small) {
     @supports (display: grid) {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-gap: 20px;
-      max-width: $max-width;
-      margin: 0 auto 4rem;
+      & {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 20px;
+        max-width: $max-width;
+        margin: 0 auto 4rem;
 
-      .show {
-        margin: 0;
+        .show {
+          margin: 0;
 
-        img {
-          max-width: 180px;
+          img {
+            max-width: 180px;
+          }
         }
       }
     }
   }
   @media only screen and (min-width: $break-large) {
     @supports (display: grid) {
-      grid-template-columns: repeat(4, 1fr);
+      & {
+        grid-template-columns: repeat(4, 1fr);
 
-      img {
-        max-width: 190px;
+        img {
+          max-width: 190px;
+        }
       }
     }
   }

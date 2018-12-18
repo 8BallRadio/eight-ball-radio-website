@@ -54,20 +54,22 @@
 
     @media only screen and (min-width: $break-small) {
       @supports (display: grid) {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 20px;
-        max-width: $max-width;
-        margin: 0 auto 4rem;
+        & {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          grid-gap: 20px;
+          max-width: $max-width;
+          margin: 0 auto 4rem;
 
-        .show {
-          img {
-            max-width: 260px;
-          }
+          .show {
+            img {
+              max-width: 260px;
+            }
 
-          .show__name,
-          .show__time {
-            font-size: $font-size-regular;
+            .show__name,
+            .show__time {
+              font-size: $font-size-regular;
+            }
           }
         }
       }
