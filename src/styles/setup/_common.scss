@@ -67,6 +67,8 @@ main {
     #latest-shows,
     #shows,
     #inside-show {
+      max-width: $max-width;
+      margin: 0 auto;
       h2 {
         .title__left,
         .title__right {
