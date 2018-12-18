@@ -1,6 +1,9 @@
 <template>
   <tbody>
-    <tr v-for="(show,index) in shows" :key="index">
+    <tr v-if="shows.length == 0">
+      <td colspan="7" class="no-schedule">No Schedule Available</td>
+    </tr>
+    <tr v-for="(show,index) in shows" :key="index" v-else>
       <td>{{show.starts | showTime}}-{{show.ends | showTime}}</td>
       <td colspan="3">Show #{{index + 1}} {{day}} - {{show.name}}</td>
       <td colspan="3">Talk, Indie, Psychdelic</td>
