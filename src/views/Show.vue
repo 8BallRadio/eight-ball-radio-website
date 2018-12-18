@@ -1,11 +1,27 @@
 <template>
-    <main id="maincontent">
+  <main id="maincontent">
     <section id="inside-show">
       <div class="back">
         <router-link to="/shows" class="btn back__btn">BACK TO LIST</router-link>
       </div>
       <div class="show__image">
         <img src="../assets/show.png">
+      </div>
+      <div class="show__info">
+        <h3>A LOVE SUPREME</h3>
+        <p
+          class="show__description"
+        >Empower communities, paradigm corporate social responsibility we must stand up natural resources dynamic rubric. Changemaker co-creation, vibrant technology agile thought leadership blended value. Effective save the world, radical framework targeted.</p>
+        <div class="show__tags">
+          <h4>TAGS:</h4>
+          <ul>
+            <li v-for="(tag, index) in tags" :key="index">
+              <div class="triangle left"></div>
+              <span>{{tag.toUpperCase().trim()}}</span>
+              <div class="triangle right"></div>
+            </li>
+          </ul>
+        </div>
       </div>
       <h2>
         <span class="title__left">
@@ -103,6 +119,7 @@
 </template>
 
 <script>
+// Temporaly commented
 // TODO: 404 from incorrect show
 // TODO: algorithm showing most recently broadcasted
 
@@ -122,8 +139,8 @@
 </template>
 */
 
-import axios from "axios";
-import EventEmitter from "events";
+// import axios from "axios";
+// import EventEmitter from "events";
 
 export default {
   name: "Show",
@@ -131,109 +148,110 @@ export default {
     return {
       casts: null,
       name: null,
-      slug: null
+      slug: null,
+      tags: ["jazz", "soul", "dub", "kevin lyons"] //Temporal tags array
     };
-  },
-  beforeRouteEnter(to, from, next) {
-    // Initialize variables/objects
-    const showsEmitter = new EventEmitter();
-    let cloudcasts = [];
-    let showName = null;
-    let showSlug = null;
-
-    // Request function
-    const getRequest = show => {
-      try {
-        return axios.get(show);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    // Cloudcast request formatting
-    showsEmitter.on("update", function() {
-      let pageData = showsEmitter.data["data"];
-      let newRequest = "";
-      let unwrap = ({ key, name, slug }) => ({ key, name, slug });
-
-      console.log("Searching for cloudcasts...");
-      pageData = pageData.map(item => unwrap(item));
-      for (const x in pageData) {
-        cloudcasts.push(pageData[x]);
-      }
-
-      // If the data has a "paging" field,
-      // then there are more than 20+ cloudcasts
-      if (showsEmitter.data.hasOwnProperty("paging")) {
-        let pagingData = showsEmitter.data["paging"];
-        // If the "paging" field has no "next"
-        // there are no more cloudcasts
-        if (!pagingData.hasOwnProperty("next")) {
-          console.log("No more cloudcasts!!");
-          next(vm => {
-            vm.name = showName;
-            vm.slug = showSlug;
-            vm.casts = cloudcasts;
-          });
-
-          // Otherwise, take the "next" value
-          // make new request to keep searching
-        } else {
-          console.log("Keep searching for cloudcasts");
-          newRequest = showsEmitter.data["paging"]["next"];
-          getRequest(newRequest).then(response => {
-            showsEmitter.data = response.data;
-            showsEmitter.emit("update");
-          });
-        }
-        // If there is no "paging" field
-        // there are <20 cloudcasts, so we're done
-      } else {
-        console.log("No more cloudcasts!!");
-        next(vm => {
-          vm.name = showName;
-          vm.slug = showSlug;
-          vm.casts = cloudcasts;
-        });
-      }
-    });
-
-    // Checking for show existence
-    showsEmitter.on("check", function() {
-      let pageData = showsEmitter.data;
-      let newRequest = "";
-
-      // If the response data has an error, then the show DNE
-      // Otherwise, make request to find cloudcasts
-      if (pageData.hasOwnProperty("error")) {
-        next(false);
-      } else {
-        newRequest =
-          "https://api.mixcloud.com/8ballradio/playlists/" +
-          to.params.id +
-          "/cloudcasts/";
-        showName = pageData["name"];
-        showSlug = pageData["slug"];
-        getRequest(newRequest).then(response => {
-          showsEmitter.data = response.data;
-          showsEmitter.emit("update");
-        });
-      }
-    });
-
-    // Initial function for starting asynchronous requests
-    const startSearch = async () => {
-      let playlistPage =
-        "https://api.mixcloud.com/8ballradio/playlists/" + to.params.id + "/";
-
-      // We make this request first to start using emitter
-      getRequest(playlistPage).then(response => {
-        showsEmitter.data = response.data;
-        showsEmitter.emit("check");
-      });
-    };
-
-    startSearch();
   }
+  // beforeRouteEnter(to, from, next) {
+  //   // Initialize variables/objects
+  //   const showsEmitter = new EventEmitter();
+  //   let cloudcasts = [];
+  //   let showName = null;
+  //   let showSlug = null;
+
+  //   // Request function
+  //   const getRequest = show => {
+  //     try {
+  //       return axios.get(show);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+
+  //   // Cloudcast request formatting
+  //   showsEmitter.on("update", function() {
+  //     let pageData = showsEmitter.data["data"];
+  //     let newRequest = "";
+  //     let unwrap = ({ key, name, slug }) => ({ key, name, slug });
+
+  //     console.log("Searching for cloudcasts...");
+  //     pageData = pageData.map(item => unwrap(item));
+  //     for (const x in pageData) {
+  //       cloudcasts.push(pageData[x]);
+  //     }
+
+  //     // If the data has a "paging" field,
+  //     // then there are more than 20+ cloudcasts
+  //     if (showsEmitter.data.hasOwnProperty("paging")) {
+  //       let pagingData = showsEmitter.data["paging"];
+  //       // If the "paging" field has no "next"
+  //       // there are no more cloudcasts
+  //       if (!pagingData.hasOwnProperty("next")) {
+  //         console.log("No more cloudcasts!!");
+  //         next(vm => {
+  //           vm.name = showName;
+  //           vm.slug = showSlug;
+  //           vm.casts = cloudcasts;
+  //         });
+
+  //         // Otherwise, take the "next" value
+  //         // make new request to keep searching
+  //       } else {
+  //         console.log("Keep searching for cloudcasts");
+  //         newRequest = showsEmitter.data["paging"]["next"];
+  //         getRequest(newRequest).then(response => {
+  //           showsEmitter.data = response.data;
+  //           showsEmitter.emit("update");
+  //         });
+  //       }
+  //       // If there is no "paging" field
+  //       // there are <20 cloudcasts, so we're done
+  //     } else {
+  //       console.log("No more cloudcasts!!");
+  //       next(vm => {
+  //         vm.name = showName;
+  //         vm.slug = showSlug;
+  //         vm.casts = cloudcasts;
+  //       });
+  //     }
+  //   });
+
+  //   // Checking for show existence
+  //   showsEmitter.on("check", function() {
+  //     let pageData = showsEmitter.data;
+  //     let newRequest = "";
+
+  //     // If the response data has an error, then the show DNE
+  //     // Otherwise, make request to find cloudcasts
+  //     if (pageData.hasOwnProperty("error")) {
+  //       next(false);
+  //     } else {
+  //       newRequest =
+  //         "https://api.mixcloud.com/8ballradio/playlists/" +
+  //         to.params.id +
+  //         "/cloudcasts/";
+  //       showName = pageData["name"];
+  //       showSlug = pageData["slug"];
+  //       getRequest(newRequest).then(response => {
+  //         showsEmitter.data = response.data;
+  //         showsEmitter.emit("update");
+  //       });
+  //     }
+  //   });
+
+  //   // Initial function for starting asynchronous requests
+  //   const startSearch = async () => {
+  //     let playlistPage =
+  //       "https://api.mixcloud.com/8ballradio/playlists/" + to.params.id + "/";
+
+  //     // We make this request first to start using emitter
+  //     getRequest(playlistPage).then(response => {
+  //       showsEmitter.data = response.data;
+  //       showsEmitter.emit("check");
+  //     });
+  //   };
+
+  //   startSearch();
+  // }
 };
 </script>
