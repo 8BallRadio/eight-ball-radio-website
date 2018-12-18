@@ -38,7 +38,7 @@
     margin: 0 auto 3rem;
     overflow-x: auto;
     table-layout: auto;
-    width: 93%;
+    width: 98%;
     border-spacing: 0 3px;
     display: inline-block;
 
@@ -80,6 +80,10 @@
       td:last-child {
         text-align: right;
       }
+      td.no-schedule {
+        text-align: center;
+        font-size: $font-size-x-large;
+      }
     }
   }
 
@@ -89,7 +93,6 @@
       width: 98%;
     }
     .schedule__table {
-      width: 98%;
       display: inline-table;
       margin-bottom: 0;
     }
