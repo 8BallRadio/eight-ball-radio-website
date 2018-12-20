@@ -41,35 +41,28 @@
 }
 
 #latest-shows {
-  .latest-shows {
-    .show {
-      background-color: map-get($colors, regular-gray);
-      padding: 60px 20px;
-      margin: 2rem auto;
-      max-width: 320px;
-    }
-
-    @media screen and (min-width: $break-small) {
-      max-width: $max-width;
-      margin: 0 auto 4rem;
-      @supports (display: grid) {
-        & {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          grid-gap: 20px;
-
-          .show {
-            margin-bottom: 0;
-          }
-        }
+  h2 {
+    margin: 2.8125rem 0;
+    color: map-get($colors, dark-gray);
+    .title__left,
+    .title__right {
+      display: block;
+      img {
+        max-width: 255px;
       }
     }
+  }
+  @media screen and (min-width: $break-small) {
+    max-width: $max-width;
+    margin: 0 auto 4rem;
+  }
 
-    @media screen and (min-width: $break-large) {
-      @supports (display: grid) {
-        & {
-          grid-gap: 40px;
-        }
+  @media only screen and (min-width: $break-large) {
+    & h2 {
+      .title__left,
+      .title__right {
+        display: inline-block;
+        width: 30%;
       }
     }
   }
