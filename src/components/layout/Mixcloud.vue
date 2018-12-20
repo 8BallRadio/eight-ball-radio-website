@@ -1,41 +1,27 @@
 <template>
-  <div>
-    <iframe
-      id="mixcloud"
-      :src="link"
-      @load="mountApi"
-      width="100%"
-      height="120"
-      frameborder="0"
-      allow="autoplay"
-    >
-    </iframe>
+  <div class="mixcloud__container">
+    <iframe id="mixcloud" width="100%" height="60" :src="url+slug+'%2F'" frameborder="0"></iframe>
   </div>
 </template>
 
 <script>
-let widget = null;
+import { mapState } from "vuex";
 
 export default {
   name: "Mixcloud",
-  computed: {
-    link: function() {
-      // ...
-      // Test link
-      return "http://mixcloud.com/8ballradio/coconuts-carnival-9/";
-    }
+  data: function() {
+    return {
+      url:
+        "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2F8ballradio%2F"
+    };
   },
-  methods: {
-    mountApi: function() {
-      // eslint-disable-next-line
-      widget = Mixcloud.PlayerWidget(document.getElementById('mixcloud'))
-    },
-    play: function() {
-      widget.play();
-    },
-    pause: function() {
-      widget.pause();
-    }
+  computed: {
+    ...mapState(["slug"])
   }
 };
 </script>
+<style lang="scss" scoped>
+.mixcloud__container {
+  width: 100%;
+}
+</style>
