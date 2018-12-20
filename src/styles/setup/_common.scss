@@ -31,7 +31,6 @@ main {
   text-align: center;
   padding-bottom: 858px;
 
-  #latest-shows,
   #shows,
   #inside-show {
     text-align: center;
@@ -64,7 +63,6 @@ main {
 
   @media only screen and (min-width: $break-large) {
     padding-bottom: 330px;
-    #latest-shows,
     #shows,
     #inside-show {
       max-width: $max-width;
