@@ -25,5 +25,53 @@
         <a href class="family__link">MERCH (SUPPORT US)</a>
       </section>
     </div>
+    <div class="mixcloud-player" v-if="slug">
+      <mixcloud></mixcloud>
+      <button id="btn close-player" class="close-player__btn" @click="removeSlugs">X</button>
+    </div>
   </footer>
 </template>
+<script>
+import { mapState, mapActions } from "vuex";
+import Mixcloud from "@/components/layout/Mixcloud.vue";
+
+export default {
+  components: {
+    mixcloud: Mixcloud
+  },
+  computed: {
+    ...mapState(["slug"])
+  },
+  methods: {
+    ...mapActions(["removeSlug"]),
+    removeSlugs: function() {
+      this.removeSlug();
+    }
+  }
+};
+</script>
+<style lang="scss" scoped>
+.mixcloud-player {
+  position: fixed;
+  width: 100%;
+  bottom: -5px;
+  z-index: 5;
+  display: flex;
+  background-color: #fcfcfc;
+}
+.close-player__btn {
+  width: 80px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.5rem;
+  background-color: #fcfcfc;
+  border: none;
+  border-left: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
+  color: #000;
+
+  &:hover {
+    background-color: map-get($colors, dark-green);
+  }
+}
+</style>
