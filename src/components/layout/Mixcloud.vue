@@ -1,6 +1,13 @@
 <template>
   <div class="mixcloud__container">
-    <iframe id="mixcloud" width="100%" height="60" :src="url+slug+'%2F'" frameborder="0"></iframe>
+    <iframe
+      id="mixcloud"
+      width="100%"
+      height="60"
+      :src="url+slug+'%2F'"
+      frameborder="0"
+      allow="autoplay"
+    ></iframe>
   </div>
 </template>
 
@@ -12,7 +19,7 @@ export default {
   data: function() {
     return {
       url:
-        "https://www.mixcloud.com/widget/iframe/?hide_cover=1&light=1&feed=%2F8ballradio%2F"
+        "//www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&light=1&feed=%2F8ballradio%2F"
     };
   },
   computed: {
