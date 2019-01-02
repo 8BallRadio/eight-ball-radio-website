@@ -61,7 +61,7 @@ export default {
   mounted() {
     window.scroll(0, 0);
     axios
-      .get("https://api.mixcloud.com/8ballradio/cloudcasts/?limit=6")
+      .get("//api.mixcloud.com/8ballradio/cloudcasts/?limit=6")
       .then(response => this.getShows(response.data))
       .catch(error => {
         console.log(error), (this.errored = true);
