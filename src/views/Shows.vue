@@ -88,9 +88,7 @@
         <span class="arrow">&#60;</span>
         <span class="arrow">&#62;</span>
       </div>
-    </section>
-  </main>
-  <!--<div v-if="!loading" class="content">
+      <div v-if="!loading" class="content">
         <ul id="example">
           <li v-for="item in info" v-bind:key="item.slug">
             <router-link :to="{ path: '/show/' + item.slug, params: {id: 'item.slug', name: 'item.name'}}">
@@ -98,13 +96,23 @@
             </router-link>
           </li>
         </ul>
-  </div>-->
+      </div>
+    </section>
+  </main>
 </template>
 
 <script>
 // Temporaly commented. Issues with CORS
-// import axios from "axios";
-// import EventEmitter from "events";
+
+// FOR NOW
+// We can use the Mixcloud playlists to come up with all the shows
+// Airtime won't let us showcase archived shows
+// Photos can come from Airtime? or Mixcloud? Cloudinary?
+
+// TODO: Get shows working + arrow buttons working
+
+import axios from "axios";
+import EventEmitter from "events";
 
 export default {
   name: "Shows",
@@ -114,65 +122,66 @@ export default {
       info: null,
       error: null
     };
+  },
+  beforeRouteEnter(to, from, next) {
+    // Initialize variables/objects
+    const showsEmitter = new EventEmitter();
+    let showLinks = [];
+
+    // Request function
+    const getShows = show => {
+      try {
+        return axios.get(show);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // Emitter receives asynchronous returns
+    showsEmitter.on("update", function() {
+      let pageData = showsEmitter.data["data"];
+      let newRequest = showsEmitter.data["paging"]["next"];
+      showLinks.push(pageData);
+
+      // If the data returns with a "paging" field, then we keep making requests
+      if (
+        showsEmitter.data.hasOwnProperty("paging") &&
+        typeof newRequest !== "undefined"
+      ) {
+        getShows(newRequest).then(response => {
+          showsEmitter.data = response.data;
+          showsEmitter.emit("update");
+        });
+        // If the data has no more "paging"
+        // Process and set data for show name list
+      } else {
+        console.log(showLinks);
+        let showNames = [];
+        let info = [];
+        let unwrap = ({ name, slug }) => ({ name, slug });
+        showLinks.forEach(showList =>
+          showList.forEach(shows => showNames.push(shows))
+        );
+        info = showNames.map(show => unwrap(show));
+        next(vm => {
+          vm.info = info;
+          vm.loading = false;
+        });
+      }
+    });
+
+    // Initial function for starting asynchronous requests
+    const startSearch = async () => {
+      let firstRequest = "https://api.mixcloud.com/8ballradio/playlists/";
+
+      // We make this request first to start using emitter
+      getShows(firstRequest).then(response => {
+        showsEmitter.data = response.data;
+        showsEmitter.emit("update");
+      });
+    };
+
+    startSearch();
   }
-  // beforeRouteEnter(to, from, next) {
-  //   // Initialize variables/objects
-  //   const showsEmitter = new EventEmitter();
-  //   let showLinks = [];
-
-  //   // Request function
-  //   const getShows = show => {
-  //     try {
-  //       return axios.get(show);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   // Emitter receives asynchronous returns
-  //   showsEmitter.on("update", function() {
-  //     let pageData = showsEmitter.data["data"];
-  //     let newRequest = showsEmitter.data["paging"]["next"];
-  //     showLinks.push(pageData);
-
-  //     // If the data returns with a "paging" field, then we keep making requests
-  //     if (
-  //       showsEmitter.data.hasOwnProperty("paging") &&
-  //       typeof newRequest !== "undefined"
-  //     ) {
-  //       getShows(newRequest).then(response => {
-  //         showsEmitter.data = response.data;
-  //         showsEmitter.emit("update");
-  //       });
-  //       // If the data has no more "paging"
-  //       // Process and set data for show name list
-  //     } else {
-  //       let showNames = [];
-  //       let info = [];
-  //       let unwrap = ({ name, slug }) => ({ name, slug });
-  //       showLinks.forEach(showList =>
-  //         showList.forEach(shows => showNames.push(shows))
-  //       );
-  //       info = showNames.map(show => unwrap(show));
-  //       next(vm => {
-  //         vm.info = info;
-  //         vm.loading = false;
-  //       });
-  //     }
-  //   });
-
-  //   // Initial function for starting asynchronous requests
-  //   const startSearch = async () => {
-  //     let firstRequest = "https://api.mixcloud.com/8ballradio/playlists/";
-
-  //     // We make this request first to start using emitter
-  //     getShows(firstRequest).then(response => {
-  //       showsEmitter.data = response.data;
-  //       showsEmitter.emit("update");
-  //     });
-  //   };
-
-  //   startSearch();
-  // }
 };
 </script>
