@@ -100,6 +100,12 @@ import { mapActions } from "vuex";
 
 export default {
   name: "Show",
+  methods: {
+    ...mapActions(["showSelected"]),
+    selectShow: function(slug) {
+      this.showSelected(slug);
+    }
+  },
   data() {
     return {
       casts: null,
@@ -214,12 +220,39 @@ export default {
     };
 
     startSearch();
-  },
-  methods: {
-    ...mapActions(["showSelected"]),
-    selectShow: function(slug) {
-      this.showSelected(slug);
-    }
   }
 };
 </script>
+<style lang="scss" scoped>
+.show__btn {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  position: absolute;
+  z-index: 1;
+  &:hover {
+    background-color: #323232e6;
+    .play__icon {
+      fill: white;
+    }
+  }
+  @media screen and (min-width: $break-small) {
+    width: 93%;
+  }
+}
+
+.show {
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  @media screen and (min-width: $break-small) {
+    margin-bottom: 0;
+  }
+}
+
+.play__icon {
+  fill: transparent;
+  height: 63px;
+}
+</style>
