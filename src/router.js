@@ -1,11 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Home from "./views/Home.vue";
-import Shows from "@/views/Shows.vue";
-import Show from "@/views/Show.vue";
-import Cast from "@/views/Cast.vue";
-import Contact from "@/views/Contact.vue";
-import Schedule from "@/views/Schedule.vue";
+import Shows from "./views/Shows.vue";
+import Show from "./views/Show.vue";
+import Cast from "./views/Cast.vue";
+import Contact from "./views/Contact.vue";
+import Schedule from "./views/Schedule.vue";
 
 Vue.use(Router);
 
