@@ -10,106 +10,31 @@
           <img src="../assets/content/stick-right.svg" alt>
         </span>
       </h2>
-      <ul class="shows__list">
-        <li class="show">
-          <img
-            src="https://thumbnailer.mixcloud.com/unsafe/320x320/extaudio/a/6/9/4/13b2-ef57-4fd8-910d-f66253cf7da8"
-            alt="show name"
-          >
-          <div class="show__info">
-            <span class="show__time">2 pm</span>
-            <h3 class="show__name">MAGIC MARMALADE</h3>
-            <p class="show__day">MONDAYS</p>
-            <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
-          </div>
-        </li>
-        <li class="show">
-          <img
-            src="https://thumbnailer.mixcloud.com/unsafe/320x320/extaudio/a/6/9/4/13b2-ef57-4fd8-910d-f66253cf7da8"
-            alt="show name"
-          >
-          <div class="show__info">
-            <span class="show__time">2 pm</span>
-            <h3 class="show__name">MAGIC MARMALADE</h3>
-            <p class="show__day">MONDAYS</p>
-            <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
-          </div>
-        </li>
-        <li class="show">
-          <img
-            src="https://thumbnailer.mixcloud.com/unsafe/320x320/extaudio/a/6/9/4/13b2-ef57-4fd8-910d-f66253cf7da8"
-            alt="show name"
-          >
-          <div class="show__info">
-            <span class="show__time">2 pm</span>
-            <h3 class="show__name">MAGIC MARMALADE</h3>
-            <p class="show__day">MONDAYS</p>
-            <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
-          </div>
-        </li>
-        <li class="show">
-          <img
-            src="https://thumbnailer.mixcloud.com/unsafe/320x320/profile/6/a/5/b/ef32-0a28-481b-928c-2be8447aeb0d"
-            alt="show name"
-          >
-          <div class="show__info">
-            <span class="show__time">2 pm</span>
-            <h3 class="show__name">MAGIC MARMALADE</h3>
-            <p class="show__day">MONDAYS</p>
-            <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
-          </div>
-        </li>
-        <li class="show">
-          <img
-            src="https://thumbnailer.mixcloud.com/unsafe/320x320/extaudio/a/6/9/4/13b2-ef57-4fd8-910d-f66253cf7da8"
-            alt="show name"
-          >
-          <div class="show__info">
-            <span class="show__time">2 pm</span>
-            <h3 class="show__name">MAGIC MARMALADE</h3>
-            <p class="show__day">MONDAYS</p>
-            <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
-          </div>
-        </li>
-        <li class="show">
-          <img
-            src="https://thumbnailer.mixcloud.com/unsafe/320x320/profile/6/a/5/b/ef32-0a28-481b-928c-2be8447aeb0d"
-            alt="show name"
-          >
-          <div class="show__info">
-            <span class="show__time">2 pm</span>
-            <h3 class="show__name">MAGIC MARMALADE</h3>
-            <p class="show__day">MONDAYS</p>
-            <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
-          </div>
-        </li>
-      </ul>
-      <div class="arrows">
-        <span class="arrow">&#60;</span>
-        <span class="arrow">&#62;</span>
-      </div>
       <div v-if="!loading" class="content">
         <ul id="example">
-          <li v-for="item in info" v-bind:key="item.slug">
-            <router-link :to="{ path: '/show/' + item.slug, params: {id: 'item.slug', name: 'item.name'}}">
-              {{ item.name }}
+          <li v-for="show in showInfo" v-bind:key="show.slug">
+            <router-link :to="{ path: '/show/' + show.slug, params: {id: 'show.slug', name: 'show.name'}}">
+              <img :src="show.picture" :alt="show.name">
             </router-link>
           </li>
         </ul>
+      </div>
+      <div v-else>
+        <h1> Loading... </h1>
       </div>
     </section>
   </main>
 </template>
 
 <script>
-// Temporaly commented. Issues with CORS
-
 // FOR NOW
 // We can use the Mixcloud playlists to come up with all the shows
-// Airtime won't let us showcase archived shows
-// Photos can come from Airtime? or Mixcloud? Cloudinary?
+// since Airtime won't let us showcase archived shows
+// Photos come from FIRST MIXCLOUD SHOW
 
-// TODO: Get shows working + arrow buttons working
+// TODO: CSS Formatting
+// TODO: Image replacements?
+// TODO: Randomizing array + shows
 
 import axios from "axios";
 import EventEmitter from "events";
@@ -119,9 +44,12 @@ export default {
   data() {
     return {
       loading: true,
-      info: null,
+      showInfo: null,
       error: null
     };
+  },
+  beforeUpdate() {
+    console.log("updated");
   },
   beforeRouteEnter(to, from, next) {
     // Initialize variables/objects
@@ -129,12 +57,35 @@ export default {
     let showLinks = [];
 
     // Request function
-    const getShows = show => {
+    const getShows = async show => {
       try {
         return axios.get(show);
       } catch (error) {
         console.error(error);
       }
+    };
+
+    const getPicture = async showObj => {
+      try {
+        return axios.get(
+          "//api.mixcloud.com/8ballradio/playlists/" +
+            showObj["slug"] +
+            "/cloudcasts/"
+        );
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    // Initial function for starting asynchronous requests
+    const startSearch = async () => {
+      let firstRequest = "https://api.mixcloud.com/8ballradio/playlists/";
+
+      // We make this request first to start using emitter
+      getShows(firstRequest).then(res => {
+        showsEmitter.data = res.data;
+        showsEmitter.emit("update");
+      });
     };
 
     // Emitter receives asynchronous returns
@@ -155,32 +106,29 @@ export default {
         // If the data has no more "paging"
         // Process and set data for show name list
       } else {
-        console.log(showLinks);
         let showNames = [];
-        let info = [];
-        let unwrap = ({ name, slug }) => ({ name, slug });
+        let showInfo = [];
+        let unwrap = ({ name, slug, picture }) => ({ name, slug, picture });
+
+        // Condense all shows into a single array
         showLinks.forEach(showList =>
           showList.forEach(shows => showNames.push(shows))
         );
-        info = showNames.map(show => unwrap(show));
+        showInfo = showNames.map(show => unwrap(show));
+
+        // For each show, find first show in Mixcloud image
+        showInfo.forEach(show => {
+          let image = Promise.resolve(getPicture(show));
+          image.then(function(value) {
+            show["picture"] = value.data["data"][0]["pictures"]["320wx320h"];
+          });
+        });
         next(vm => {
-          vm.info = info;
+          vm.showInfo = showInfo;
           vm.loading = false;
         });
       }
     });
-
-    // Initial function for starting asynchronous requests
-    const startSearch = async () => {
-      let firstRequest = "https://api.mixcloud.com/8ballradio/playlists/";
-
-      // We make this request first to start using emitter
-      getShows(firstRequest).then(response => {
-        showsEmitter.data = response.data;
-        showsEmitter.emit("update");
-      });
-    };
-
     startSearch();
   }
 };
