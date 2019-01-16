@@ -65,34 +65,14 @@
 </template>
 
 <script>
-// Temporaly commented
-// TODO: 404 from incorrect show
-// TODO: algorithm showing most recently broadcasted
+// TODO: 404 or page doesnt exist
+// TODO: algorithm showing most recently broadcasted?
 
 // TODO: pictures from cloudinary
 // TODO: Descriptions from Airtime
 // TODO: genre tags from Airtime
 // TODO: Archives from Mixcloud
 // TODO: name from Mixcloud
-
-// TODO: limit cloudcast retreival to 12
-// TODO: pull images from Mixcloud
-
-/* 
-  <div class="show">
-    <div class="content">
-      {{ name }}
-      <ul id="example">
-        <li v-for="cast in casts" v-bind:key="cast.key">
-          <router-link :to="{ path: '/show/' + slug + '/' + cast.slug, params: {id: 'cast.slug', name: 'cast.name'}}">
-            {{ cast.name }}
-          </router-link>
-        </li>
-      </ul>
-    </div>
-  </div>
-</template>
-*/
 
 import axios from "axios";
 import EventEmitter from "events";
@@ -175,7 +155,6 @@ export default {
         // there are <20 cloudcasts, so we're done
       } else {
         console.log("No more cloudcasts!!");
-        console.log(cloudcasts);
         next(vm => {
           vm.name = showName;
           vm.slug = showSlug;
