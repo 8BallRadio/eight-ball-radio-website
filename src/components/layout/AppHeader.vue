@@ -10,7 +10,12 @@
         </h4>
         <div class="top__player">
           <div class="player__controls">
-            <button class="control__play"></button>
+            <div v-if="!playing" class="content" @click.prevent="playStream()">
+              <button class="control__play"></button>
+            </div>
+            <div v-else class="content" @click.prevent="pauseStream()">
+              <button class="control__pause"></button>
+            </div>
             <button class="btn control__volume">
               <img src="../../assets/header/volume.svg" alt="volume control">
             </button>
@@ -112,7 +117,9 @@ export default {
   name: "top",
   data() {
     return {
-      isSideBarOpen: false
+      isSideBarOpen: false,
+      stream: new Audio("http://eightball.out.airtime.pro:8000/eightball_a"),
+      playing: false
     };
   },
   components: {
@@ -124,6 +131,14 @@ export default {
       this.isSideBarOpen = true;
       document.querySelector("#mobile-menu").className += " active";
       document.body.style.overflow = "hidden";
+    },
+    playStream() {
+      this.playing = true;
+      this.stream.play();
+    },
+    pauseStream() {
+      this.playing = false;
+      this.stream.pause();
     }
   }
 };
