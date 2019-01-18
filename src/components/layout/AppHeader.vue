@@ -129,7 +129,7 @@ export default {
     "app-mobile-menu": AppMobileMenu
   },
   mounted() {
-    let streamAPI = "http://eightball.airtime.pro/api/live-info";
+    let streamAPI = "https://eightball.airtime.pro/api/live-info";
 
     const getStreamInfo = async info => {
       try {
