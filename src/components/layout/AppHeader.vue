@@ -115,8 +115,6 @@
 import AppMobileMenu from "./AppMobileMenu.vue";
 import axios from "axios";
 
-//remove icecast-parser or use API the entire time
-
 export default {
   name: "top",
   data() {
