@@ -21,11 +21,11 @@
             </button>
           </div>
           <div class="player__info">
-            <div class="info__top">Now Playing</div>
+            <div class="info__top">NOW PLAYING</div>
             <div class="info__ticker">
               <div class="ticker-wrapper">
                 <div class="ticker">
-                  <div class="ticker__item">MAGIC MARMALADE - EPISODE 5</div>
+                  <div class="ticker__item">{{ showName }}</div>
                 </div>
               </div>
             </div>
@@ -113,17 +113,48 @@
 </template>
 <script>
 import AppMobileMenu from "./AppMobileMenu.vue";
+import axios from "axios";
+
+//remove icecast-parser or use API the entire time
+
 export default {
   name: "top",
   data() {
     return {
       isSideBarOpen: false,
       stream: new Audio("http://eightball.out.airtime.pro:8000/eightball_a"),
+      showName: '',
       playing: false
     };
   },
   components: {
     "app-mobile-menu": AppMobileMenu
+  },
+  mounted() {
+    let streamAPI = "http://eightball.airtime.pro/api/live-info";
+
+    const getStreamInfo = async info => {
+      try {
+        return axios.get(info);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    this.$nextTick(() => {
+      window.setInterval(() => {
+        let streamInfo = Promise.resolve(getStreamInfo(streamAPI));
+        streamInfo.then((val) => {
+          if(val.data["currentShow"] === undefined || val.data["currentShow"].length === 0){
+            console.log('No show currently playing');
+            this.showName = "No show currently playing";
+          } else {
+            console.log(val.data["currentShow"][0]["name"]);
+            this.showName = val.data["currentShow"][0]["name"]
+          }
+        });
+      }, 5000)
+    })
   },
   methods: {
     openMenu() {
