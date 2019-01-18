@@ -66,13 +66,13 @@
 
 <script>
 // TODO: 404 or page doesnt exist
-// TODO: algorithm showing most recently broadcasted?
+// TODO: algorithm showing most recently broadcasted? Yes, only the latest 12 episodes
 
-// TODO: pictures from cloudinary
+// TODO: pictures from cloudinary - Just for the big one, or maybe Airtime can be used for this as well
 // TODO: Descriptions from Airtime
-// TODO: genre tags from Airtime
+// TODO: genre tags from Airtime - or Mixcloud?
 // TODO: Archives from Mixcloud
-// TODO: name from Mixcloud
+// TODO: name from Mixcloud -  or Airtitme?
 
 import axios from "axios";
 import EventEmitter from "events";
