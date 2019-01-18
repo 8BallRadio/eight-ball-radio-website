@@ -44,9 +44,12 @@
 // since Airtime won't let us showcase archived shows
 // Photos come from FIRST MIXCLOUD SHOW
 
-// TODO: CSS Formatting
-// TODO: Image replacements?
+// TODO: CSS Formatting - in progress
+// TODO: Image replacements? - The idea is to use Mixcloud images
 // TODO: Randomizing array + shows
+// TODO: Add show's tags from 'https://api.mixcloud.com/8ballradio/playlists/{slug}/cloudcasts/'
+// TODO: Get show's time from AirtimePro?
+// TODO: Pagination - fix weird behavior when next page is clicked
 
 import axios from "axios";
 import EventEmitter from "events";
