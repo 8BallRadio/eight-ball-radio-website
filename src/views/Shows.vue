@@ -12,7 +12,7 @@
       </h2>
       <div v-if="!loading">
         <ul class="shows__list">
-          <li v-for="show in showInfo" v-bind:key="show.slug" class="show">
+          <li v-for="show in displayedShows" v-bind:key="show.slug" class="show">
             <router-link
               :to="{ path: '/show/' + show.slug, params: {id: 'show.slug', name: 'show.name'}}"
             >
@@ -26,6 +26,10 @@
             </router-link>
           </li>
         </ul>
+        <div class="arrows">
+          <button type="button" class="btn arrow" v-if="page != 1" @click="page--">&#60;</button>
+          <button type="button" class="btn arrow" @click="page++" v-if="page < pages.length">&#62;</button>
+        </div>
       </div>
       <div v-else>
         <h1>Loading...</h1>
@@ -53,7 +57,10 @@ export default {
     return {
       loading: true,
       showInfo: null,
-      error: null
+      error: null,
+      page: 1,
+      perPage: 6,
+      pages: []
     };
   },
   beforeUpdate() {
@@ -138,6 +145,31 @@ export default {
       }
     });
     startSearch();
+  },
+  methods: {
+    setPages() {
+      let numberOfPages = Math.ceil(this.showInfo.length / this.perPage);
+      for (let index = 1; index <= numberOfPages; index++) {
+        this.pages.push(index);
+      }
+    },
+    paginate(shows) {
+      let page = this.page;
+      let perPage = this.perPage;
+      let from = page * perPage - perPage;
+      let to = page * perPage;
+      return shows.slice(from, to);
+    }
+  },
+  watch: {
+    showInfo() {
+      this.setPages();
+    }
+  },
+  computed: {
+    displayedShows() {
+      return this.paginate(this.showInfo);
+    }
   }
 };
 </script>
