@@ -10,17 +10,25 @@
           <img src="../assets/content/stick-right.svg" alt>
         </span>
       </h2>
-      <div v-if="!loading" class="content">
-        <ul id="example">
-          <li v-for="show in showInfo" v-bind:key="show.slug">
-            <router-link :to="{ path: '/show/' + show.slug, params: {id: 'show.slug', name: 'show.name'}}">
+      <div v-if="!loading">
+        <ul class="shows__list">
+          <li v-for="show in showInfo" v-bind:key="show.slug" class="show">
+            <router-link
+              :to="{ path: '/show/' + show.slug, params: {id: 'show.slug', name: 'show.name'}}"
+            >
               <img :src="show.picture" :alt="show.name">
+              <div class="show__info">
+                <span class="show__time">2 pm</span>
+                <h3 class="show__name">{{show.name}}</h3>
+                <p class="show__day">MONDAYS</p>
+                <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
+              </div>
             </router-link>
           </li>
         </ul>
       </div>
       <div v-else>
-        <h1> Loading... </h1>
+        <h1>Loading...</h1>
       </div>
     </section>
   </main>
