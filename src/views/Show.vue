@@ -11,7 +11,7 @@
         <h3>{{this.name.toUpperCase()}}</h3>
         <p
           class="show__description"
-        >Empower communities, paradigm corporate social responsibility we must stand up natural resources dynamic rubric. Changemaker co-creation, vibrant technology agile thought leadership blended value. Effective save the world, radical framework targeted.</p>
+        > {{ description }} </p>
         <div class="show__tags">
           <h4>TAGS:</h4>
           <ul>
@@ -65,8 +65,8 @@
 </template>
 
 <script>
-// TODO: 404 or page doesnt exist
 // TODO: algorithm showing most recently broadcasted? Yes, only the latest 12 episodes
+// TODO: Play button sizing from window size
 
 // TODO: pictures from cloudinary - Just for the big one, or maybe Airtime can be used for this as well
 // TODO: Descriptions from Airtime
@@ -89,10 +89,34 @@ export default {
   data() {
     return {
       casts: null,
-      name: null,
+      name: "",
       slug: null,
+      description: null,
       tags: ["jazz", "soul", "dub", "kevin lyons"] //Temporal tags array
     };
+  },
+  mounted() {
+    let showInfoAPI = "https://eightball.airtime.pro/api/shows";
+
+    const getStreamInfo = async info => {
+      try {
+        return axios.get(info);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    let streamInfo = Promise.resolve(getStreamInfo(showInfoAPI));
+    streamInfo.then(val => {
+      val.data.forEach(show => {
+        if (show["name"].toLowerCase() === this.name.toLowerCase()) {
+          this.description = show["description"];
+        } else {
+          this.description =
+            "Empower communities, paradigm corporate social responsibility we must stand up natural resources dynamic rubric. Changemaker co-creation, vibrant technology agile thought leadership blended value. Effective save the world, radical framework targeted.";
+        }
+      });
+    });
   },
   beforeRouteEnter(to, from, next) {
     // Initialize variables/objects
