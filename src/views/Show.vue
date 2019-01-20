@@ -155,6 +155,7 @@ export default {
         // there are no more cloudcasts
         if (!pagingData.hasOwnProperty("next")) {
           console.log("No more cloudcasts!!");
+          cloudcasts.reverse();
           next(vm => {
             vm.name = showName;
             vm.slug = showSlug;
@@ -175,6 +176,7 @@ export default {
         // there are <20 cloudcasts, so we're done
       } else {
         console.log("No more cloudcasts!!");
+        cloudcasts.reverse();
         next(vm => {
           vm.name = showName;
           vm.slug = showSlug;
