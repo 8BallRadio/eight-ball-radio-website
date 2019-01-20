@@ -74,7 +74,7 @@ export default {
     const showsEmitter = new EventEmitter();
     let showLinks = [];
 
-    // Request function
+    // Request Shows function
     const getShows = async show => {
       try {
         return axios.get(show);
@@ -83,6 +83,7 @@ export default {
       }
     };
 
+    // Request for first Mixcloud show image
     const getPicture = async showObj => {
       try {
         return axios.get(
@@ -92,6 +93,18 @@ export default {
         );
       } catch (error) {
         console.error(error);
+      }
+    };
+
+    // Fischer-Yates Shuffle: https://bost.ocks.org/mike/shuffle/
+    const shuffleArray = array => {
+      let m = array.length;
+      while (m) {
+        let i = Math.floor(Math.random() * m--);
+
+        let t = array[m];
+        array[m] = array[i];
+        array[i] = t;
       }
     };
 
@@ -141,6 +154,10 @@ export default {
             show["picture"] = value.data["data"][0]["pictures"]["320wx320h"];
           });
         });
+
+        // Shuffle array before setting variable
+        shuffleArray(showInfo);
+
         next(vm => {
           vm.showInfo = showInfo;
           vm.loading = false;
