@@ -65,11 +65,9 @@
 </template>
 
 <script>
-// TODO: algorithm showing most recently broadcasted? Yes, only the latest 12 episodes
 // TODO: Play button sizing from window size
 
 // TODO: pictures from cloudinary - Just for the big one, or maybe Airtime can be used for this as well
-// TODO: Descriptions from Airtime
 // TODO: genre tags from Airtime - or Mixcloud?
 // TODO: Archives from Mixcloud
 // TODO: name from Mixcloud -  or Airtitme?
@@ -91,7 +89,7 @@ export default {
       casts: null,
       name: "",
       slug: null,
-      description: null,
+      description: "",
       tags: ["jazz", "soul", "dub", "kevin lyons"] //Temporal tags array
     };
   },
@@ -109,14 +107,12 @@ export default {
     let streamInfo = Promise.resolve(getStreamInfo(showInfoAPI));
     streamInfo.then(val => {
       val.data.forEach(show => {
-        if (show["name"].toLowerCase() === this.name.toLowerCase()) {
+        if (show["name"].toLowerCase() == this.name.toLowerCase()) {
           this.description = show["description"];
-        } else {
-          this.description =
-            "Empower communities, paradigm corporate social responsibility we must stand up natural resources dynamic rubric. Changemaker co-creation, vibrant technology agile thought leadership blended value. Effective save the world, radical framework targeted.";
         }
       });
     });
+    console.log(this.description);
   },
   beforeRouteEnter(to, from, next) {
     // Initialize variables/objects
