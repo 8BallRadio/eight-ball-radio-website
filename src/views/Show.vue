@@ -5,7 +5,7 @@
         <router-link to="/shows" class="btn back__btn">BACK TO LIST</router-link>
       </div>
       <div class="show__image">
-        <img src="../assets/show.png">
+        <img v-bind:src="showImage" @error="imageLoadError"/>
       </div>
       <div class="show__info">
         <h3>{{this.name.toUpperCase()}}</h3>
@@ -82,14 +82,20 @@ export default {
     ...mapActions(["showSelected"]),
     selectShow: function(slug) {
       this.showSelected(slug);
+    },
+    imageLoadError: function() {
+      console.log("didn't work1");
+      this.showImage = require('../assets/show.png');
     }
   },
   data() {
     return {
       casts: null,
       name: "",
-      slug: null,
+      slug: "",
       description: "",
+      showImage: "",
+      altShowImage: "../assets/show.png",
       tags: ["jazz", "soul", "dub", "kevin lyons"] //Temporal tags array
     };
   },
@@ -112,7 +118,6 @@ export default {
         }
       });
     });
-    console.log(this.description);
   },
   beforeRouteEnter(to, from, next) {
     // Initialize variables/objects
@@ -160,6 +165,7 @@ export default {
             vm.name = showName;
             vm.slug = showSlug;
             vm.casts = cloudcasts;
+            vm.showImage = "http://res.cloudinary.com/dbr2fzfuh/image/upload/" + showSlug + ".jpg";
           });
 
           // Otherwise, take the "next" value
@@ -181,6 +187,7 @@ export default {
           vm.name = showName;
           vm.slug = showSlug;
           vm.casts = cloudcasts;
+          vm.showImage = "http://res.cloudinary.com/dbr2fzfuh/image/upload/" + showSlug + ".jpg";
         });
       }
     });
