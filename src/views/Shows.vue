@@ -18,9 +18,9 @@
             >
               <img :src="show.picture" :alt="show.name">
               <div class="show__info">
-                <span class="show__time">2 pm</span>
+                <!-- span class="show__time">2 pm</span> -->
                 <h3 class="show__name">{{show.name}}</h3>
-                <p class="show__day">MONDAYS</p>
+                <!-- <p class="show__day">MONDAYS</p> -->
                 <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
               </div>
             </router-link>
