@@ -89,7 +89,7 @@
           </ul>
         </nav>
         <a
-          href="https://8ballcommunity.club/DONATE"
+          href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
           class="btn btn-donate"
           target="_blank"
           rel="noopener"
