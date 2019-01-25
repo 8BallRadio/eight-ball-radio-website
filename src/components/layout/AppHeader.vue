@@ -75,7 +75,7 @@
         <nav class="nav">
           <ul>
             <li>
-              <a href class="nav__link">EVENTS</a>
+              <a href="https://8ballcommunity.club/" target="_blank" class="nav__link">EVENTS</a>
             </li>
             <li>
               <a href class="nav__link">ABOUT</a>
@@ -102,6 +102,12 @@
           WE ARE A COMMUNITY RADIO STATION PART OF A 501c3 NON-PROFIT ::
           SUPPORT US!
         </p>
+        <div>
+          <router-link to="/offsite">
+            <strong>Click here for Channel 2!</strong>
+          </router-link>
+        </div>
+        <br>
         <div class="access">
           <router-link to="/shows" class="btn btn-access">SHOWS</router-link>
           <router-link to="/schedule" class="btn btn-access">SCHEDULE</router-link>

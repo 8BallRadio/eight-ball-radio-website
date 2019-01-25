@@ -85,7 +85,7 @@ export default {
     },
     imageLoadError: function() {
       console.log("didn't work1");
-      this.showImage = require('../assets/show.png');
+      this.showImage = require("../assets/show.png");
     }
   },
   data() {
@@ -165,7 +165,10 @@ export default {
             vm.name = showName;
             vm.slug = showSlug;
             vm.casts = cloudcasts;
-            vm.showImage = "http://res.cloudinary.com/dbr2fzfuh/image/upload/" + showSlug + ".jpg";
+            vm.showImage =
+              "http://res.cloudinary.com/dbr2fzfuh/image/upload/" +
+              showSlug +
+              ".jpg";
           });
 
           // Otherwise, take the "next" value
@@ -187,7 +190,10 @@ export default {
           vm.name = showName;
           vm.slug = showSlug;
           vm.casts = cloudcasts;
-          vm.showImage = "http://res.cloudinary.com/dbr2fzfuh/image/upload/" + showSlug + ".jpg";
+          vm.showImage =
+            "http://res.cloudinary.com/dbr2fzfuh/image/upload/" +
+            showSlug +
+            ".jpg";
         });
       }
     });
