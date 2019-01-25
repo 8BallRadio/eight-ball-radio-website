@@ -102,9 +102,9 @@
           WE ARE A COMMUNITY RADIO STATION PART OF A 501c3 NON-PROFIT ::
           SUPPORT US!
         </p>
-        <div>
-          <router-link to="/offsite">
-            <strong>Click here for Channel 2!</strong>
+        <div class="access">
+          <router-link to="/offsite" class="btn btn-access">
+            Off-Site Channel
           </router-link>
         </div>
         <br>
