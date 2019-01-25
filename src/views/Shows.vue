@@ -83,12 +83,12 @@ export default {
     };
 
     // Request for first Mixcloud show image
-    const getPicture = async showObj => {
+    const getPictureDate = async showObj => {
       try {
         return axios.get(
           "//api.mixcloud.com/8ballradio/playlists/" +
             showObj["slug"] +
-            "/cloudcasts/"
+            "/cloudcasts/?limit=100"
         );
       } catch (error) {
         console.error(error);
@@ -105,6 +105,17 @@ export default {
         array[m] = array[i];
         array[i] = t;
       }
+    };
+
+    // Functions for parsing dates and finding latest shows
+    const parseISOString = s => {
+      var b = s.split(/\D+/);
+      return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+    };
+
+    const numDaysBetween = (d1, d2) => {
+      var diff = Math.abs(d1.getTime() - d2.getTime());
+      return diff / (1000 * 60 * 60 * 24);
     };
 
     // Initial function for starting asynchronous requests
@@ -139,6 +150,8 @@ export default {
         let showNames = [];
         let showInfo = [];
         let unwrap = ({ name, slug, picture }) => ({ name, slug, picture });
+        let cutOffDate = new Date();
+        cutOffDate.setDate(cutOffDate.getDate() - 30);
 
         // Condense all shows into a single array
         showLinks.forEach(showList =>
@@ -148,14 +161,30 @@ export default {
 
         // For each show, find first show in Mixcloud image
         showInfo.forEach(show => {
-          let image = Promise.resolve(getPicture(show));
-          image.then(function(value) {
+          let request = Promise.resolve(getPictureDate(show));
+          request.then(function(value) {
+            // Find picture
             show["picture"] = value.data["data"][0]["pictures"]["320wx320h"];
+
+            // Find latest_show date
+            value.data["data"].reverse();
+            show["latest_show"] = value.data["data"][0]["created_time"];
+            let daysBetween = numDaysBetween(
+              parseISOString(show["latest_show"]),
+              cutOffDate
+            );
+            if (daysBetween > 30) {
+              showInfo.splice(
+                showInfo.findIndex(showIndex => showIndex === show),
+                1
+              );
+            }
           });
         });
+        console.log(showInfo);
 
         // Shuffle array before setting variable
-        shuffleArray(showInfo);
+        // shuffleArray(showInfo);
 
         next(vm => {
           vm.showInfo = showInfo;
