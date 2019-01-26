@@ -1,13 +1,13 @@
 <template>
   <main id="maincontent">
-    <section id="shows">
+    <section id="shows" class="shows">
       <h2>
-        <span class="title__left">
-          <img src="../assets/content/stick-left.svg" alt>
+        <span class="title__icon">
+          <img src="../assets/content/triangle.svg" alt>
         </span>
         8 BALL SHOWS
-        <span class="title__right">
-          <img src="../assets/content/stick-right.svg" alt>
+        <span class="title__icon">
+          <img src="../assets/content/triangle.svg" alt>
         </span>
       </h2>
       <div v-if="!loading">

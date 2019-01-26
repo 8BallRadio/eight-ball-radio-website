@@ -2,12 +2,12 @@
   <main id="maincontent">
     <section id="contact">
       <h2>
-        <span class="title__left">
-          <img src="../assets/content/wave-gray-left.svg" alt>
+        <span class="title__icon">
+          <img src="../assets/content/ball-icon.svg" alt>
         </span>
         CONTACT
-        <span class="title__right">
-          <img src="../assets/content/wave-gray-right.svg" alt>
+        <span class="title__icon">
+          <img src="../assets/content/ball-icon.svg" alt>
         </span>
       </h2>
       <form name="contact" method="POST" data-netlify="true" class="contact-form">
