@@ -52,7 +52,7 @@
       </ul>
       <div class="more-archives">
         <a
-          href="https://www.mixcloud.com/8ballradio/"
+          :href="`https://www.mixcloud.com/8ballradio/playlists/${ slug }`"
           class="btn more__btn"
           target="_blank"
           rel="noopener"
