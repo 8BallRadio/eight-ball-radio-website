@@ -164,6 +164,34 @@ export default {
         if (!pagingData.hasOwnProperty("next")) {
           console.log("No more cloudcasts!!");
           cloudcasts.reverse();
+
+          // Push all tags into a tag array
+          cloudcasts.forEach(show => {
+            show["tags"].forEach(tag => {
+              tempShowTags.push(tag["name"]);
+            });
+          });
+
+          // Calculates mostCommonTags
+          // Taken from: https://stackoverflow.com/questions/22010520/sort-by-number-of-occurrencecount-in-javascript-array
+          var s = tempShowTags.reduce(function(m, v) {
+            m[v] = (m[v] || 0) + 1;
+            return m;
+          }, {});
+          var mostCommonTags = [];
+          for (let k in s) mostCommonTags.push({ k: k, n: s[k] });
+          mostCommonTags.sort(function(mostCommonTags, b) {
+            return b.n - mostCommonTags.n;
+          });
+          mostCommonTags = mostCommonTags.map(function(mostCommonTags) {
+            return mostCommonTags.k;
+          });
+
+          // If mostCommonTags contains 'Mixlr', remove it
+          if (mostCommonTags.indexOf("Mixlr") != -1) {
+            mostCommonTags.splice(mostCommonTags.indexOf("Mixlr"), 1);
+          }
+
           next(vm => {
             vm.name = showName;
             vm.slug = showSlug;
