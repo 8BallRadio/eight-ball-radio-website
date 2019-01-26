@@ -56,21 +56,38 @@ header {
         margin-right: 14px;
         display: flex;
 
-        .control__play {
-          width: 0;
-          height: 0;
-          border-style: solid;
-          border-width: 10px 0 10px 17.3px;
-          border-color: transparent transparent transparent #323232;
-          background: transparent;
-        }
-
         .control__volume,
         .control__volume img {
           height: 20px;
         }
       }
     }
+  }
+}
+
+.control__play {
+  border: 0;
+  background: transparent;
+  box-sizing: border-box;
+  width: 0;
+  height: 20px;
+
+  border-color: transparent transparent transparent map-get($colors, dark-gray);
+  transition: 100ms all ease;
+  cursor: pointer;
+
+  // play state
+  border-style: solid;
+  border-width: 12px 0 12px 20px;
+
+  &.paused {
+    border-style: double;
+    border-width: 0px 0 0px 20px;
+  }
+
+  &:hover {
+    border-color: transparent transparent transparent
+      lighten(map-get($colors, dark-gray), 20%);
   }
 }
 

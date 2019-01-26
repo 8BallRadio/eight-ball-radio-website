@@ -10,13 +10,12 @@
         </h4>
         <div class="top__player">
           <div class="player__controls">
-            <div v-if="!playing" class="content" @click.prevent="playStream()">
-              <button class="control__play"></button>
-            </div>
-            <div v-else class="content" @click.prevent="pauseStream()">
-              <button class="control__pause"></button>
-            </div>
-            <button class="btn control__volume">
+            <button
+              class="control__play"
+              :class="{paused: playing == true }"
+              @click.prevent="toggleStream"
+            ></button>
+            <button class="btn control__volume" @click.prevent="mute">
               <img src="../../assets/header/volume.svg" alt="volume control">
             </button>
           </div>
@@ -103,9 +102,7 @@
           SUPPORT US!
         </p>
         <div class="access">
-          <router-link to="/offsite" class="btn btn-access">
-            Off-Site Channel
-          </router-link>
+          <router-link to="/offsite" class="btn btn-access">Off-Site Channel</router-link>
         </div>
         <br>
         <div class="access">
@@ -128,7 +125,9 @@ export default {
       isSideBarOpen: false,
       stream: new Audio("http://eightball.out.airtime.pro:8000/eightball_a"),
       showName: "",
-      playing: false
+      playing: false,
+      volume: 100,
+      previousVolume: 35
     };
   },
   components: {
@@ -160,8 +159,18 @@ export default {
             this.showName = val.data["currentShow"][0]["name"];
           }
         });
-      }, 5000);
+      }, 10000);
     });
+  },
+  computed: {
+    muted() {
+      return this.volume / 100 === 0;
+    }
+  },
+  watch: {
+    volume(value) {
+      this.stream.volume = this.volume / 100;
+    }
   },
   methods: {
     openMenu() {
@@ -177,6 +186,22 @@ export default {
     pauseStream() {
       this.playing = false;
       this.stream.pause();
+    },
+    toggleStream() {
+      if (!this.playing) {
+        this.playStream();
+      } else {
+        this.pauseStream();
+      }
+    },
+    mute() {
+      console.log("mute!!", this.muted);
+      if (this.muted) {
+        return (this.volume = this.previousVolume);
+      }
+
+      this.previousVolume = this.volume;
+      this.volume = 0;
     }
   }
 };
