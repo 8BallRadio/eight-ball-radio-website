@@ -20,7 +20,7 @@
         <img :src="value.pictures['320wx320h']" :alt="value.name">
         <div class="show__info">
           <h3 class="show__name">{{value.name}}</h3>
-          <p class="show__tags">{{ printTags(value.tags).toString() }}</p>
+          <p class="show__tags">{{ printTags(value.tags) }}</p>
         </div>
       </li>
     </ul>
@@ -51,7 +51,8 @@ export default {
       if (tempShowTags.indexOf("Mixlr") != -1) {
         tempShowTags.splice(tempShowTags.indexOf("Mixlr"), 1);
       }
-      return tempShowTags.splice(0, 3);
+
+      return tempShowTags.splice(0, 3).join(" - ");
     }
   }
 };

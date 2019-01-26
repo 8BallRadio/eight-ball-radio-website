@@ -21,7 +21,7 @@
                 <!-- span class="show__time">2 pm</span> -->
                 <h3 class="show__name">{{show.name}}</h3>
                 <!-- <p class="show__day">MONDAYS</p> -->
-                <p class="show__tags">{{show.tags.toString()}}</p>
+                <p class="show__tags">{{show.tags.join(" - ")}}</p>
               </div>
             </router-link>
           </li>

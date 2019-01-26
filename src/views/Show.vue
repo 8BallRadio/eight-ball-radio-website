@@ -5,15 +5,12 @@
         <router-link to="/shows" class="btn back__btn">BACK TO LIST</router-link>
       </div>
       <div class="show__image">
-        <img v-bind:src="showImage" @error="imageLoadError"/>
+        <img v-bind:src="showImage" @error="imageLoadError">
       </div>
       <div class="show__info">
         <h3>{{this.name.toUpperCase()}}</h3>
-        <p
-          class="show__description"
-        > {{ description }} </p>
-      <div v-if="tags.length >= 1">
-        <div class="show__tags">
+        <p class="show__description">{{ description }}</p>
+        <div class="show__tags" v-if="tags.length >= 1">
           <h4>TAGS:</h4>
           <ul>
             <li v-for="(tag, index) in tags" :key="index">
@@ -23,7 +20,6 @@
             </li>
           </ul>
         </div>
-      </div>
       </div>
       <h2>
         <span class="title__left">
