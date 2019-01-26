@@ -5,16 +5,16 @@
       <div class="top">
         <h4 class="top__onair">
           <img src="../../assets/header/wave-left.svg" class="wave__left" alt>
-          ON - AIR
-          <img src="../../assets/header/wave-right.svg" class="wave__right" alt>
+          {{onAirText}}
+          <img
+            src="../../assets/header/wave-right.svg"
+            class="wave__right"
+            alt
+          >
         </h4>
         <div class="top__player">
-          <div class="player__controls">
-            <button
-              class="control__play"
-              :class="{paused: playing == true }"
-              @click.prevent="toggleStream"
-            ></button>
+          <div class="player__controls" v-show="isStreaming">
+            <button class="control__play" :class="{paused: playing }" @click.prevent="toggleStream"></button>
             <button class="btn control__volume" @click.prevent="mute">
               <img src="../../assets/header/volume.svg" alt="volume control">
             </button>
@@ -22,10 +22,8 @@
           <div class="player__info">
             <div class="info__top">NOW PLAYING</div>
             <div class="info__ticker">
-              <div class="ticker-wrapper">
-                <div class="ticker">
-                  <div class="ticker__item">{{ showName }}</div>
-                </div>
+              <div class="ticker">
+                <div class="ticker__item">{{ showName }}</div>
               </div>
             </div>
           </div>
@@ -127,7 +125,9 @@ export default {
       showName: "",
       playing: false,
       volume: 100,
-      previousVolume: 35
+      previousVolume: 35,
+      isStreaming: false,
+      onAirText: "OFF - AIR"
     };
   },
   components: {
@@ -145,21 +145,25 @@ export default {
     };
 
     this.$nextTick(() => {
-      window.setInterval(() => {
-        let streamInfo = Promise.resolve(getStreamInfo(streamAPI));
-        streamInfo.then(val => {
-          if (
-            val.data["currentShow"] === undefined ||
-            val.data["currentShow"].length === 0
-          ) {
-            console.log("No show currently playing");
-            this.showName = "No show currently playing";
-          } else {
-            console.log(val.data["currentShow"][0]["name"]);
-            this.showName = val.data["currentShow"][0]["name"];
-          }
-        });
-      }, 10000);
+      let streamInfo = Promise.resolve(getStreamInfo(streamAPI));
+      streamInfo.then(val => {
+        if (
+          val.data["currentShow"] === undefined ||
+          val.data["currentShow"].length === 0
+        ) {
+          console.log("No show currently playing");
+          this.showName = "No show currently playing";
+          this.isStreaming = false;
+          this.onAirText = "OFF - AIR";
+        } else {
+          console.log(val.data["currentShow"][0]["name"]);
+          this.showName = val.data["currentShow"][0]["name"];
+          this.isStreaming = true;
+          this.onAirText = "ON - AIR";
+        }
+      });
+      // window.setInterval(() => {
+      // }, 10000);
     });
   },
   computed: {
@@ -168,7 +172,7 @@ export default {
     }
   },
   watch: {
-    volume(value) {
+    volume() {
       this.stream.volume = this.volume / 100;
     }
   },
