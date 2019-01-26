@@ -123,6 +123,8 @@ export default {
     let showName = null;
     let showSlug = null;
     let tempShowTags = [];
+    const cloudinaryBase =
+      "https://res.cloudinary.com/dbr2fzfuh/image/upload/radio/show-page/";
 
     // Request function
     const getRequest = show => {
@@ -192,10 +194,7 @@ export default {
             vm.name = showName;
             vm.slug = showSlug;
             vm.casts = cloudcasts;
-            vm.showImage =
-              "http://res.cloudinary.com/dbr2fzfuh/image/upload/" +
-              showSlug +
-              ".jpg";
+            vm.showImage = cloudinaryBase + showSlug + ".jpg";
           });
 
           // Otherwise, take the "next" value
@@ -245,10 +244,7 @@ export default {
           vm.name = showName;
           vm.slug = showSlug;
           vm.casts = cloudcasts;
-          vm.showImage =
-            "http://res.cloudinary.com/dbr2fzfuh/image/upload/" +
-            showSlug +
-            ".jpg";
+          vm.showImage = cloudinaryBase + showSlug + ".jpg";
           vm.tags = mostCommonTags.slice(0, 5);
         });
       }
