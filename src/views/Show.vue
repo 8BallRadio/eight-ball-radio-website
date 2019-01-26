@@ -12,6 +12,7 @@
         <p
           class="show__description"
         > {{ description }} </p>
+      <div v-if="tags.length >= 1">
         <div class="show__tags">
           <h4>TAGS:</h4>
           <ul>
@@ -22,6 +23,7 @@
             </li>
           </ul>
         </div>
+      </div>
       </div>
       <h2>
         <span class="title__left">
@@ -95,7 +97,7 @@ export default {
       description: "",
       showImage: "",
       altShowImage: "../assets/show.png",
-      tags: ["jazz", "soul", "dub", "kevin lyons"] //Temporal tags array
+      tags: [] //Temporal tags array
     };
   },
   mounted() {
