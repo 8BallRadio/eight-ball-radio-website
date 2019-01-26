@@ -71,7 +71,6 @@
 // TODO: genre tags from Airtime - or Mixcloud?
 // TODO: Archives from Mixcloud
 // TODO: name from Mixcloud -  or Airtitme?
-
 import axios from "axios";
 import EventEmitter from "events";
 import { mapActions } from "vuex";
@@ -125,6 +124,7 @@ export default {
     let cloudcasts = [];
     let showName = null;
     let showSlug = null;
+    let tempShowTags = [];
 
     // Request function
     const getRequest = show => {
@@ -139,11 +139,12 @@ export default {
     showsEmitter.on("update", function() {
       let pageData = showsEmitter.data["data"];
       let newRequest = "";
-      let unwrap = ({ key, name, slug, pictures }) => ({
+      let unwrap = ({ key, name, slug, pictures, tags }) => ({
         key,
         name,
         slug,
-        pictures
+        pictures,
+        tags
       });
 
       console.log("Searching for cloudcasts...");
@@ -186,6 +187,33 @@ export default {
       } else {
         console.log("No more cloudcasts!!");
         cloudcasts.reverse();
+
+        // Push all tags into a tag array
+        cloudcasts.forEach(show => {
+          show["tags"].forEach(tag => {
+            tempShowTags.push(tag["name"]);
+          });
+        });
+
+        // Calculates mostCommonTags
+        var s = tempShowTags.reduce(function(m, v) {
+          m[v] = (m[v] || 0) + 1;
+          return m;
+        }, {});
+        var mostCommonTags = [];
+        for (let k in s) mostCommonTags.push({ k: k, n: s[k] });
+        mostCommonTags.sort(function(mostCommonTags, b) {
+          return b.n - mostCommonTags.n;
+        });
+        mostCommonTags = mostCommonTags.map(function(mostCommonTags) {
+          return mostCommonTags.k;
+        });
+
+        // If mostCommonTags contains 'Mixlr', remove it
+        if (mostCommonTags.indexOf("Mixlr") != -1) {
+          mostCommonTags.splice(mostCommonTags.indexOf("Mixlr"), 1);
+        }
+
         next(vm => {
           vm.name = showName;
           vm.slug = showSlug;
@@ -194,6 +222,7 @@ export default {
             "http://res.cloudinary.com/dbr2fzfuh/image/upload/" +
             showSlug +
             ".jpg";
+          vm.tags = mostCommonTags.slice(0, 5);
         });
       }
     });
