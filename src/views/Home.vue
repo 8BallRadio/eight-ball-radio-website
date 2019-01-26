@@ -3,10 +3,10 @@
     <section id="main-slide">
       <ul class="slideshow">
         <li>
-          <img src="https://i.imgur.com/K3mPv14.jpg" class="slideshow__image">
+          <img src="https://res.cloudinary.com/dbr2fzfuh/image/upload/v1548529503/radio/front-page/8-Ball_Group_Canal.jpg" class="slideshow__image">
         </li>
         <li>
-          <img src="https://i.imgur.com/SBEmFpv.jpg" class="slideshow__image">
+          <img src="https://res.cloudinary.com/dbr2fzfuh/image/upload/v1548530115/radio/front-page/Image_from_iOS_2.jpg" class="slideshow__image">
         </li>
         <li>
           <img src="https://i.imgur.com/2LSMCmJ.jpg" class="slideshow__image">
