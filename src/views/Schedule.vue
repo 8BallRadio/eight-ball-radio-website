@@ -65,7 +65,7 @@ export default {
   mounted() {
     window.scroll(0, 0);
     axios
-      .get("//sourcefabric.airtime.pro/api/week-info")
+      .get("//eightball.airtime.pro/api/week-info")
       .then(response => this.getSchedule(response.data))
       .catch(error => {
         console.log(error), (this.errored = true);
