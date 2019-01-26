@@ -5,8 +5,9 @@
     </tr>
     <tr v-for="(show,index) in shows" :key="index" v-else>
       <td>{{show.starts | showTime}}-{{show.ends | showTime}}</td>
-      <td colspan="3">Show #{{index + 1}} {{day}} - {{show.name}}</td>
-      <td colspan="3">Talk, Indie, Psychdelic</td>
+      <td colspan="6">Show #{{index + 1}} - {{show.name}}</td>
+      <!-- Temporaly removed tags -->
+      <!-- <td colspan="3">Talk, Indie, Psychdelic</td>  -->
     </tr>
   </tbody>
 </template>
@@ -16,10 +17,6 @@ export default {
     shows: {
       type: Array,
       required: true
-    },
-    day: {
-      //temporal var. Remove it when we get the real data
-      type: String
     }
   },
   filters: {
