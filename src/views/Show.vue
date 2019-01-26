@@ -198,6 +198,7 @@ export default {
         });
 
         // Calculates mostCommonTags
+        // Taken from: https://stackoverflow.com/questions/22010520/sort-by-number-of-occurrencecount-in-javascript-array
         var s = tempShowTags.reduce(function(m, v) {
           m[v] = (m[v] || 0) + 1;
           return m;

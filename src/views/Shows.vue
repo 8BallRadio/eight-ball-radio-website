@@ -21,7 +21,7 @@
                 <!-- span class="show__time">2 pm</span> -->
                 <h3 class="show__name">{{show.name}}</h3>
                 <!-- <p class="show__day">MONDAYS</p> -->
-                <p class="show__tags">HIP-HOP - BEATS - JAZZ</p>
+                <p class="show__tags">{{show.tags.toString()}}</p>
               </div>
             </router-link>
           </li>
@@ -163,6 +163,37 @@ export default {
         showInfo.forEach(show => {
           let request = Promise.resolve(getPictureDate(show));
           request.then(function(value) {
+            let tempTags = [];
+
+            value["data"]["data"].forEach(cast => {
+              cast["tags"].forEach(tag => {
+                tempTags.push(tag["name"]);
+              });
+            });
+
+            // Calculates mostCommonTags
+            // Taken from: https://stackoverflow.com/questions/22010520/sort-by-number-of-occurrencecount-in-javascript-array
+            const s = tempTags.reduce(function(m, v) {
+              m[v] = (m[v] || 0) + 1;
+              return m;
+            }, {});
+            let mostCommonTags = [];
+            for (let k in s) mostCommonTags.push({ k: k, n: s[k] });
+            mostCommonTags.sort(function(mostCommonTags, b) {
+              return b.n - mostCommonTags.n;
+            });
+            mostCommonTags = mostCommonTags.map(function(mostCommonTags) {
+              return mostCommonTags.k;
+            });
+
+            // If mostCommonTags contains 'Mixlr', remove it
+            if (mostCommonTags.indexOf("Mixlr") != -1) {
+              mostCommonTags.splice(mostCommonTags.indexOf("Mixlr"), 1);
+            }
+
+            // Set show tags
+            show["tags"] = mostCommonTags.splice(0, 3);
+
             // Find picture
             show["picture"] = value.data["data"][0]["pictures"]["320wx320h"];
 
@@ -181,7 +212,6 @@ export default {
             }
           });
         });
-        console.log(showInfo);
 
         // Shuffle array before setting variable
         // shuffleArray(showInfo);
