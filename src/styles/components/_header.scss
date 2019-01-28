@@ -59,6 +59,8 @@ header {
         .control__volume,
         .control__volume img {
           height: 20px;
+          border: none;
+          outline: none;
         }
       }
     }
@@ -66,7 +68,8 @@ header {
 }
 
 .control__play {
-  border: 0;
+  border: none;
+  outline: none;
   background: transparent;
   box-sizing: border-box;
   width: 0;
