@@ -23,14 +23,13 @@
       position: relative;
 
       .slideshow__image {
-        display: block;
         margin: 0;
         padding: 0;
-        height: 60vh;
+        height: 400px;
         width: $max-width;
         background-size: cover;
         background-position: center;
-        position: relative;
+        position: center;
 
         @media screen and (min-width: $break-large) {
           height: 400px;
