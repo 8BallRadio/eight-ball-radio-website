@@ -21,7 +21,7 @@
                 <!-- span class="show__time">2 pm</span> -->
                 <h3 class="show__name">{{show.name}}</h3>
                 <!-- <p class="show__day">MONDAYS</p> -->
-                <p class="show__tags">{{show.tags.join(" - ")}}</p>
+                <p class="show__tags">{{show.tags}}</p>
               </div>
             </router-link>
           </li>
@@ -61,7 +61,7 @@ export default {
       showInfo: null,
       error: null,
       page: 1,
-      perPage: 6,
+      perPage: 9,
       pages: []
     };
   },
@@ -205,8 +205,7 @@ export default {
             }
 
             // Set show tags
-            show["tags"] = mostCommonTags.splice(0, 3);
-
+            show["tags"] = mostCommonTags.splice(0, 3).join(" - ");
             // Set picture
             show["picture"] = value.data["data"][0]["pictures"]["320wx320h"];
 
