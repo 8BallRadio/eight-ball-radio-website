@@ -20,9 +20,8 @@
       </section>
       <section class="footer__col community">
         <h3>8 BALL FAMILY</h3>
-        <a href class="family__link">PUBLISHING</a>
-        <a href class="family__link">8 BALL TV</a>
-        <a href class="family__link">MERCH (SUPPORT US)</a>
+        <a href="http://8balltv.club/" class="family__link" target="_blank">8 BALL TV</a>
+        <a href="https://8ballcommunity.bigcartel.com/" class="family__link" target="_blank">MERCH (SUPPORT US)</a>
       </section>
     </div>
     <div class="mixcloud-player" v-if="slug">
