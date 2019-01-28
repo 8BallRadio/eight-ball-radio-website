@@ -14,7 +14,6 @@
         <li>
           <img src="https://i.imgur.com/TVGe0Ef.jpg" class="slideshow__image">
         </li>
-
         <li>
           <img src="https://i.imgur.com/K3mPv14.jpg" class="slideshow__image">
         </li>

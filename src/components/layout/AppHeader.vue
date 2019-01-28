@@ -81,7 +81,7 @@
               <a href class="nav__link">8-BALL FAMILY</a>
             </li>
             <li>
-              <a href class="nav__link">SHOP</a>
+              <a href="https://8ballcommunity.bigcartel.com/" target="_blank" class="nav__link">SHOP</a>
             </li>
           </ul>
         </nav>
