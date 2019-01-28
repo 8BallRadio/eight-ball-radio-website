@@ -161,14 +161,27 @@ export default {
 
         // For each show, find first show in Mixcloud image
         showInfo.forEach(show => {
+          show["current_show_flag"] = false;
+
           let request = Promise.resolve(getPictureDate(show));
           request.then(function(value) {
             let tempTags = [];
 
+            // Store all tags for a show AND
+            // If we find a cast that has broadcasted within 30 days
+            // Set "current_show_flag" to true
+            // Otherwise, we have not detected a recent broadcast in Mixcloud
             value["data"]["data"].forEach(cast => {
               cast["tags"].forEach(tag => {
                 tempTags.push(tag["name"]);
               });
+              let daysBetween = numDaysBetween(
+                parseISOString(cast["created_time"]),
+                cutOffDate
+              );
+              if (daysBetween < 30) {
+                show["current_show_flag"] = true;
+              }
             });
 
             // Calculates mostCommonTags
@@ -194,17 +207,11 @@ export default {
             // Set show tags
             show["tags"] = mostCommonTags.splice(0, 3);
 
-            // Find picture
+            // Set picture
             show["picture"] = value.data["data"][0]["pictures"]["320wx320h"];
 
-            // Find latest_show date
-            value.data["data"].reverse();
-            show["latest_show"] = value.data["data"][0]["created_time"];
-            let daysBetween = numDaysBetween(
-              parseISOString(show["latest_show"]),
-              cutOffDate
-            );
-            if (daysBetween > 30) {
+            // If the show hasn't broadcasted in 30 days, cut it
+            if (show["current_show_flag"] != true) {
               showInfo.splice(
                 showInfo.findIndex(showIndex => showIndex === show),
                 1
