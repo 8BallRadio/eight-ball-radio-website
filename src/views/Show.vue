@@ -195,6 +195,7 @@ export default {
             vm.slug = showSlug;
             vm.casts = cloudcasts;
             vm.showImage = cloudinaryBase + showSlug + ".jpg";
+            vm.tags = mostCommonTags;
           });
 
           // Otherwise, take the "next" value
