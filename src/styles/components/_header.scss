@@ -224,19 +224,59 @@ header {
   li {
     display: inline-block;
     padding: 0 1rem;
-    a {
-      font-family: 'Anton', sans-serif;
-      color: map-get($colors, primary);
-      letter-spacing: 4px;
-      text-decoration: none;
-
-      &.router-link-exact-active,
-      &:hover {
-        color: #8faaa1;
-        border-bottom: 3px solid;
-      }
-    }
   }
+  .nav__link,
+  .dropbtn {
+    margin-bottom: 16px;
+  }
+}
+
+.nav__link,
+.dropbtn {
+  font-family: 'Anton', sans-serif;
+  color: map-get($colors, primary);
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: $font-size-regular;
+
+  &.router-link-exact-active,
+  &:hover {
+    color: map-get($colors, dark-green);
+  }
+}
+
+.dropbtn::after {
+  content: '▾';
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: map-get($colors, dark-gray);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown__link {
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 4px;
+  float: none;
+  color: map-get($colors, primary);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: map-get($colors, dark-green);
+    color: map-get($colors, dark-gray);
+  }
+}
+
+.show {
+  display: block;
 }
 
 #header-bottom {

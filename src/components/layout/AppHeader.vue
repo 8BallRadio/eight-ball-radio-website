@@ -75,7 +75,10 @@
               <a href="https://8ballcommunity.club/" target="_blank" class="nav__link">EVENTS</a>
             </li>
             <li>
-              <a href class="nav__link">8-BALL FAMILY</a>
+              <button class="btn dropbtn" @click.prevent="showDropDown">8-BALL FAMILY</button>
+              <div class="dropdown-content" id="family-dropdown">
+                <a href="http://8balltv.club/" class="dropdown__link">8 Ball TV</a>
+              </div>
             </li>
             <li>
               <a href="https://8ballcommunity.bigcartel.com/" target="_blank" class="nav__link">SHOP</a>
@@ -97,7 +100,7 @@
           SUPPORT US!
         </p>
         <div class="access">
-          <router-link to="/offsite" class="btn btn-access">Off-Site Channel</router-link>
+          <router-link to="/offsite" class="btn btn-access">OFF-SITE CHANNEL</router-link>
         </div>
         <br>
         <div class="access">
@@ -131,6 +134,9 @@ export default {
     "app-mobile-menu": AppMobileMenu
   },
   mounted() {
+    // Attach event listener to the root vue element
+    document.addEventListener("click", this.onClick);
+
     let streamAPI = "https://eightball.airtime.pro/api/live-info";
 
     const getStreamInfo = async info => {
@@ -162,6 +168,9 @@ export default {
       // window.setInterval(() => {
       // }, 10000);
     });
+  },
+  beforeDestroy: function() {
+    document.removeEventListener("click", this.onClick);
   },
   computed: {
     muted() {
@@ -203,6 +212,17 @@ export default {
 
       this.previousVolume = this.volume;
       this.volume = 0;
+    },
+    showDropDown() {
+      document.querySelector("#family-dropdown").classList.toggle("show");
+    },
+    onClick: function(ev) {
+      if (!ev.target.matches(".dropbtn")) {
+        const familyDropdown = document.querySelector("#family-dropdown");
+        if (familyDropdown.classList.contains("show")) {
+          familyDropdown.classList.remove("show");
+        }
+      }
     }
   }
 };
