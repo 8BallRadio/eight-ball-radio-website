@@ -7,7 +7,6 @@
         <router-link :to="{ path: '/shows'}" class="nav__link" @click.native="closeMenu">SHOWS</router-link>
         <router-link to="/schedule" class="nav__link" @click.native="closeMenu">SCHEDULE</router-link>
         <a href class="nav__link">EVENTS</a>
-        <a href class="nav__link">ABOUT</a>
         <a href class="nav__link">8-BALL FAMILY</a>
         <a href class="nav__link">SHOP</a>
       </nav>
