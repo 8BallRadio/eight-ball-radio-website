@@ -16,7 +16,7 @@
             <router-link
               :to="{ path: '/show/' + show.slug, params: {id: 'show.slug', name: 'show.name'}}"
             >
-              <img :src="show.picture" :alt="show.name">
+              <img :src="show.picture" :alt="show.name" @error="show.picture = show.mixcloud_picture">
               <div class="show__info">
                 <!-- span class="show__time">2 pm</span> -->
                 <h3 class="show__name">{{show.name}}</h3>
@@ -207,7 +207,13 @@ export default {
             // Set show tags
             show["tags"] = mostCommonTags.splice(0, 3).join(" - ");
             // Set picture
-            show["picture"] = value.data["data"][0]["pictures"]["320wx320h"];
+            show["mixcloud_picture"] =
+              value.data["data"][0]["pictures"]["320wx320h"];
+            show["picture"] =
+              "https://res.cloudinary.com/dbr2fzfuh/image/upload/" +
+              "c_scale,h_320,w_320/v1548740802/radio/shows-page-image/" +
+              show["slug"] +
+              ".jpg";
 
             // If the show hasn't broadcasted in 30 days, cut it
             if (show["current_show_flag"] != true) {
@@ -243,6 +249,10 @@ export default {
       let from = page * perPage - perPage;
       let to = page * perPage;
       return shows.slice(from, to);
+    },
+    imageLoadError: function(show) {
+      console.log("didn't work");
+      show["picture"] = show["mixcloud_picture"];
     }
   },
   watch: {

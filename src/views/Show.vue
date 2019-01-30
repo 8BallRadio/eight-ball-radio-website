@@ -124,7 +124,7 @@ export default {
     let showSlug = null;
     let tempShowTags = [];
     const cloudinaryBase =
-      "https://res.cloudinary.com/dbr2fzfuh/image/upload/radio/show-page/";
+      "https://res.cloudinary.com/dbr2fzfuh/image/v1548475352/upload/radio/show-page/";
 
     // Request function
     const getRequest = show => {
@@ -195,6 +195,7 @@ export default {
             vm.slug = showSlug;
             vm.casts = cloudcasts;
             vm.showImage = cloudinaryBase + showSlug + ".jpg";
+            vm.tags = mostCommonTags.slice(0, 5);
           });
 
           // Otherwise, take the "next" value
