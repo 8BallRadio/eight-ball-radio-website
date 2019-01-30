@@ -1,8 +1,8 @@
 <template>
   <aside id="mobile-menu" class="mobile-menu">
-    <div class="overlay"></div>
+    <div class="overlay" @click.prevent="closeMenu"></div>
     <div class="nav-content">
-      <button class="close-menu btn" @click="closeMenu">CLOSE X</button>
+      <button class="close-menu btn" @click.prevent="closeMenu">CLOSE X</button>
       <nav class="nav__items">
         <router-link :to="{ path: '/shows'}" class="nav__link" @click.native="closeMenu">SHOWS</router-link>
         <router-link to="/schedule" class="nav__link" @click.native="closeMenu">SCHEDULE</router-link>
