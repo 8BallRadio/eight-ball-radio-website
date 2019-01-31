@@ -56,7 +56,7 @@
         </div>
       </div>
     </section>
-    <section id="header-middle">
+    <section id="header-middle" class="header-menu">
       <div class="main-menu">
         <button class="open-menu btn" id="btn-menu" @click="openMenu">MENU</button>
         <h1>
@@ -228,6 +228,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.header-menu,
 .btn-access {
   background-image: url(../../assets/header/btn-pattern.svg);
 }
