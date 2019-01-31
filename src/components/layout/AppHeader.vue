@@ -22,10 +22,11 @@
           <div class="player__info">
             <div class="info__top">NOW PLAYING</div>
             <div class="info__ticker">
-              <div class="ticker">
+            {{ showName }}
+              <!-- <div class="ticker">
                 <div class="ticker__item"></div>
-              </div>
-              {{ showName }}
+                {{ showName }}
+              </div> -->
             </div>
           </div>
         </div>
