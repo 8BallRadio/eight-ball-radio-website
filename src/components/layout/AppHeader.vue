@@ -14,13 +14,15 @@
         </h4>
         <div class="top__player">
           <div class="player__controls" v-show="isStreaming">
-            <button class="control__play" :class="{paused: playing }" @click.prevent="toggleStream"></button>
+            <button class="control__play" :class="{paused: playing }" @click.prevent="toggleStream">
+              <span class="sr-only">play channel 1</span>
+            </button>
             <button class="btn control__volume" @click.prevent="mute">
               <img src="../../assets/header/volume.svg" alt="volume control">
             </button>
           </div>
           <div class="player__info">
-            <div class="info__top">NOW PLAYING</div>
+            <div class="info__top">Now Playing In Channel 1</div>
             <div class="info__ticker">
               <div class="ticker">
                 <div class="ticker__item">{{ showName }}</div>
@@ -54,6 +56,12 @@
             >
           </a>
         </div>
+        <a
+          href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
+          class="btn btn-donate"
+          target="_blank"
+          rel="noopener"
+        >DONATE</a>
       </div>
     </section>
     <section id="header-middle" class="header-menu">
@@ -85,12 +93,15 @@
             </li>
           </ul>
         </nav>
-        <a
-          href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
-          class="btn btn-donate"
-          target="_blank"
-          rel="noopener"
-        >DONATE</a>
+        <router-link to="/offsite" class="btn btn-channel">
+          <img src="../../assets/header/wave-left-green.svg" class="wave__left" alt>
+          CHANNEL 2
+          <img
+            src="../../assets/header/wave-right-green.svg"
+            class="wave__right"
+            alt
+          >
+        </router-link>
       </div>
     </section>
     <section id="header-bottom">
@@ -99,10 +110,6 @@
           WE ARE A COMMUNITY RADIO STATION PART OF A 501c3 NON-PROFIT ::
           SUPPORT US!
         </p>
-        <div class="access">
-          <router-link to="/offsite" class="btn btn-access">OFF-SITE CHANNEL</router-link>
-        </div>
-        <br>
         <div class="access">
           <router-link to="/shows" class="btn btn-access">SHOWS</router-link>
           <router-link to="/schedule" class="btn btn-access">SCHEDULE</router-link>
