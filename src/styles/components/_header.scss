@@ -97,6 +97,8 @@ header {
 .player__info {
   position: relative;
   top: -6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   .info__top {
     font-size: $font-size-small;

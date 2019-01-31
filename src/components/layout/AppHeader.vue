@@ -23,8 +23,9 @@
             <div class="info__top">NOW PLAYING</div>
             <div class="info__ticker">
               <div class="ticker">
-                <div class="ticker__item">{{ showName }}</div>
+                <div class="ticker__item"></div>
               </div>
+              {{ showName }}
             </div>
           </div>
         </div>
