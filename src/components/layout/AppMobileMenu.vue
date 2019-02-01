@@ -5,10 +5,10 @@
       <button class="close-menu btn" @click.prevent="closeMenu">CLOSE X</button>
       <nav class="nav__items">
         <router-link to="/offsite" class="nav__link btn__channel" @click.native="closeMenu">
-          <img src="../../assets/header/wave-left-green.svg" class="wave__left" alt>
+          <img src="../../assets/header/wave-left-color.svg" class="wave__left" alt>
           CHANNEL 2
           <img
-            src="../../assets/header/wave-right-green.svg"
+            src="../../assets/header/wave-right-color.svg"
             class="wave__right"
             alt
           >
