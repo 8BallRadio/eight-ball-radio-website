@@ -127,13 +127,14 @@ img {
   line-height: 1.2;
   padding-top: 5px;
   text-transform: uppercase;
-  font-size: $font-size-regular;
-  letter-spacing: 2px;
+  font-size: 13px;
+  letter-spacing: 0.7px;
 }
 
 .show__tags {
   margin-bottom: 4px;
   font-size: $font-size-small;
   font-family: $font-family-text;
+  letter-spacing: -0.5px;
 }
 </style>
