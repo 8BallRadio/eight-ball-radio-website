@@ -4,9 +4,17 @@
     <div class="nav-content">
       <button class="close-menu btn" @click.prevent="closeMenu">CLOSE X</button>
       <nav class="nav__items">
+        <router-link to="/offsite" class="nav__link btn__channel" @click.native="closeMenu">
+          <img src="../../assets/header/wave-left-green.svg" class="wave__left" alt>
+          CHANNEL 2
+          <img
+            src="../../assets/header/wave-right-green.svg"
+            class="wave__right"
+            alt
+          >
+        </router-link>
         <router-link :to="{ path: '/shows'}" class="nav__link" @click.native="closeMenu">SHOWS</router-link>
         <router-link to="/schedule" class="nav__link" @click.native="closeMenu">SCHEDULE</router-link>
-        <router-link to="/offsite" class="nav__link" @click.native="closeMenu">OFF-SITE</router-link>
         <a href class="nav__link">EVENTS</a>
         <a href class="nav__link">8-BALL FAMILY</a>
         <a href class="nav__link">SHOP</a>
