@@ -226,7 +226,7 @@ export default {
         });
 
         // Shuffle array before setting variable
-        // shuffleArray(showInfo);
+        shuffleArray(showInfo);
 
         next(vm => {
           vm.showInfo = showInfo;

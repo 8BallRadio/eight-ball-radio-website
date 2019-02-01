@@ -223,22 +223,22 @@ export default {
 
         // Calculates mostCommonTags
         // Taken from: https://stackoverflow.com/questions/22010520/sort-by-number-of-occurrencecount-in-javascript-array
-        var s = tempShowTags.reduce(function(m, v) {
+        var ss = tempShowTags.reduce(function(m, v) {
           m[v] = (m[v] || 0) + 1;
           return m;
         }, {});
-        var mostCommonTags = [];
-        for (let k in s) mostCommonTags.push({ k: k, n: s[k] });
-        mostCommonTags.sort(function(mostCommonTags, b) {
-          return b.n - mostCommonTags.n;
+        var mostCommonTagsNP = [];
+        for (let k in ss) mostCommonTagsNP.push({ k: k, n: ss[k] });
+        mostCommonTagsNP.sort(function(mostCommonTagsNP, b) {
+          return b.n - mostCommonTagsNP.n;
         });
-        mostCommonTags = mostCommonTags.map(function(mostCommonTags) {
-          return mostCommonTags.k;
+        mostCommonTagsNP = mostCommonTagsNP.map(function(mostCommonTagsNP) {
+          return mostCommonTagsNP.k;
         });
 
         // If mostCommonTags contains 'Mixlr', remove it
-        if (mostCommonTags.indexOf("Mixlr") != -1) {
-          mostCommonTags.splice(mostCommonTags.indexOf("Mixlr"), 1);
+        if (mostCommonTagsNP.indexOf("Mixlr") != -1) {
+          mostCommonTagsNP.splice(mostCommonTagsNP.indexOf("Mixlr"), 1);
         }
 
         next(vm => {
@@ -246,7 +246,7 @@ export default {
           vm.slug = showSlug;
           vm.casts = cloudcasts;
           vm.showImage = cloudinaryBase + showSlug + ".jpg";
-          vm.tags = mostCommonTags.slice(0, 5);
+          vm.tags = mostCommonTagsNP.slice(0, 5);
         });
       }
     });

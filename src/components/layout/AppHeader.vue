@@ -24,9 +24,11 @@
           <div class="player__info">
             <div class="info__top">Now Playing In Channel 1</div>
             <div class="info__ticker">
-              <div class="ticker">
-                <div class="ticker__item">{{ showName }}</div>
-              </div>
+            {{ showName }}
+              <!-- <div class="ticker">
+                <div class="ticker__item"></div>
+                {{ showName }}
+              </div> -->
             </div>
           </div>
         </div>
@@ -134,7 +136,8 @@ export default {
       volume: 100,
       previousVolume: 35,
       isStreaming: false,
-      onAirText: "OFF - AIR"
+      onAirText: "OFF - AIR",
+      media_item_played: null
     };
   },
   components: {
@@ -166,14 +169,41 @@ export default {
           this.isStreaming = false;
           this.onAirText = "OFF - AIR";
         } else {
-          console.log(val.data["currentShow"][0]["name"]);
+          // showName is the text that will be displayed on header
+
           this.showName = val.data["currentShow"][0]["name"];
+          this.media_item_played = val.data["current"]["media_item_played"];
+
+          // If there is a media item being played, display that name instead
+
+          if (this.media_item_played) {
+            var isDate = function(date) {
+              return (
+                new Date(date) !== "Invalid Date" && !isNaN(new Date(date))
+              );
+            };
+            // Cut .mp3 from string
+
+            let tempName = val.data["current"]["name"].slice(0, -4);
+
+            // If the beginning substring is a date
+            // meaning file is a mixlr archive file
+            // set showName to nameTest
+
+            let dateTest = tempName.substring(3, 13);
+            let nameTest = tempName.substring(16, tempName.length);
+
+            if (isDate(dateTest)) {
+              this.showName = nameTest;
+            } else {
+              this.showName = tempName;
+            }
+          }
+          console.log(this.showName);
           this.isStreaming = true;
           this.onAirText = "ON - AIR";
         }
       });
-      // window.setInterval(() => {
-      // }, 10000);
     });
   },
   beforeDestroy: function() {
