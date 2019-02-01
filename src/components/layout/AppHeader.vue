@@ -94,10 +94,10 @@
           </ul>
         </nav>
         <router-link to="/offsite" class="btn btn-channel">
-          <img src="../../assets/header/wave-left-green.svg" class="wave__left" alt>
+          <img src="../../assets/header/wave-left-color.svg" class="wave__left" alt>
           CHANNEL 2
           <img
-            src="../../assets/header/wave-right-green.svg"
+            src="../../assets/header/wave-right-color.svg"
             class="wave__right"
             alt
           >
