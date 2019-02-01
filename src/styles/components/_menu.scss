@@ -1,8 +1,8 @@
 .open-menu {
   height: 51px;
-  font-size: $font-size-x-large;
-  color: white;
-  letter-spacing: 2px;
+  font-size: $font-size-large;
+  color: map-get($colors, primary);
+  letter-spacing: 0.7px;
 
   @media only screen and (min-width: $break-large) {
     display: none;
@@ -10,9 +10,8 @@
 }
 
 .close-menu {
-  font-size: $font-size-x-large;
-  float: right;
-  letter-spacing: 2px;
+  font-size: $font-size-regular;
+  letter-spacing: 0.7px;
 }
 
 .mobile-menu {
@@ -54,8 +53,8 @@
     }
   }
   .nav__items {
-    margin-top: 2rem;
-    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
 
     .nav__link {
       display: block;
@@ -64,7 +63,7 @@
       font-family: $font-family-display;
       text-decoration: none;
       font-size: $font-size-large;
-      letter-spacing: 1px;
+      letter-spacing: 0.7px;
     }
 
     .nav__link:hover {
@@ -75,6 +74,14 @@
       background-color: map-get($colors, dark-gray);
       color: white;
     }
+    .btn__channel {
+      border-top: 1px solid #d1d1d1;
+      border-bottom: 1px solid #d1d1d1;
+      text-align: center;
+    }
+  }
+  .top__social {
+    text-align: center;
   }
   .top__social a {
     padding: 10px;
