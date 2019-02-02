@@ -68,7 +68,6 @@
     </section>
     <section id="header-middle" class="header-menu">
       <div class="main-menu">
-        <button class="open-menu btn" id="btn-menu" @click="openMenu">MENU</button>
         <h1>
           <router-link to="/">
             <img
@@ -104,6 +103,7 @@
             alt
           >
         </router-link>
+        <button class="open-menu btn" id="btn-menu" @click="openMenu">MENU</button>
       </div>
     </section>
     <section id="header-bottom">
