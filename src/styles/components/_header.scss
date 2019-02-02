@@ -7,7 +7,7 @@ header {
     width: 100%;
     background-color: #b3b3b3;
     position: fixed;
-    top: 53px;
+    top: 0;
     z-index: 2;
 
     @media only screen and (min-width: $break-large) {
@@ -28,7 +28,7 @@ header {
       font-size: $font-size-small;
       padding: 0 0.5rem 0.5rem;
       letter-spacing: 0.7px;
-      height: 39px;
+      height: 40px;
       display: none;
 
       @media only screen and (min-width: $break-small) {
@@ -40,7 +40,7 @@ header {
       flex: 2;
       padding: 0.5rem 1rem 0;
       display: flex;
-      height: 37px;
+      height: 40px;
 
       @media only screen and (min-width: $break-large) {
         flex: 1;
@@ -108,6 +108,17 @@ header {
 
   .info__top {
     font-size: $font-size-tiny;
+    padding: 0;
+    margin: 0;
+  }
+  .info__ticker {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
   }
   .ticker-wrapper {
     width: 190px;
@@ -137,6 +148,11 @@ header {
   text-decoration: none;
   padding: 4px 16px;
   font-family: $font-family-display;
+  display: none;
+
+  @media only screen and (min-width: $break-small) {
+    display: block;
+  }
 }
 
 .top {
@@ -165,7 +181,7 @@ header {
   background-color: map-get($colors, dark-gray);
   height: 53px;
   position: fixed;
-  top: 0;
+  top: 40px;
   z-index: 3;
 
   @media only screen and (min-width: $break-large) {
@@ -181,14 +197,16 @@ header {
 
     h1 {
       flex: 1;
-      text-align: center;
+      text-align: left;
       padding-top: 2px;
+      margin-left: 8px;
 
       .logo {
         height: 45px;
 
         @media only screen and (min-width: $break-large) {
           height: 60px;
+          text-align: center;
         }
       }
     }
@@ -209,8 +227,10 @@ header {
   padding-top: 8px;
   padding-right: 8px;
   font-family: $font-family-display;
+  display: none;
 
   @media only screen and (min-width: $break-large) {
+    display: block;
     padding-top: 16px;
   }
 
