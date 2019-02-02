@@ -22,14 +22,14 @@
             </button>
           </div>
           <div class="player__info">
-            <div class="info__top">Now Playing In Channel 1</div>
-            <div class="info__ticker">
-            {{ showName }}
+            <p class="info__top">Now Playing In Channel 1</p>
+            <p class="info__ticker">
+              {{ showName }}
               <!-- <div class="ticker">
                 <div class="ticker__item"></div>
                 {{ showName }}
-              </div> -->
-            </div>
+              </div>-->
+            </p>
           </div>
         </div>
         <div class="top__social">
