@@ -62,10 +62,13 @@ header {
     }
   }
 }
-[class^='wave'] {
+[class^='wave__'] {
   height: 25px;
   position: relative;
   top: 6px;
+}
+
+.blink-animation {
   opacity: 0;
   -webkit-animation: blinkAnimation 2.5s infinite;
   -moz-animation: blinkAnimation 2.5s infinite;

@@ -4,11 +4,11 @@
     <section id="header-top">
       <div class="top">
         <h4 class="top__onair">
-          <img src="../../assets/header/wave-left.svg" class="wave__left" alt>
+          <img src="../../assets/header/wave-left.svg" class="wave__left blink-animation" alt>
           {{onAirText}}
           <img
             src="../../assets/header/wave-right.svg"
-            class="wave__right"
+            class="wave__right blink-animation"
             alt
           >
         </h4>
