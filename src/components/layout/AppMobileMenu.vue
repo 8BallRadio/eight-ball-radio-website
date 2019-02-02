@@ -13,6 +13,12 @@
             alt
           >
         </router-link>
+        <a
+          href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
+          class="btn btn-donate"
+          target="_blank"
+          rel="noopener"
+        >DONATE</a>
         <router-link :to="{ path: '/shows'}" class="nav__link" @click.native="closeMenu">SHOWS</router-link>
         <router-link to="/schedule" class="nav__link" @click.native="closeMenu">SCHEDULE</router-link>
         <a href class="nav__link">EVENTS</a>
