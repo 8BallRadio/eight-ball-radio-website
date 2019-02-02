@@ -12,6 +12,12 @@
 .close-menu {
   font-size: $font-size-regular;
   letter-spacing: 0.7px;
+  text-align: right;
+  width: 100%;
+
+  &:hover {
+    color: map-get($colors, dark-green);
+  }
 }
 
 .mobile-menu {
@@ -78,6 +84,21 @@
       border-top: 1px solid #d1d1d1;
       border-bottom: 1px solid #d1d1d1;
       text-align: center;
+    }
+
+    .btn-donate {
+      display: block;
+      font-size: $font-size-large;
+      background-color: map-get($colors, dark-red);
+      color: map-get($colors, primary);
+
+      &:hover {
+        background-color: darken(map-get($colors, light-red), 10%);
+      }
+
+      @media only screen and (min-width: $break-small) {
+        display: none;
+      }
     }
   }
   .top__social {
