@@ -105,9 +105,6 @@ header {
 .player__info {
   position: relative;
   top: -6px;
-  height: 120%;
-  overflow: hidden;
-  text-overflow: ellipsis;
 
   .info__top {
     font-size: $font-size-tiny;
@@ -122,6 +119,10 @@ header {
     padding: 0;
     margin: 0;
     text-transform: uppercase;
+
+    @media only screen and (min-width: $break-small) {
+      width: 100%;
+    }
   }
   .ticker-wrapper {
     width: 190px;
