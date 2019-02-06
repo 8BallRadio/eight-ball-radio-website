@@ -96,7 +96,7 @@
         </nav>
         <router-link to="/offsite" class="btn btn-channel">
           <img src="../../assets/header/wave-left-color.svg" class="wave__left" alt>
-          CHANNEL 2
+          OFF-SITE
           <img
             src="../../assets/header/wave-right-color.svg"
             class="wave__right"

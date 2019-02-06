@@ -6,7 +6,7 @@
       <nav class="nav__items">
         <router-link to="/offsite" class="nav__link btn__channel" @click.native="closeMenu">
           <img src="../../assets/header/wave-left-color.svg" class="wave__left blink-animation" alt>
-          CHANNEL 2
+          OFF-SITE
           <img
             src="../../assets/header/wave-right-color.svg"
             class="wave__right blink-animation"
