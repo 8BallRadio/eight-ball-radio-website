@@ -285,7 +285,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.header-menu,
+.header-menu {
+  background-image: url(../../assets/header/menu-pattern.svg);
+}
 .btn-access {
   background-image: url(../../assets/header/btn-pattern.svg);
 }
