@@ -164,7 +164,6 @@ export default {
           val.data["currentShow"] === undefined ||
           val.data["currentShow"].length === 0
         ) {
-          console.log("No show currently playing");
           this.showName = "No show currently playing";
           this.isStreaming = false;
           this.onAirText = "OFF - AIR";
@@ -199,7 +198,6 @@ export default {
               this.showName = tempName;
             }
           }
-          console.log(this.showName);
           this.isStreaming = true;
           this.onAirText = "ON - AIR";
         }
@@ -242,7 +240,6 @@ export default {
       }
     },
     mute() {
-      console.log("mute!!", this.muted);
       if (this.muted) {
         return (this.volume = this.previousVolume);
       }
