@@ -21,9 +21,25 @@
         >DONATE</a>
         <router-link :to="{ path: '/shows'}" class="nav__link" @click.native="closeMenu">SHOWS</router-link>
         <router-link to="/schedule" class="nav__link" @click.native="closeMenu">SCHEDULE</router-link>
-        <a href class="nav__link">EVENTS</a>
+        <a
+          href="https://8ballcommunity.club/"
+          target="_blank"
+          rel="noopener"
+          class="nav__link"
+        >EVENTS</a>
+        <a
+          href="https://www.mixcloud.com/8ballradio/uploads/?order=oldest"
+          target="_blank"
+          rel="noopener"
+          class="nav__link"
+        >ARCHIVE</a>
         <a href class="nav__link">8-BALL FAMILY</a>
-        <a href class="nav__link">SHOP</a>
+        <a
+          href="https://8ballcommunity.bigcartel.com/"
+          target="_blank"
+          rel="noopener"
+          class="nav__link"
+        >SHOP</a>
       </nav>
       <div class="top__social">
         <a href="https://www.facebook.com/eightballradio/" target="_blank" rel="noopener">
