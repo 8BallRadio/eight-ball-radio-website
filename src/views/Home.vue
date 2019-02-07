@@ -4,15 +4,8 @@
       <ul class="slideshow">
         <li>
           <img
-            alt="8-Ball Radio team"
-            src="https://res.cloudinary.com/dbr2fzfuh/image/upload/v1548529503/radio/front-page/8-Ball_Group_Canal.jpg"
-            class="slideshow__image"
-          >
-        </li>
-        <li>
-          <img
-            alt="8-Ball Record Fair Pop-up"
-            src="https://res.cloudinary.com/dbr2fzfuh/image/upload/v1548530115/radio/front-page/Image_from_iOS_2.jpg"
+            alt="8-Ball Radio x Mood Ring"
+            src="https://res.cloudinary.com/dbr2fzfuh/image/upload/radio/front-page/8ball_Mood.jpg"
             class="slideshow__image"
           >
         </li>

@@ -25,15 +25,20 @@
       .slideshow__image {
         margin: 0;
         padding: 0;
-        height: 400px;
-        width: $max-width;
+        // height: 400px;
+        // width: $max-width;
         background-size: cover;
         background-position: center;
         position: center;
+        width: 100vw;
 
-        @media screen and (min-width: $break-large) {
-          height: 400px;
+        @media only screen and (min-width: $break-large) {
+          width: $max-width;
         }
+
+        // @media screen and (min-width: $break-large) {
+        //   height: 400px;
+        // }
       }
     }
   }
