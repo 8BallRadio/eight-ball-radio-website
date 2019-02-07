@@ -3,11 +3,13 @@
     <section id="main-slide">
       <ul class="slideshow">
         <li>
-          <img
-            alt="8-Ball Radio x Mood Ring"
-            src="https://res.cloudinary.com/dbr2fzfuh/image/upload/radio/front-page/8ball_Mood.jpg"
-            class="slideshow__image"
-          >
+          <a href="https://www.facebook.com/events/254262142165362/" target="_blank" rel="noopener">
+            <img
+              alt="8-Ball Radio x Mood Ring"
+              src="https://res.cloudinary.com/dbr2fzfuh/image/upload/radio/front-page/8ball_Mood.jpg"
+              class="slideshow__image"
+            >
+          </a>
         </li>
       </ul>
     </section>
