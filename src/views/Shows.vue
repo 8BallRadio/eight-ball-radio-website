@@ -10,13 +10,18 @@
           <img src="../assets/content/triangle.svg" alt>
         </span>
       </h2>
-      <div v-if="!loading">
+      <button class="btn btn__sort">&#62;&#62;SORT ALPHABETICALLY HERE&#60;&#60;</button>
+      <div class="shows-container" v-if="!loading">
         <ul class="shows__list">
           <li v-for="show in displayedShows" v-bind:key="show.slug" class="show">
             <router-link
               :to="{ path: '/show/' + show.slug, params: {id: 'show.slug', name: 'show.name'}}"
             >
-              <img :src="show.picture" :alt="show.name" @error="show.picture = show.mixcloud_picture">
+              <img
+                :src="show.picture"
+                :alt="show.name"
+                @error="show.picture = show.mixcloud_picture"
+              >
               <div class="show__info">
                 <!-- span class="show__time">2 pm</span> -->
                 <h3 class="show__name">{{show.name}}</h3>

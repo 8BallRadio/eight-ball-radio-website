@@ -239,8 +239,7 @@ header {
   }
 
   &:hover {
-    color: map-get($colors, light-red);
-    text-decoration: underline;
+    color: map-get($colors, dark-green);
   }
 }
 
@@ -346,7 +345,7 @@ header {
         margin: 0 5px;
 
         &:hover {
-          background-color: lighten(map-get($colors, dark-gray), 20%);
+          color: map-get($colors, dark-green);
         }
       }
     }

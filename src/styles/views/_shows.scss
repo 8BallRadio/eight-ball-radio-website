@@ -1,6 +1,18 @@
 #shows {
   text-align: center;
 
+  h2 {
+    margin: 2.8125rem 0 0;
+    color: map-get($colors, dark-gray);
+    .title__left,
+    .title__right {
+      display: block;
+      img {
+        max-width: 255px;
+      }
+    }
+  }
+
   .shows__list {
     margin-bottom: 0;
     .show {
@@ -91,10 +103,6 @@
     }
   }
   @media only screen and (min-width: $break-large) {
-    h2 {
-      margin-bottom: 1.5rem;
-    }
-
     .arrows {
       margin: 1rem auto 3rem;
     }
@@ -122,5 +130,23 @@
 .title__icon {
   display: inline-block;
   width: 25px;
-  margin: 0 16px;
+  margin: 0 4px;
+
+  @media only screen and (min-width: $break-small) {
+    margin: 0 16px;
+  }
+}
+
+.btn__sort {
+  letter-spacing: 0.7px;
+  color: #323232;
+  margin-bottom: 32px;
+
+  &:hover {
+    color: map-get($colors, dark-green);
+  }
+}
+
+.shows-container {
+  margin-top: 8px;
 }

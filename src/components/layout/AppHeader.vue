@@ -81,22 +81,45 @@
         <nav class="nav">
           <ul>
             <li>
-              <a href="https://8ballcommunity.club/" target="_blank" class="nav__link">EVENTS</a>
+              <a
+                href="https://8ballcommunity.club/"
+                target="_blank"
+                rel="noopener"
+                class="nav__link"
+              >EVENTS</a>
+            </li>
+            <li>
+              <a
+                href="https://www.mixcloud.com/8ballradio/uploads/?order=oldest"
+                target="_blank"
+                rel="noopener"
+                class="nav__link"
+              >ARCHIVE</a>
             </li>
             <li>
               <button class="btn dropbtn" @click.prevent="showDropDown">8-BALL FAMILY</button>
               <div class="dropdown-content" id="family-dropdown">
-                <a href="http://8balltv.club/" class="dropdown__link">8 Ball TV</a>
+                <a
+                  href="http://8balltv.club/"
+                  target="_blank"
+                  rel="noopener"
+                  class="dropdown__link"
+                >8 Ball TV</a>
               </div>
             </li>
             <li>
-              <a href="https://8ballcommunity.bigcartel.com/" target="_blank" class="nav__link">SHOP</a>
+              <a
+                href="https://8ballcommunity.bigcartel.com/"
+                target="_blank"
+                rel="noopener"
+                class="nav__link"
+              >SHOP</a>
             </li>
           </ul>
         </nav>
         <router-link to="/offsite" class="btn btn-channel">
           <img src="../../assets/header/wave-left-color.svg" class="wave__left" alt>
-          CHANNEL 2
+          OFF-SITE
           <img
             src="../../assets/header/wave-right-color.svg"
             class="wave__right"
@@ -262,7 +285,9 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.header-menu,
+.header-menu {
+  background-image: url(../../assets/header/menu-pattern.svg);
+}
 .btn-access {
   background-image: url(../../assets/header/btn-pattern.svg);
 }
