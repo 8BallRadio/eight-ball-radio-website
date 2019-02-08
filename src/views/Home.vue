@@ -1,22 +1,14 @@
 <template>
   <main id="maincontent">
     <section id="main-slide">
-      <ul class="slideshow">
-        <li>
-          <img
-            alt="8-Ball Radio team"
-            src="https://res.cloudinary.com/dbr2fzfuh/image/upload/v1548529503/radio/front-page/8-Ball_Group_Canal.jpg"
-            class="slideshow__image"
-          >
-        </li>
-        <li>
-          <img
-            alt="8-Ball Record Fair Pop-up"
-            src="https://res.cloudinary.com/dbr2fzfuh/image/upload/v1548530115/radio/front-page/Image_from_iOS_2.jpg"
-            class="slideshow__image"
-          >
-        </li>
-      </ul>
+      <div
+        v-if="errored"
+        class="error__msg"
+      >We're sorry, we're not able to retrieve this information at the moment, please try back later</div>
+      <div v-else>
+        <div v-if="loading">Loading...</div>
+        <slide-show :collections="collections" v-else></slide-show>
+      </div>
     </section>
     <section id="latest-shows">
       <h2>
@@ -42,25 +34,45 @@
 
 <script>
 import axios from "axios";
+import cloudinary from "cloudinary-core";
 import LatestShows from "@/components/LatestShows.vue";
+import SlideShow from "@/components/SlideShow.vue";
 
 export default {
   name: "home",
   components: {
-    "latest-shows": LatestShows
+    LatestShows,
+    SlideShow
   },
   data() {
     return {
       shows: null,
       loading: true,
-      errored: false
+      errored: false,
+      collections: [],
+      cloudinary: null
     };
+  },
+  created() {
+    this.cloudinary = cloudinary.Cloudinary.new({
+      cloud_name: "dbr2fzfuh"
+    });
   },
   mounted() {
     window.scroll(0, 0);
+    // Requests will be executed in parallel...
     axios
-      .get("//api.mixcloud.com/8ballradio/cloudcasts/?limit=6")
-      .then(response => this.getShows(response.data))
+      .all([
+        axios.get("https://res.cloudinary.com/dbr2fzfuh/image/list/slide.json"),
+        axios.get("//api.mixcloud.com/8ballradio/cloudcasts/?limit=6")
+      ])
+      .then(
+        axios.spread((imageResponse, showsResponse) => {
+          //... but this callback will be executed only when both requests are complete.
+          this.getShows(showsResponse.data);
+          this.getImagesData(imageResponse.data);
+        })
+      )
       .catch(error => {
         console.log(error), (this.errored = true);
       })
@@ -69,6 +81,16 @@ export default {
   methods: {
     getShows(res) {
       this.shows = res.data;
+    },
+    getImagesData(collection) {
+      let imageData = [];
+      collection.resources.forEach(image => {
+        imageData.push({
+          url: this.cloudinary.url(image.public_id + ".jpg"),
+          alt: image.context.custom.caption
+        });
+      });
+      this.collections = imageData;
     }
   }
 };
