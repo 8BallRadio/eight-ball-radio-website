@@ -23,13 +23,13 @@
           </div>
           <div class="player__info">
             <p class="info__top">Now Playing In Channel 1</p>
-            <p class="info__ticker">
-              {{ showName }}
-              <!-- <div class="ticker">
-                <div class="ticker__item"></div>
-                {{ showName }}
-              </div>-->
-            </p>
+            <div class="info__ticker">
+              <div class="ticker-wrapper">
+                <div class="ticker">
+                  <div class="ticker__item">{{ showName }}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="top__social">

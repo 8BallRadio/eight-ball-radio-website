@@ -1,3 +1,5 @@
+$duration: 30s;
+
 header {
   background-color: #fff;
   display: flex;
@@ -129,6 +131,10 @@ header {
     overflow: hidden;
     padding-left: 100%;
     box-sizing: content-box;
+
+    @media only screen and (min-width: $break-small) {
+      width: 280px;
+    }
   }
   .ticker {
     display: inline-block;
@@ -137,6 +143,14 @@ header {
     white-space: nowrap;
     padding-right: 100%;
     box-sizing: content-box;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    -webkit-animation-name: ticker;
+    animation-name: ticker;
+    -webkit-animation-duration: $duration;
+    animation-duration: $duration;
   }
 
   .ticker__item {
