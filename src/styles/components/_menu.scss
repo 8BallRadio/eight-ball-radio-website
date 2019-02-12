@@ -89,15 +89,11 @@
     .btn-donate {
       display: block;
       font-size: $font-size-large;
-      background-color: map-get($colors, dark-red);
-      color: map-get($colors, primary);
+      background-color: map-get($colors, primary);
+      color: map-get($colors, dark-red);
 
       &:hover {
-        background-color: darken(map-get($colors, light-red), 10%);
-      }
-
-      @media only screen and (min-width: $break-small) {
-        display: none;
+        color: darken(map-get($colors, light-red), 10%);
       }
     }
   }
