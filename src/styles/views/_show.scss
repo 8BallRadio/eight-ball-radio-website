@@ -23,20 +23,28 @@
   font-size: $font-size-large;
   letter-spacing: 2px;
   position: relative;
-  color: #323232;
+  color: map-get($colors, dark-gray);
   text-decoration: none;
-}
 
-.back__btn:before {
-  content: '';
-  width: 0;
-  height: 0;
-  border-top: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  border-right: 15px solid #323232;
-  position: absolute;
-  left: -20px;
-  top: 4px;
+  &:hover {
+    color: map-get($colors, dark-green);
+  }
+}
+.back__btn {
+  &:before {
+    content: '';
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 15px solid #323232;
+    position: absolute;
+    left: -20px;
+    top: 4px;
+  }
+  &:hover:before {
+    border-right-color: map-get($colors, dark-green);
+  }
 }
 
 #inside-show .show__image img {
