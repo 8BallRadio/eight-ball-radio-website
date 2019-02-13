@@ -10,7 +10,7 @@
           <img src="../assets/content/triangle.svg" alt>
         </span>
       </h2>
-      <button class="btn btn__sort">&#62;&#62;SORT ALPHABETICALLY HERE&#60;&#60;</button>
+      <button class="btn btn__sort" @click="mergeSort(showInfo)">SORT ALPHABETICALLY</button>
       <div class="shows-container" v-if="!loading">
         <ul class="shows__list">
           <li v-for="show in displayedShows" v-bind:key="show.slug" class="show">
@@ -44,14 +44,6 @@
 </template>
 
 <script>
-// FOR NOW
-// We can use the Mixcloud playlists to come up with all the shows
-// since Airtime won't let us showcase archived shows
-// Photos come from FIRST MIXCLOUD SHOW
-
-// TODO: CSS Formatting - in progress
-// TODO: Image replacements? - The idea is to use Mixcloud images
-// TODO: Add show's tags from 'https://api.mixcloud.com/8ballradio/playlists/{slug}/cloudcasts/'
 // TODO: Get show's time from AirtimePro?
 // TODO: Pagination - fix weird behavior when next page is clicked
 
@@ -67,7 +59,8 @@ export default {
       error: null,
       page: 1,
       perPage: 9,
-      pages: []
+      pages: [],
+      sortFlag: false
     };
   },
   beforeUpdate() {
@@ -256,8 +249,53 @@ export default {
       return shows.slice(from, to);
     },
     imageLoadError: function(show) {
-      console.log("didn't work");
       show["picture"] = show["mixcloud_picture"];
+    },
+    mergeSort(shows) {
+      let merge = (leftArr, rightArr) => {
+        var sortedArr = [];
+        while (leftArr.length && rightArr.length) {
+          var order = this.sortFlag ? -1 : 1;
+          if (leftArr[0]["name"].localeCompare(rightArr[0]["name"]) == order) {
+            sortedArr.push(leftArr[0]);
+            leftArr = leftArr.slice(1);
+          } else {
+            sortedArr.push(rightArr[0]);
+            rightArr = rightArr.slice(1);
+          }
+        }
+        while (leftArr.length) {
+          sortedArr.push(leftArr.shift());
+        }
+        while (rightArr.length) {
+          sortedArr.push(rightArr.shift());
+        }
+        return sortedArr;
+      };
+
+      function mergeSortHelper(shows) {
+        if (shows.length < 2) {
+          return shows;
+        } else {
+          let midpoint = parseInt(shows.length / 2);
+          let leftArray = shows.slice(0, midpoint);
+          let rightArray = shows.slice(midpoint, shows.length);
+          let mergedArray = merge(
+            mergeSortHelper(leftArray),
+            mergeSortHelper(rightArray)
+          );
+          return mergedArray;
+        }
+      }
+
+      /*
+       sortFlag is init to false
+       Click of button sets to true, false accordingly
+       This allows swapping sorting from increasing to decreasing
+       */
+
+      this.sortFlag = !this.sortFlag;
+      this.showInfo = mergeSortHelper(shows);
     }
   },
   watch: {
