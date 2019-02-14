@@ -10,7 +10,7 @@
           <img src="../assets/content/triangle.svg" alt>
         </span>
       </h2>
-      <button class="btn btn__sort" @click="mergeSort(showInfo)">SORT ALPHABETICALLY</button>
+      <button class="btn btn__sort" @click="mergeSort(showInfo)">&#9654; SORT ALPHABETICALLY &#9664;</button>
       <div class="shows-container" v-if="!loading">
         <ul class="shows__list">
           <li v-for="show in displayedShows" v-bind:key="show.slug" class="show">
