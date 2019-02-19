@@ -181,50 +181,52 @@ export default {
     };
 
     this.$nextTick(() => {
-      let streamInfo = Promise.resolve(getStreamInfo(streamAPI));
-      streamInfo.then(val => {
-        if (
-          val.data["currentShow"] === undefined ||
-          val.data["currentShow"].length === 0
-        ) {
-          this.showName = "No show currently playing";
-          this.isStreaming = false;
-          this.onAirText = "OFF - AIR";
-        } else {
-          // showName is the text that will be displayed on header
+      window.setInterval(() => {
+        let streamInfo = Promise.resolve(getStreamInfo(streamAPI));
+        streamInfo.then(val => {
+          if (
+            val.data["currentShow"] === undefined ||
+            val.data["currentShow"].length === 0
+          ) {
+            this.showName = "No show currently playing";
+            this.isStreaming = false;
+            this.onAirText = "OFF - AIR";
+          } else {
+            // showName is the text that will be displayed on header
 
-          this.showName = val.data["currentShow"][0]["name"];
-          this.media_item_played = val.data["current"]["media_item_played"];
+            this.showName = val.data["currentShow"][0]["name"];
+            this.media_item_played = val.data["current"]["media_item_played"];
 
-          // If there is a media item being played, display that name instead
+            // If there is a media item being played, display that name instead
 
-          if (this.media_item_played) {
-            var isDate = function(date) {
-              return (
-                new Date(date) !== "Invalid Date" && !isNaN(new Date(date))
-              );
-            };
-            // Cut .mp3 from string
+            if (this.media_item_played) {
+              var isDate = function(date) {
+                return (
+                  new Date(date) !== "Invalid Date" && !isNaN(new Date(date))
+                );
+              };
+              // Cut .mp3 from string
 
-            let tempName = val.data["current"]["name"].slice(0, -4);
+              let tempName = val.data["current"]["name"].slice(0, -4);
 
-            // If the beginning substring is a date
-            // meaning file is a mixlr archive file
-            // set showName to nameTest
+              // If the beginning substring is a date
+              // meaning file is a mixlr archive file
+              // set showName to nameTest
 
-            let dateTest = tempName.substring(3, 13);
-            let nameTest = tempName.substring(16, tempName.length);
+              let dateTest = tempName.substring(3, 13);
+              let nameTest = tempName.substring(16, tempName.length);
 
-            if (isDate(dateTest)) {
-              this.showName = nameTest;
-            } else {
-              this.showName = tempName;
+              if (isDate(dateTest)) {
+                this.showName = nameTest;
+              } else {
+                this.showName = tempName;
+              }
             }
+            this.isStreaming = true;
+            this.onAirText = "ON - AIR";
           }
-          this.isStreaming = true;
-          this.onAirText = "ON - AIR";
-        }
-      });
+        });
+      }, 600);
     });
   },
   beforeDestroy: function() {
