@@ -58,12 +58,15 @@
             >
           </a>
         </div>
-        <a
-          href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
-          class="btn btn-donate"
-          target="_blank"
-          rel="noopener"
-        >DONATE</a>
+        <router-link to="/offsite" class="btn btn-channel">
+          <img src="../../assets/header/wave-left-color.svg" class="wave__left" alt>
+          OFF-SITE CHANNEL
+          <img
+            src="../../assets/header/wave-right-color.svg"
+            class="wave__right"
+            alt
+          >
+        </router-link>
       </div>
     </section>
     <section id="header-middle" class="header-menu">
@@ -117,15 +120,12 @@
             </li>
           </ul>
         </nav>
-        <router-link to="/offsite" class="btn btn-channel">
-          <img src="../../assets/header/wave-left-color.svg" class="wave__left" alt>
-          OFF-SITE
-          <img
-            src="../../assets/header/wave-right-color.svg"
-            class="wave__right"
-            alt
-          >
-        </router-link>
+        <a
+          href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
+          class="btn btn-donate"
+          target="_blank"
+          rel="noopener"
+        >DONATE</a>
         <button class="open-menu btn" id="btn-menu" @click="openMenu">MENU</button>
       </div>
     </section>

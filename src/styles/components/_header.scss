@@ -40,7 +40,7 @@ header {
 
     .top__player {
       flex: 2;
-      padding: 0.5rem 1rem 0;
+      padding: 0.5rem 0 0 1rem;
       display: flex;
       height: 40px;
 
@@ -99,8 +99,7 @@ header {
   }
 
   &:hover {
-    border-color: transparent transparent transparent
-      lighten(map-get($colors, dark-gray), 20%);
+    border-color: transparent transparent transparent lighten(map-get($colors, dark-gray), 20%);
   }
 }
 
@@ -123,7 +122,7 @@ header {
     text-transform: uppercase;
 
     @media only screen and (min-width: $break-small) {
-      width: 280px;
+      width: 240px;
     }
   }
   .ticker-wrapper {
@@ -159,17 +158,22 @@ header {
   }
 }
 
-.btn-donate {
+.btn-channel {
   background-color: map-get($colors, dark-green);
   color: map-get($colors, dark-gray);
-  font-size: $font-size-x-large;
+  font-size: $font-size-small;
   text-decoration: none;
-  padding: 4px 16px;
+  padding: 2px 8px;
   font-family: $font-family-display;
   display: none;
+  letter-spacing: 0.7px;
 
   @media only screen and (min-width: $break-small) {
     display: block;
+  }
+
+  &:hover {
+    color: map-get($colors, primary);
   }
 }
 
@@ -238,14 +242,15 @@ header {
   }
 }
 
-.btn-channel {
-  color: map-get($colors, primary);
-  font-size: $font-size-large;
+.btn-donate {
+  color: map-get($colors, dark-green);
+  font-size: $font-size-x-large;
   text-decoration: none;
   padding-top: 8px;
   padding-right: 8px;
   font-family: $font-family-display;
   display: none;
+  letter-spacing: 0.7px;
 
   @media only screen and (min-width: $break-large) {
     display: block;
@@ -253,7 +258,7 @@ header {
   }
 
   &:hover {
-    color: map-get($colors, dark-green);
+    color: map-get($colors, primary);
   }
 }
 
