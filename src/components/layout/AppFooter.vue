@@ -20,8 +20,13 @@
       </section>
       <section class="footer__col community">
         <h3>8 BALL FAMILY</h3>
-        <a href="http://8balltv.club/" class="family__link" target="_blank">8 BALL TV</a>
-        <a href="https://8ballcommunity.bigcartel.com/" class="family__link" target="_blank">MERCH (SUPPORT US)</a>
+        <a href="http://8balltv.club/" class="family__link" target="_blank" rel="noopener">8 BALL TV</a>
+        <a
+          href="https://8ballcommunity.bigcartel.com/"
+          class="family__link"
+          target="_blank"
+          rel="noopener"
+        >MERCH (SUPPORT US)</a>
       </section>
     </div>
     <div class="mixcloud-player" v-if="slug">
@@ -37,6 +42,11 @@ import Mixcloud from "@/components/layout/Mixcloud.vue";
 export default {
   components: {
     mixcloud: Mixcloud
+  },
+  mounted() {
+    this.$root.$on("streamChannel1", () => {
+      this.removeSlugs();
+    });
   },
   computed: {
     ...mapState(["slug"])

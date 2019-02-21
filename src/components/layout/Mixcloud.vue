@@ -22,6 +22,9 @@ export default {
         "//www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&light=1&feed=%2F8ballradio%2F"
     };
   },
+  mounted() {
+    this.$root.$emit("streamMixcloud");
+  },
   computed: {
     ...mapState(["slug"])
   }

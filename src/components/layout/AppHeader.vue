@@ -167,6 +167,9 @@ export default {
     "app-mobile-menu": AppMobileMenu
   },
   mounted() {
+    this.$root.$on("streamMixcloud", () => {
+      this.pauseStream();
+    });
     // Attach event listener to the root vue element
     document.addEventListener("click", this.onClick);
 
@@ -259,6 +262,7 @@ export default {
     },
     toggleStream() {
       if (!this.playing) {
+        this.$root.$emit("streamChannel1");
         this.playStream();
       } else {
         this.pauseStream();
