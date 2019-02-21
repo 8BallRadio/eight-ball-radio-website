@@ -93,7 +93,7 @@
       color: map-get($colors, dark-red);
 
       &:hover {
-        color: darken(map-get($colors, light-red), 10%);
+        color: darken(map-get($colors, dark-green), 20%);
       }
     }
   }
