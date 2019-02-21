@@ -15,7 +15,7 @@
         </router-link>
         <a
           href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
-          class="btn btn-donate"
+          class="nav__link btn-donate"
           target="_blank"
           rel="noopener"
         >DONATE</a>
