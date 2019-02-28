@@ -196,35 +196,48 @@ export default {
             this.onAirText = "OFF - AIR";
           } else {
             // showName is the text that will be displayed on header
+            // media_item_played checks for liveDJ status
 
-            this.showName = val.data["currentShow"][0]["name"];
+            let showName = val.data["currentShow"][0]["name"];
+            let trackName = val.data["current"]["name"];
             this.media_item_played = val.data["current"]["media_item_played"];
 
-            // If there is a media item being played, display that name instead
-
+            // if there is NO liveDJ, then a media item is being played
+            // Need to crop date and file extension if they exist
             if (this.media_item_played) {
+              // Date checking function
               var isDate = function(date) {
                 return (
                   new Date(date) !== "Invalid Date" && !isNaN(new Date(date))
                 );
               };
-              // Cut .mp3 from string
 
-              let tempName = val.data["current"]["name"].slice(0, -4);
+              // Cut .mp3 from string if it exists
+              let ext = trackName.split(".").pop();
+              if (ext == "mp3") {
+                trackName = trackName.slice(0, -4);
+              }
 
               // If the beginning substring is a date
               // meaning file is a mixlr archive file
               // set showName to nameTest
 
-              let dateTest = tempName.substring(3, 13);
-              let nameTest = tempName.substring(16, tempName.length);
+              let dateTest = trackName.substring(0, 11);
+              let nameTest = trackName.substring(13, trackName.length);
 
               if (isDate(dateTest)) {
-                this.showName = nameTest;
-              } else {
-                this.showName = tempName;
+                trackName = nameTest;
               }
+
+              // If it's From the Vault, display it
+              if (showName.toLowerCase() == "From the Vault".toLowerCase()) {
+                trackName = showName + " - " + trackName;
+              }
+
+              // set showName to trackName
+              showName = trackName;
             }
+            this.showName = showName;
             this.isStreaming = true;
             this.onAirText = "ON - AIR";
           }
