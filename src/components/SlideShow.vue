@@ -18,7 +18,8 @@ export default {
   data() {
     return {
       current: 0,
-      totalImages: this.collections.length
+      totalImages: this.collections.length,
+      slideInterval: setInterval(this.nextSlide, 8000)
     };
   },
   methods: {
@@ -28,6 +29,12 @@ export default {
       } else {
         this.current++;
       }
+      this.current = Math.abs(this.current % this.totalImages);
+      clearInterval(this.slideInterval);
+      this.slideInterval = setInterval(this.nextSlide, 8000);
+    },
+    nextSlide() {
+      this.current++;
       this.current = Math.abs(this.current % this.totalImages);
     }
   }
