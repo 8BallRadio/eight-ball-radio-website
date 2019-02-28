@@ -33,7 +33,7 @@ header {
       height: 40px;
       display: none;
 
-      @media only screen and (min-width: $break-small) {
+      @media only screen and (min-width: $break-large) {
         display: block;
       }
     }
@@ -49,7 +49,7 @@ header {
       }
 
       .player__controls {
-        margin-right: 14px;
+        margin-right: 12px;
         display: flex;
 
         .control__volume,
@@ -99,7 +99,8 @@ header {
   }
 
   &:hover {
-    border-color: transparent transparent transparent lighten(map-get($colors, dark-gray), 20%);
+    border-color: transparent transparent transparent
+      lighten(map-get($colors, dark-gray), 20%);
   }
 }
 
@@ -116,7 +117,7 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 200px;
+    width: 170px;
     padding: 0;
     margin: 0;
     text-transform: uppercase;
@@ -161,15 +162,35 @@ header {
 .btn-channel {
   background-color: map-get($colors, dark-green);
   color: map-get($colors, dark-gray);
-  font-size: $font-size-small;
+  font-size: $font-size-tiny;
   text-decoration: none;
-  padding: 2px 8px;
+  padding: 8px 8px;
   font-family: $font-family-display;
-  display: none;
   letter-spacing: 0.7px;
+  width: 90px;
+  line-height: 1.1;
+  text-align: center;
+
+  @media only screen and (max-width: $break-tiny) {
+    display: none;
+  }
+
+  & .wave__left,
+  & .wave__right {
+    display: none;
+  }
 
   @media only screen and (min-width: $break-small) {
-    display: block;
+    font-size: $font-size-small;
+    padding: 12px 8px;
+    width: unset;
+  }
+  @media only screen and (min-width: $break-large) {
+    padding: 2px 8px;
+    & .wave__left,
+    & .wave__right {
+      display: inline-block;
+    }
   }
 
   &:hover {
