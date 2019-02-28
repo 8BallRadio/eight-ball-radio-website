@@ -19,7 +19,7 @@ export default {
     return {
       current: 0,
       totalImages: this.collections.length,
-      slideInterval: setInterval(this.nextSlide, 8000)
+      slideInterval: setInterval(this.nextSlide, 6000)
     };
   },
   methods: {
