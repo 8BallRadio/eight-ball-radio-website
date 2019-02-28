@@ -10,7 +10,22 @@
           <img src="../assets/content/ball-icon.svg" alt>
         </span>
       </h2>
-      <form name="contact" method="POST" data-netlify="true" class="contact-form">
+      <div align="left">
+        <p>If you have question about our website or have found a bug on our website, please send us an e-mail at <strong>eightballradio@gmail.com</strong></p>
+        <p> We will review your message as soon as we can.</p>
+        <p>If you are interested in having a show at 8-Ball Radio, send us your show proposal to <strong>8ballradioproposals@gmail.com</strong>. </p>
+        <p>Your proposal should contain the following:
+          <ul>
+            <li>Your name.</li>
+            <li>Some information about yourself.</li>
+            <li>A description of your show.</li>
+            <li>A playlist of songs (if you're playing music).</li> 
+            <li>A snippet of what your show would sound like (if you're not playing music).</li>
+          </ul>
+        </p>
+        <p>Shows proposals are reviewed and accepted quarterly. You'll hear from us regarding your show at the start of a new quarter. Thanks.</p>
+      </div>
+      <!-- <form name="contact" method="POST" data-netlify="true" class="contact-form">
         <p class="contact__name">
           <label class="sr-only" for="name">Your Name:</label>
           <input type="text" name="name" id="name" placeholder="YOUR NAME">
@@ -35,7 +50,7 @@
           ></textarea>
         </p>
         <button type="submit" class="contact__btn">SEND</button>
-      </form>
+      </form> -->
     </section>
   </main>
 </template>
