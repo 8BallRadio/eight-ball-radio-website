@@ -231,7 +231,7 @@ export default {
 
               // If it's From the Vault, display it
               if (showName.toLowerCase() == "From the Vault".toLowerCase()) {
-                trackName = showName + " - " + trackName;
+                trackName = showName + " " + trackName;
               }
 
               // set showName to trackName
