@@ -118,6 +118,14 @@
                 class="nav__link"
               >SHOP</a>
             </li>
+            <li>
+              <router-link 
+                to="/showsubmission"
+                class="nav__link"
+                rel="noopener"
+              >SHOW SUBMISSON
+              </router-link>
+            </li>
           </ul>
         </nav>
         <a

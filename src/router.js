@@ -6,6 +6,7 @@ import Show from "@/views/Show.vue";
 import Contact from "@/views/Contact.vue";
 import Schedule from "@/views/Schedule.vue";
 import OffSite from "@/views/OffSite.vue";
+import ShowSubmission from "@/views/ShowSubmission.vue";
 
 Vue.use(Router);
 
@@ -46,6 +47,11 @@ export default new Router({
       path: "/offsite",
       name: "OffSite",
       component: OffSite
+    },
+    {
+      path: "/showsubmission",
+      name: "ShowSubmission",
+      component: ShowSubmission
     }
   ]
 });
