@@ -34,6 +34,7 @@
           class="nav__link"
         >ARCHIVE</a>
         <a href class="nav__link">8-BALL FAMILY</a>
+        <router-link to="/showsubmission" class="nav__link" @click.native="closeMenu">SHOW SUBMISSION</router-link>
         <a
           href="https://8ballcommunity.bigcartel.com/"
           target="_blank"
