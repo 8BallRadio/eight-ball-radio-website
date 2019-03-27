@@ -1,6 +1,6 @@
 <template>
   <main id="maincontent">
-    <section id="main-slide">
+    <section id="main-slide" server-rendered="true">
       <div
         v-if="errored"
         class="error__msg"
@@ -35,8 +35,10 @@
 <script>
 import axios from "axios";
 import cloudinary from "cloudinary-core";
-import LatestShows from "@/components/LatestShows.vue";
 import SlideShow from "@/components/SlideShow.vue";
+
+// Below-the-Fold
+const LatestShows = () => import("@/components/LatestShows.vue");
 
 export default {
   name: "home",
