@@ -17,6 +17,7 @@
           </svg>
         </button>
         <img :src="value.pictures['320wx320h']" :alt="value.name">
+        <!-- <img :src="value.pictures['medium_mobile']" :alt="value.name"> -->
         <div class="show__info">
           <h3 class="show__name">{{value.name}}</h3>
           <p class="show__tags">{{ printTags(value.tags) }}</p>
@@ -81,13 +82,21 @@ export default {
   padding: 0;
   margin: 2rem auto;
   max-width: 250px;
+  width: 250px;
+  height: 250px;
   position: relative;
   @media screen and (min-width: $break-small) {
     margin-bottom: 0;
   }
 }
 
+.show img {
+  width: 100%;
+}
+
 .show__btn {
+  left: 0px;
+  top: 0px;
   width: 100%;
   height: 100%;
   padding: 0;

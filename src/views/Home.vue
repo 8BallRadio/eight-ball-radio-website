@@ -58,7 +58,7 @@ export default {
       cloud_name: "dbr2fzfuh"
     });
   },
-  mounted() {
+  beforeMount() {
     window.scroll(0, 0);
     // Requests will be executed in parallel...
     axios
