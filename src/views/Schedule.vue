@@ -46,7 +46,7 @@ export default {
   },
   data() {
     return {
-      currentDay: "monday",
+      currentDay: this.getWeekday(),
       days: [
         { name: "monday", isActive: true },
         { name: "tuesday" },
@@ -75,11 +75,23 @@ export default {
   methods: {
     getSchedule(res) {
       this.week = res;
-      this.getCurrentDaySchedule(this.days[0].name);
+      this.getCurrentDaySchedule(this.currentDay);
     },
     getCurrentDaySchedule(currentDay) {
       this.currentDay = currentDay;
       this.dayShows = this.week[this.currentDay];
+    },
+    getWeekday() {
+      var weekday = new Array(7);
+      var d = new Date();
+      weekday[0] = "monday";
+      weekday[1] = "tuesday";
+      weekday[2] = "wednesday";
+      weekday[3] = "thursday";
+      weekday[4] = "friday";
+      weekday[5] = "saturday";
+      weekday[6] = "sunday";
+      return weekday[d.getDay()];
     }
   }
 };
