@@ -84,13 +84,13 @@ export default {
     getWeekday() {
       var weekday = new Array(7);
       var d = new Date();
-      weekday[0] = "monday";
-      weekday[1] = "tuesday";
-      weekday[2] = "wednesday";
-      weekday[3] = "thursday";
-      weekday[4] = "friday";
-      weekday[5] = "saturday";
-      weekday[6] = "sunday";
+      weekday[0] = "sunday";
+      weekday[1] = "monday";
+      weekday[2] = "tuesday";
+      weekday[3] = "wednesday";
+      weekday[4] = "thursday";
+      weekday[5] = "friday";
+      weekday[6] = "saturday";
       return weekday[d.getDay()];
     }
   }
