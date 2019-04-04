@@ -26,6 +26,7 @@ export default {
 <style lang="scss">
 #app {
   font-family: $font-family-text;
+  font-display: swap;
   color: #000000;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
