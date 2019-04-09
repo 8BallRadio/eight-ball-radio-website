@@ -13,7 +13,7 @@
       <button class="btn btn__sort" @click="mergeSort(showInfo)">&#9654; SORT ALPHABETICALLY &#9664;</button>
       <div class="shows-container" v-if="!loading">
         <ul class="shows__list">
-          <li v-for="show in displayedShows" v-bind:key="show.slug" class="show">
+          <li v-for="show in showInfo" v-bind:key="show.slug" class="show">
             <router-link
               :to="{ path: '/show/' + show.slug, params: {id: 'show.slug', name: 'show.name'}}"
             >
@@ -31,10 +31,10 @@
             </router-link>
           </li>
         </ul>
-        <div class="arrows">
+        <!-- <div class="arrows">
           <button type="button" class="btn arrow" v-if="page != 1" @click="page--">&#60;</button>
           <button type="button" class="btn arrow" @click="page++" v-if="page < pages.length">&#62;</button>
-        </div>
+        </div> -->
       </div>
       <div v-else>
         <h1>Loading...</h1>
