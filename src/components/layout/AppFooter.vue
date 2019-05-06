@@ -12,7 +12,9 @@
       <section class="footer__col contact">
         <h3>CONTACT</h3>
         <p class="contact__title">General Inquiries + Show submissions:</p>
-        <router-link to="/contact" class="contact__link">Drop us a line HERE</router-link>
+        <router-link to="/contact" class="contact__link"
+          >Drop us a line HERE</router-link
+        >
         <p class="visit">Visit Us:</p>
         <p class="visit__text">327 Canal St.</p>
         <p class="visit__text">New York, NY</p>
@@ -20,18 +22,31 @@
       </section>
       <section class="footer__col community">
         <h3>8 BALL FAMILY</h3>
-        <a href="http://8balltv.club/" class="family__link" target="_blank" rel="noopener">8 BALL TV</a>
+        <a
+          href="http://8balltv.club/"
+          class="family__link"
+          target="_blank"
+          rel="noopener"
+          >8 BALL TV</a
+        >
         <a
           href="https://8ballcommunity.bigcartel.com/"
           class="family__link"
           target="_blank"
           rel="noopener"
-        >MERCH (SUPPORT US)</a>
+          >MERCH (SUPPORT US)</a
+        >
       </section>
     </div>
     <div class="mixcloud-player" v-if="slug">
       <mixcloud></mixcloud>
-      <button id="btn close-player" class="close-player__btn" @click="removeSlugs">X</button>
+      <button
+        id="btn close-player"
+        class="close-player__btn"
+        @click="removeSlugs"
+      >
+        X
+      </button>
     </div>
   </footer>
 </template>

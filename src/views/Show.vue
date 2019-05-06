@@ -2,20 +2,22 @@
   <main id="maincontent">
     <section id="inside-show">
       <div class="back">
-        <router-link to="/shows" class="btn back__btn">BACK TO LIST</router-link>
+        <router-link to="/shows" class="btn back__btn"
+          >BACK TO LIST</router-link
+        >
       </div>
       <div class="show__image">
-        <img v-bind:src="showImage" @error="imageLoadError">
+        <img v-bind:src="showImage" @error="imageLoadError" />
       </div>
       <div class="show__info">
-        <h3>{{this.name.toUpperCase()}}</h3>
+        <h3>{{ this.name.toUpperCase() }}</h3>
         <p class="show__description">{{ description }}</p>
         <div class="show__tags" v-if="tags.length >= 1">
           <h4>TAGS:</h4>
           <ul>
             <li v-for="(tag, index) in tags" :key="index">
               <div class="triangle left"></div>
-              <span>{{tag.toUpperCase().trim()}}</span>
+              <span>{{ tag.toUpperCase().trim() }}</span>
               <div class="triangle right"></div>
             </li>
           </ul>
@@ -23,19 +25,26 @@
       </div>
       <h2>
         <span class="title__left">
-          <img src="../assets/content/stick-left.svg" alt>
+          <img src="../assets/content/stick-left.svg" alt />
         </span>
         SHOWS ARCHIVES
         <span class="title__right">
-          <img src="../assets/content/stick-right.svg" alt>
+          <img src="../assets/content/stick-right.svg" alt />
         </span>
       </h2>
       <ul class="archive-shows">
         <li class="show" v-for="(value, key) in this.casts" :key="key">
           <button class="btn show__btn" @click="selectShow(value.slug)">
-            <svg class="play__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+            <svg
+              class="play__icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 600 600"
+            >
               <title>Play</title>
-              <g id="_x33_--Hidden-_x28_closing-up_x29_-" transform="translate(-772 -385)">
+              <g
+                id="_x33_--Hidden-_x28_closing-up_x29_-"
+                transform="translate(-772 -385)"
+              >
                 <g id="Drawer" transform="translate(0 43)">
                   <g id="_x32_" transform="translate(18)">
                     <path
@@ -47,16 +56,17 @@
               </g>
             </svg>
           </button>
-          <img :src="value.pictures['320wx320h']" :alt="value.name">
+          <img :src="value.pictures['320wx320h']" :alt="value.name" />
         </li>
       </ul>
       <div class="more-archives">
         <a
-          :href="`https://www.mixcloud.com/8ballradio/playlists/${ slug }`"
+          :href="`https://www.mixcloud.com/8ballradio/playlists/${slug}`"
           class="btn more__btn"
           target="_blank"
           rel="noopener"
-        >MORE ARCHIVES</a>
+          >MORE ARCHIVES</a
+        >
       </div>
     </section>
   </main>

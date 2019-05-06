@@ -4,7 +4,7 @@
       id="mixcloud"
       width="100%"
       height="60"
-      :src="url+slug+'%2F'"
+      :src="url + slug + '%2F'"
       frameborder="0"
       allow="autoplay"
     ></iframe>

@@ -4,21 +4,29 @@
     <section id="header-top">
       <div class="top">
         <h4 class="top__onair">
-          <img src="../../assets/header/wave-left.svg" class="wave__left blink-animation" alt>
-          {{onAirText}}
+          <img
+            src="../../assets/header/wave-left.svg"
+            class="wave__left blink-animation"
+            alt
+          />
+          {{ onAirText }}
           <img
             src="../../assets/header/wave-right.svg"
             class="wave__right blink-animation"
             alt
-          >
+          />
         </h4>
         <div class="top__player">
           <div class="player__controls" v-show="isStreaming">
-            <button class="control__play" :class="{paused: playing }" @click.prevent="toggleStream">
+            <button
+              class="control__play"
+              :class="{ paused: playing }"
+              @click.prevent="toggleStream"
+            >
               <span class="sr-only">play channel 1</span>
             </button>
             <button class="btn control__volume" @click.prevent="mute">
-              <img src="../../assets/header/volume.svg" alt="volume control">
+              <img src="../../assets/header/volume.svg" alt="volume control" />
             </button>
           </div>
           <div class="player__info">
@@ -33,39 +41,55 @@
           </div>
         </div>
         <div class="top__social">
-          <a href="https://www.facebook.com/eightballradio/" target="_blank" rel="noopener">
+          <a
+            href="https://www.facebook.com/eightballradio/"
+            target="_blank"
+            rel="noopener"
+          >
             <img
               class="social__icon"
               src="../../assets/header/facebook.svg"
               onerror="this.src='../../assets/header/facebook.png'"
               alt="Facebook Fan Page"
-            >
+            />
           </a>
-          <a href="https://www.instagram.com/8ballradio/" target="_blank" rel="noopener">
+          <a
+            href="https://www.instagram.com/8ballradio/"
+            target="_blank"
+            rel="noopener"
+          >
             <img
               class="social__icon"
               src="../../assets/header/instagram.svg"
               onerror="this.src='../../assets/header/instagram.png'"
               alt="Instagram"
-            >
+            />
           </a>
-          <a href="https://www.mixcloud.com/8ballradio/" target="_blank" rel="noopener">
+          <a
+            href="https://www.mixcloud.com/8ballradio/"
+            target="_blank"
+            rel="noopener"
+          >
             <img
               class="social__icon"
               src="../../assets/header/mixcloud.svg"
               onerror="this.src='../../assets/header/mixcloud.png'"
               alt="Mixcloud"
-            >
+            />
           </a>
         </div>
         <router-link to="/offsite" class="btn btn-channel">
-          <img src="../../assets/header/wave-left-color.svg" class="wave__left" alt>
+          <img
+            src="../../assets/header/wave-left-color.svg"
+            class="wave__left"
+            alt
+          />
           OFF-SITE CHANNEL
           <img
             src="../../assets/header/wave-right-color.svg"
             class="wave__right"
             alt
-          >
+          />
         </router-link>
       </div>
     </section>
@@ -78,7 +102,7 @@
               src="../../assets/header/logo.svg"
               onerror="this.src='../../assets/header/logo.png'"
               alt="8 Ball Radio"
-            >
+            />
           </router-link>
         </h1>
         <nav class="nav">
@@ -89,7 +113,8 @@
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
-              >EVENTS</a>
+                >EVENTS</a
+              >
             </li>
             <li>
               <a
@@ -97,17 +122,21 @@
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
-              >ARCHIVE</a>
+                >ARCHIVE</a
+              >
             </li>
             <li>
-              <button class="btn dropbtn" @click.prevent="showDropDown">8-BALL FAMILY</button>
+              <button class="btn dropbtn" @click.prevent="showDropDown">
+                8-BALL FAMILY
+              </button>
               <div class="dropdown-content" id="family-dropdown">
                 <a
                   href="http://8balltv.club/"
                   target="_blank"
                   rel="noopener"
                   class="dropdown__link"
-                >8 Ball TV</a>
+                  >8 Ball TV</a
+                >
               </div>
             </li>
             <li>
@@ -116,14 +145,12 @@
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
-              >SHOP</a>
+                >SHOP</a
+              >
             </li>
             <li>
-              <router-link 
-                to="/showsubmission"
-                class="nav__link"
-                rel="noopener"
-              >SHOW SUBMISSON
+              <router-link to="/showsubmission" class="nav__link" rel="noopener"
+                >SHOW SUBMISSON
               </router-link>
             </li>
           </ul>
@@ -133,19 +160,24 @@
           class="btn btn-donate"
           target="_blank"
           rel="noopener"
-        >DONATE</a>
-        <button class="open-menu btn" id="btn-menu" @click="openMenu">MENU</button>
+          >DONATE</a
+        >
+        <button class="open-menu btn" id="btn-menu" @click="openMenu">
+          MENU
+        </button>
       </div>
     </section>
     <section id="header-bottom">
       <div class="quick-access">
         <p class="info">
-          WE ARE A COMMUNITY RADIO STATION PART OF A 501c3 NON-PROFIT ::
-          SUPPORT US!
+          WE ARE A COMMUNITY RADIO STATION PART OF A 501c3 NON-PROFIT :: SUPPORT
+          US!
         </p>
         <div class="access">
           <router-link to="/shows" class="btn btn-access">SHOWS</router-link>
-          <router-link to="/schedule" class="btn btn-access">SCHEDULE</router-link>
+          <router-link to="/schedule" class="btn btn-access"
+            >SCHEDULE</router-link
+          >
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 const path = require("path");
-const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin")
+const PreloadWebpackPlugin = require("@vue/preload-webpack-plugin");
 
 module.exports = {
   pluginOptions: {

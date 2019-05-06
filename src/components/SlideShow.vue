@@ -1,7 +1,16 @@
 <template>
   <div class="diy-slideshow">
-    <figure :class="{'show': current == key}" v-for="(collection, key) in collections" :key="key">
-      <img :alt="collection.alt" :src="collection.url" class="slideshow__image" width="100%">
+    <figure
+      :class="{ show: current == key }"
+      v-for="(collection, key) in collections"
+      :key="key"
+    >
+      <img
+        :alt="collection.alt"
+        :src="collection.url"
+        class="slideshow__image"
+        width="100%"
+      />
     </figure>
     <span class="prev" @click="moveSlide('prev')">&laquo;</span>
     <span class="next" @click="moveSlide('next')">&raquo;</span>

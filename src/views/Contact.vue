@@ -3,17 +3,24 @@
     <section id="contact">
       <h2>
         <span class="title__icon">
-          <img src="../assets/content/ball-icon.svg" alt>
+          <img src="../assets/content/ball-icon.svg" alt />
         </span>
         CONTACT
         <span class="title__icon">
-          <img src="../assets/content/ball-icon.svg" alt>
+          <img src="../assets/content/ball-icon.svg" alt />
         </span>
       </h2>
       <div align="left">
-        <p>If you have question about our website or have found a bug on our website, please send us an e-mail at <strong>eightballradio@gmail.com</strong></p>
-        <p> We will review your message as soon as we can.</p>
-        <p>If you are interested in having a show at 8-Ball Radio, click <router-link to="/showsubmission">here</router-link>.</p>
+        <p>
+          If you have question about our website or have found a bug on our
+          website, please send us an e-mail at
+          <strong>eightballradio@gmail.com</strong>
+        </p>
+        <p>We will review your message as soon as we can.</p>
+        <p>
+          If you are interested in having a show at 8-Ball Radio, click
+          <router-link to="/showsubmission">here</router-link>.
+        </p>
         <!-- <p>Your proposal should contain the following:
           <ul>
             <li>Your name.</li>

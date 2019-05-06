@@ -3,17 +3,17 @@
     <section id="schedule">
       <h2>
         <span class="title__left">
-          <img src="../assets/content/wave-gray-left.svg" alt>
+          <img src="../assets/content/wave-gray-left.svg" alt />
         </span>
         LIVE SCHEDULE
         <span class="title__right">
-          <img src="../assets/content/wave-gray-right.svg" alt>
+          <img src="../assets/content/wave-gray-right.svg" alt />
         </span>
       </h2>
-      <div
-        v-if="errored"
-        class="error__msg"
-      >We're sorry, we're not able to retrieve this information at the moment, please try back later</div>
+      <div v-if="errored" class="error__msg">
+        We're sorry, we're not able to retrieve this information at the moment,
+        please try back later
+      </div>
       <div class="schedule__container" v-else>
         <div v-if="loading">Loading...</div>
         <table class="schedule__table" v-else>
@@ -25,7 +25,9 @@
                   :id="btn.name"
                   @click="getCurrentDaySchedule(btn.name)"
                   :class="[btn.name == currentDay ? 'active' : '']"
-                >{{btn.name.toUpperCase().trim()}}</button>
+                >
+                  {{ btn.name.toUpperCase().trim() }}
+                </button>
               </th>
             </tr>
           </thead>
