@@ -13,7 +13,13 @@
       <button class="btn btn__sort" @click="mergeSort(showInfo)">
         &#9654; SORT ALPHABETICALLY &#9664;
       </button>
-      <div class="shows-container" v-if="!loading">
+      <div v-if="loading" class="loading">
+        Loading...
+      </div>
+      <div v-if="error" class="error">
+        {{ error }}
+      </div>
+      <div class="shows-container" v-else>
         <ul class="shows__list">
           <li v-for="show in showInfo" v-bind:key="show.slug" class="show">
             <router-link
@@ -36,13 +42,6 @@
             </router-link>
           </li>
         </ul>
-        <!-- <div class="arrows">
-          <button type="button" class="btn arrow" v-if="page != 1" @click="page--">&#60;</button>
-          <button type="button" class="btn arrow" @click="page++" v-if="page < pages.length">&#62;</button>
-        </div> -->
-      </div>
-      <div v-else>
-        <h1>Loading...</h1>
       </div>
     </section>
   </main>
@@ -211,6 +210,7 @@ export default {
             show["tags"] = mostCommonTags.splice(0, 3).join(" - ");
             // Set picture
             show["mixcloud_picture"] =
+              //usually 320wx320h
               value.data["data"][0]["pictures"]["320wx320h"];
             show["picture"] =
               "https://res.cloudinary.com/dbr2fzfuh/image/upload/" +
@@ -219,17 +219,19 @@ export default {
               ".jpg";
 
             // If the show hasn't broadcasted in 30 days, cut it
-            if (show["current_show_flag"] != true) {
+            /* if (show["current_show_flag"] != true) {
               showInfo.splice(
                 showInfo.findIndex(showIndex => showIndex === show),
                 1
               );
-            }
+            } */
           });
         });
 
         // Shuffle array before setting variable
         shuffleArray(showInfo);
+
+        console.log(showInfo);
 
         next(vm => {
           vm.showInfo = showInfo;
