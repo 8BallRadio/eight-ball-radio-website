@@ -28,7 +28,7 @@
   }
 
   .btn {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .schedule__container {
@@ -52,6 +52,10 @@
   .show__slot {
     padding: 2px;
     font-size: 18px;
+  }
+
+  .active {
+    color: map-get($colors, dark-green);
   }
 
   @media screen and (min-width: $break-small) {
