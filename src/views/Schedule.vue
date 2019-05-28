@@ -16,24 +16,20 @@
       </div>
       <div class="schedule__container" v-else>
         <div v-if="loading">Loading...</div>
-        <table class="schedule__table" v-else>
-          <thead>
-            <tr>
-              <th v-for="(btn, index) in days" :key="index">
-                <button
-                  class="btn"
-                  :id="btn.name"
-                  @click="getCurrentDaySchedule(btn.name)"
-                  :class="[btn.name == currentDay ? 'active' : '']"
-                >
-                  {{ btn.name.toUpperCase().trim() }}
-                </button>
-              </th>
-            </tr>
-          </thead>
+        <div class="day__select" v-else>
+          <div v-for="(btn, index) in days" :key="index">
+            <button
+              class="btn"
+              :id="btn.name"
+              @click="getCurrentDaySchedule(btn.name)"
+              :class="[btn.name == currentDay ? 'active' : '']"
+            >
+              {{ btn.name.toUpperCase().trim() }}
+            </button>
+          </div>
           <!-- Remove :day when we get the real data -->
-          <day-schedule :shows="dayShows" :day="currentDay"></day-schedule>
-        </table>
+        </div>
+        <day-schedule :shows="dayShows" :day="currentDay"></day-schedule>
       </div>
     </section>
   </main>

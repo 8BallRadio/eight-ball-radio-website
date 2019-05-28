@@ -27,74 +27,37 @@
     padding-left: 7px;
   }
 
-  .schedule__container {
-    width: 100%;
-    display: inline-block;
-    margin-bottom: 2rem;
+  .btn {
+    font-size: 20px;
   }
 
-  .schedule__table {
-    max-width: 840px;
-    margin: 0 auto 3rem;
-    overflow-x: auto;
-    table-layout: auto;
-    width: 98%;
-    border-spacing: 0 3px;
-    display: inline-block;
+  .schedule__container {
+    width: 100%;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
 
-    tr {
-      height: 55px;
-      background-color: #8d8d8d;
-    }
+  .day__select {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+  }
 
-    thead tr {
-      background-color: transparent;
-    }
+  .show__list {
+    text-align: left;
+  }
 
-    th button {
-      font-family: $font-family-display;
-      color: map-get($colors, dark-gray);
-      letter-spacing: 2px;
-      font-size: $font-size-small;
-
-      &.active {
-        color: map-get($colors, dark-green);
-      }
-    }
-
-    tr:nth-child(2n) {
-      background-color: map-get($colors, dark-gray);
-      color: white;
-    }
-
-    tbody {
-      td {
-        text-align: left;
-        padding: 0 10px;
-      }
-
-      td:first-child {
-        text-align: center;
-      }
-
-      td:last-child {
-        text-align: right;
-      }
-      td.no-schedule {
-        text-align: center;
-        font-size: $font-size-x-large;
-      }
-    }
+  .show__slot {
+    padding: 2px;
+    font-size: 18px;
   }
 
   @media screen and (min-width: $break-small) {
     .schedule__container {
       overflow-x: auto;
       width: 98%;
-    }
-    .schedule__table {
-      display: inline-table;
-      margin-bottom: 0;
     }
   }
 
@@ -104,10 +67,6 @@
     }
     .schedule__table {
       width: 100%;
-    }
-
-    tbody td:last-child {
-      padding-right: 23px;
     }
   }
 }

@@ -1,15 +1,15 @@
 <template>
-  <tbody>
-    <tr v-if="shows.length == 0">
-      <td colspan="7" class="no-schedule">No Schedule Available</td>
-    </tr>
-    <tr v-for="(show, index) in shows" :key="index" v-else>
-      <td>{{ show.starts | showTime }}-{{ show.ends | showTime }}</td>
-      <td colspan="6">Show #{{ index + 1 }} - {{ show.name }}</td>
-      <!-- Temporaly removed tags -->
-      <!-- <td colspan="3">Talk, Indie, Psychdelic</td>  -->
-    </tr>
-  </tbody>
+  <div v-if="shows.length == 0">
+    No Schedule Available
+  </div>
+  <div v-else class="show__list">
+    <div class="show__slot" v-for="(show, index) in shows" :key="index">
+      <div>
+        {{ show.starts | showTime }} - {{ show.ends | showTime }}
+        {{ show.name }}
+      </div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
