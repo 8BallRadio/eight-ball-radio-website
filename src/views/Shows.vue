@@ -57,7 +57,7 @@ export default {
   name: "Shows",
   data() {
     return {
-      loading: false,
+      loading: true,
       showInfo: null,
       error: null,
       page: 1,
@@ -71,13 +71,13 @@ export default {
   },
   mounted() {
     this.getShows();
-    this.loading = false;
   },
   methods: {
     async getShows() {
       const response = await ShowsServices.fetchShows();
       const shuffledShows = this.shuffleShows(response.data.shows);
       this.showInfo = shuffledShows;
+      this.loading = false;
     },
     shuffleShows(array) {
       // Fischer-Yates Shuffle: https://bost.ocks.org/mike/shuffle/
