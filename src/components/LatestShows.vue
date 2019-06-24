@@ -20,8 +20,12 @@
             </g>
           </svg>
         </button>
-        <img :src="value.pictures['320wx320h']" :alt="value.name" />
-        <!-- <img :src="value.pictures['medium_mobile']" :alt="value.name"> -->
+        <LazyImage
+          :src="value.pictures['thumbnail']"
+          :lazy-src="value.pictures['320wx320h']"
+          :lazy-srcset="value.pictures['320wx320h']"
+          :alt="value.name"
+        />
         <div class="show__info">
           <h3 class="show__name">{{ value.name }}</h3>
           <p class="show__tags">{{ printTags(value.tags) }}</p>
@@ -32,6 +36,7 @@
 </template>
 <script>
 import { mapActions } from "vuex";
+import LazyImage from "@/components/LazyImage";
 
 export default {
   props: {
@@ -39,6 +44,9 @@ export default {
       type: Array,
       required: true
     }
+  },
+  components: {
+    LazyImage
   },
   methods: {
     ...mapActions(["showSelected"]),
