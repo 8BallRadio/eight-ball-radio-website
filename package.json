@@ -11,6 +11,7 @@
     "axios": "^0.19.0",
     "cloudinary": "^1.13.2",
     "cloudinary-core": "^2.6.2",
+    "lozad": "^1.9.0",
     "mongodb": "^3.2.7",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",

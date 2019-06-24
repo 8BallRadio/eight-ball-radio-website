@@ -28,10 +28,10 @@
                 params: { id: 'show.slug', name: 'show.name' }
               }"
             >
-              <img
-                :src="show.pictures.large"
-                :alt="show.name"
-                @error="show.picture = show.mixcloud_picture"
+              <LazyImage
+                :src="show.pictures.thumbnail"
+                :lazy-src="show.pictures.large"
+                :lazy-srcset="show.pictures.large"
               />
               <div class="show__info">
                 <!-- span class="show__time">2 pm</span> -->
@@ -52,9 +52,13 @@
 // TODO: Pagination - fix weird behavior when next page is clicked
 
 import ShowsServices from "@/../services/ShowsService";
+import LazyImage from "@/components/LazyImage";
 
 export default {
   name: "Shows",
+  components: {
+    LazyImage
+  },
   data() {
     return {
       loading: true,
