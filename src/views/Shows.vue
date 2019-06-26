@@ -51,7 +51,7 @@
 // TODO: Get show's time from AirtimePro?
 // TODO: Pagination - fix weird behavior when next page is clicked
 
-import ShowsServices from "@/../services/ShowsService";
+import ShowsService from "@/../services/ShowsService";
 import LazyImage from "@/components/LazyImage";
 
 export default {
@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     async getShows() {
-      const response = await ShowsServices.fetchShows();
+      const response = await ShowsService.fetchShows();
       const shuffledShows = this.shuffleShows(response.data.shows);
       this.showInfo = shuffledShows;
       this.loading = false;
