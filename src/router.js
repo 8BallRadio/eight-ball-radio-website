@@ -1,12 +1,15 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Shows from "@/views/Shows.vue";
-import Show from "@/views/Show.vue";
-import Contact from "@/views/Contact.vue";
-import Schedule from "@/views/Schedule.vue";
-import OffSite from "@/views/OffSite.vue";
-import ShowSubmission from "@/views/ShowSubmission.vue";
+
+// Import for code-splitting
+
+const Home = () => import("@/views/Home");
+const Shows = () => import("@/views/Shows");
+const Show = () => import("@/views/Show");
+const Contact = () => import("@/views/Contact");
+const Schedule = () => import("@/views/Schedule");
+const OffSite = () => import("@/views/OffSite");
+const ShowSubmission = () => import("@/views/ShowSubmission");
 
 Vue.use(Router);
 

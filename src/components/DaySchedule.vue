@@ -1,5 +1,5 @@
 <template>
-  <div v-if="shows.length == 0">
+  <div v-if="shows !== null && shows.length < 1">
     No Schedule Available
   </div>
   <div v-else class="show__list">

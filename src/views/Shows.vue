@@ -70,9 +70,6 @@ export default {
       sortFlag: false
     };
   },
-  beforeUpdate() {
-    console.log("updated");
-  },
   mounted() {
     this.getShows();
   },
