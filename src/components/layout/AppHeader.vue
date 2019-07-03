@@ -193,14 +193,15 @@ export default {
   data() {
     return {
       isSideBarOpen: false,
-      stream: new Audio("http://eightball.out.airtime.pro:8000/eightball_a"),
+      stream: null,
       showName: "",
       playing: false,
       volume: 100,
       previousVolume: 35,
       isStreaming: false,
       onAirText: "OFF - AIR",
-      media_item_played: null
+      media_item_played: null,
+      load_stream: false
     };
   },
   components: {
@@ -370,6 +371,12 @@ export default {
       this.stream.pause();
     },
     toggleStream() {
+      if (!this.firstPlay) {
+        this.firstPlay = true;
+        this.stream = new Audio(
+          "http://eightball.out.airtime.pro:8000/eightball_a"
+        );
+      }
       if (!this.playing) {
         this.$root.$emit("streamChannel1");
         this.playStream();
