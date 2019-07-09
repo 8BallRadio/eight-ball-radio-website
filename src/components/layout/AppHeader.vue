@@ -216,128 +216,16 @@ export default {
 
     let streamAPI = "https://eightball.airtime.pro/api/live-info";
 
-    const getStreamInfo = async info => {
-      try {
-        return axios.get(info);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    let streamInfo = Promise.resolve(getStreamInfo(streamAPI));
+    let streamInfo = Promise.resolve(this.getStreamInfo(streamAPI));
     streamInfo.then(val => {
-      if (
-        val.data["currentShow"] === undefined ||
-        val.data["currentShow"].length === 0
-      ) {
-        this.showName = "No show currently playing";
-        this.isStreaming = false;
-        this.onAirText = "OFF - AIR";
-      } else {
-        // showName is the text that will be displayed on header
-        // media_item_played checks for liveDJ status
-
-        let showName = val.data["currentShow"][0]["name"];
-        let trackName = val.data["current"]["name"];
-        this.media_item_played = val.data["current"]["media_item_played"];
-
-        // if there is NO liveDJ, then a media item is being played
-        // Need to crop date and file extension if they exist
-        if (this.media_item_played) {
-          // Date checking function
-          var isDate = function(date) {
-            return new Date(date) !== "Invalid Date" && !isNaN(new Date(date));
-          };
-
-          // Cut .mp3 from string if it exists
-          let ext = trackName.split(".").pop();
-          if (ext == "mp3") {
-            trackName = trackName.slice(0, -4);
-          }
-
-          // If the beginning substring is a date
-          // meaning file is a mixlr archive file
-          // set showName to nameTest
-
-          let dateTest = trackName.substring(0, 11);
-          let nameTest = trackName.substring(13, trackName.length);
-
-          if (isDate(dateTest)) {
-            trackName = nameTest;
-          }
-
-          // If it's From the Vault, display it
-          if (showName.toLowerCase() == "From the Vault".toLowerCase()) {
-            trackName = showName + " " + trackName;
-          }
-
-          // set showName to trackName
-          showName = trackName;
-        }
-        this.showName = showName;
-        this.isStreaming = true;
-        this.onAirText = "ON - AIR";
-      }
+      this.streamAPIbreakdown(val);
     });
 
     this.$nextTick(() => {
       window.setInterval(() => {
-        let streamInfo = Promise.resolve(getStreamInfo(streamAPI));
+        let streamInfo = Promise.resolve(this.getStreamInfo(streamAPI));
         streamInfo.then(val => {
-          if (
-            val.data["currentShow"] === undefined ||
-            val.data["currentShow"].length === 0
-          ) {
-            this.showName = "No show currently playing";
-            this.isStreaming = false;
-            this.onAirText = "OFF - AIR";
-          } else {
-            // showName is the text that will be displayed on header
-            // media_item_played checks for liveDJ status
-
-            let showName = val.data["currentShow"][0]["name"];
-            let trackName = val.data["current"]["name"];
-            this.media_item_played = val.data["current"]["media_item_played"];
-
-            // if there is NO liveDJ, then a media item is being played
-            // Need to crop date and file extension if they exist
-            if (this.media_item_played) {
-              // Date checking function
-              var isDate = function(date) {
-                return (
-                  new Date(date) !== "Invalid Date" && !isNaN(new Date(date))
-                );
-              };
-
-              // Cut .mp3 from string if it exists
-              let ext = trackName.split(".").pop();
-              if (ext == "mp3") {
-                trackName = trackName.slice(0, -4);
-              }
-
-              // If the beginning substring is a date
-              // meaning file is a mixlr archive file
-              // set showName to nameTest
-
-              let dateTest = trackName.substring(0, 11);
-              let nameTest = trackName.substring(13, trackName.length);
-
-              if (isDate(dateTest)) {
-                trackName = nameTest;
-              }
-
-              // If it's From the Vault, display it
-              if (showName.toLowerCase() == "From the Vault".toLowerCase()) {
-                trackName = showName + " " + trackName;
-              }
-
-              // set showName to trackName
-              showName = trackName;
-            }
-            this.showName = showName;
-            this.isStreaming = true;
-            this.onAirText = "ON - AIR";
-          }
+          this.streamAPIbreakdown(val);
         });
       }, 30000);
     });
@@ -401,6 +289,67 @@ export default {
         if (familyDropdown.classList.contains("show")) {
           familyDropdown.classList.remove("show");
         }
+      }
+    },
+    async getStreamInfo(info) {
+      try {
+        return axios.get(info);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    streamAPIbreakdown(val) {
+      if (
+        val.data["currentShow"] === undefined ||
+        val.data["currentShow"].length === 0
+      ) {
+        this.showName = "No show currently playing";
+        this.isStreaming = false;
+        this.onAirText = "OFF - AIR";
+      } else {
+        // showName is the text that will be displayed on header
+        // media_item_played checks for liveDJ status
+
+        let showName = val.data["currentShow"][0]["name"];
+        let trackName = val.data["current"]["name"];
+        this.media_item_played = val.data["current"]["media_item_played"];
+
+        // if there is NO liveDJ, then a media item is being played
+        // Need to crop date and file extension if they exist
+        if (this.media_item_played) {
+          // Date checking function
+          var isDate = function(date) {
+            return new Date(date) !== "Invalid Date" && !isNaN(new Date(date));
+          };
+
+          // Cut .mp3 from string if it exists
+          let ext = trackName.split(".").pop();
+          if (ext == "mp3") {
+            trackName = trackName.slice(0, -4);
+          }
+
+          // If the beginning substring is a date
+          // meaning file is a mixlr archive file
+          // set showName to nameTest
+
+          let dateTest = trackName.substring(0, 11);
+          let nameTest = trackName.substring(13, trackName.length);
+
+          if (isDate(dateTest)) {
+            trackName = nameTest;
+          }
+
+          // If it's From the Vault, display it
+          if (showName.toLowerCase() == "From the Vault".toLowerCase()) {
+            trackName = showName + " " + trackName;
+          }
+
+          // set showName to trackName
+          showName = trackName;
+        }
+        this.showName = showName;
+        this.isStreaming = true;
+        this.onAirText = "ON - AIR";
       }
     }
   }
