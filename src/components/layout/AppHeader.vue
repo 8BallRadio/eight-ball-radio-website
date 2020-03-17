@@ -262,7 +262,7 @@ export default {
       if (!this.firstPlay) {
         this.firstPlay = true;
         this.stream = new Audio(
-          "http://eightball.out.airtime.pro:8000/eightball_a"
+          "https://eightball.out.airtime.pro/eightball_a"
         );
       }
       if (!this.playing) {
