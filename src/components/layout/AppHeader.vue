@@ -141,7 +141,7 @@
             </li>
             <li>
               <a
-                href="https://8ballcommunity.bigcartel.com/"
+                href="https://8ballmarket.com/"
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
@@ -156,7 +156,7 @@
           </ul>
         </nav>
         <a
-          href="https://www.fracturedatlas.org/site/fiscal/profile?id=14927"
+          href="https://fundraising.fracturedatlas.org/8-ball-community-inc"
           class="btn btn-donate"
           target="_blank"
           rel="noopener"

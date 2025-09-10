@@ -16,9 +16,9 @@
           >Drop us a line HERE</router-link
         >
         <p class="visit">Visit Us:</p>
-        <p class="visit__text">327 Canal St.</p>
+        <p class="visit__text">1 East Broadway</p>
         <p class="visit__text">New York, NY</p>
-        <p class="visit__text">Noon to 6pm - Everyday</p>
+        <p class="visit__text">Sundays 1-5PM</p>
       </section>
       <section class="footer__col community">
         <h3>8 BALL FAMILY</h3>
@@ -30,7 +30,7 @@
           >8 BALL TV</a
         >
         <a
-          href="https://8ballcommunity.bigcartel.com/"
+          href="https://8ballmarket.com/"
           class="family__link"
           target="_blank"
           rel="noopener"
