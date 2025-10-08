@@ -23,5 +23,8 @@ module.exports = {
   devServer: {
     host: "0.0.0.0", // Listen on all network interfaces (needed for Netlify preview)
     allowedHosts: "all", // Disable host header check
+    client: {
+      webSocketURL: "auto://0.0.0.0:0/ws",
+    },
   },
 };
