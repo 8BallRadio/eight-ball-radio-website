@@ -1,15 +1,9 @@
-@import 'setup/typography';
-@import 'setup/variables';
-@import 'setup/reset';
-@import 'setup/common';
-@import 'setup/animations';
+@use "@/styles/index" as *;
 
-@import 'components/header';
-@import 'components/footer';
-@import 'components/menu';
-
-@import 'views/home';
-@import 'views/shows';
-@import 'views/show';
-@import 'views/schedule';
-@import 'views/contact';
+@use "@/styles/components/menu" as *;
+@use "@/styles/views/home" as *;
+@use "@/styles/components/footer" as *;
+@use "@/styles/views/contact" as *;
+@use "@/styles/views/show" as *;
+@use "@/styles/views/shows" as *;
+@use "@/styles/views/schedule" as *;

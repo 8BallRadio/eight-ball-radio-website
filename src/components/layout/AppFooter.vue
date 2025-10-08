@@ -12,11 +12,12 @@
       <section class="footer__col contact">
         <h3>CONTACT</h3>
         <p class="contact__title">General Inquiries + Show submissions:</p>
-        <router-link to="/contact" class="contact__link"
-          >Drop us a line HERE</router-link
-        >
+        <router-link to="/contact" class="contact__link">
+          Drop us a line HERE
+        </router-link>
         <p class="visit">Visit Us:</p>
         <p class="visit__text">1 East Broadway</p>
+
         <p class="visit__text">New York, NY</p>
         <p class="visit__text">Sundays 1-5PM</p>
       </section>
@@ -27,19 +28,21 @@
           class="family__link"
           target="_blank"
           rel="noopener"
-          >8 BALL TV</a
         >
+          8 BALL TV
+        </a>
         <a
           href="https://8ballmarket.com/"
           class="family__link"
           target="_blank"
           rel="noopener"
-          >MERCH (SUPPORT US)</a
         >
+          MERCH (SUPPORT US)
+        </a>
       </section>
     </div>
-    <div class="mixcloud-player" v-if="slug">
-      <mixcloud></mixcloud>
+    <div v-if="slug" class="mixcloud-player">
+      <mixcloud />
       <button
         id="btn close-player"
         class="close-player__btn"
@@ -56,7 +59,7 @@ import Mixcloud from "@/components/layout/Mixcloud.vue";
 
 export default {
   components: {
-    mixcloud: Mixcloud
+    mixcloud: Mixcloud,
   },
   mounted() {
     this.$root.$on("streamChannel1", () => {
@@ -64,17 +67,20 @@ export default {
     });
   },
   computed: {
-    ...mapState(["slug"])
+    ...mapState(["slug"]),
   },
   methods: {
     ...mapActions(["removeSlug"]),
-    removeSlugs: function() {
+    removeSlugs: function () {
       this.removeSlug();
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+@use "@/styles/setup/variables" as *;
+@use "sass:map";
+
 .mixcloud-player {
   position: fixed;
   width: 100%;
@@ -95,7 +101,7 @@ export default {
   color: #000;
 
   &:hover {
-    background-color: map-get($colors, dark-green);
+    background-color: map.get($colors, "dark-green");
   }
 }
 </style>

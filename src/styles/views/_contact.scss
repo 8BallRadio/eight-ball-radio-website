@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "@/styles/setup/common" as *;
+@use "@/styles/setup/variables" as *;
+@use "@/styles/setup/typography" as *;
+
 #contact {
   margin: auto auto 4rem;
   max-width: $max-width;
@@ -15,7 +20,7 @@
 
   h2 {
     margin-bottom: 2rem;
-    color: map-get($colors, dark-gray);
+    color: map.get($colors, dark-gray);
   }
 
   .title__left {
@@ -31,7 +36,7 @@
 
     input {
       width: 100%;
-      background-color: map-get($colors, dark-gray);
+      background-color: map.get($colors, dark-gray);
       border: none;
       height: 35px;
       color: white;
@@ -42,7 +47,7 @@
 
     textarea {
       width: 100%;
-      background-color: map-get($colors, dark-gray);
+      background-color: map.get($colors, dark-gray);
       border: none;
       color: white;
       font-family: $font-family-text;
@@ -52,7 +57,7 @@
 
     .contact__btn {
       border: none;
-      background-color: map-get($colors, dark-gray);
+      background-color: map.get($colors, dark-gray);
       cursor: pointer;
       font-family: $font-family-text;
       font-size: $font-size-x-large;

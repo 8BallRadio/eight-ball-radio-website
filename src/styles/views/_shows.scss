@@ -1,9 +1,14 @@
+@use "sass:map";
+@use "@/styles/setup/common" as *;
+@use "@/styles/setup/variables" as *;
+@use "@/styles/setup/typography" as *;
+
 #shows {
   text-align: center;
 
   h2 {
     margin: 2.8125rem 0 0;
-    color: map-get($colors, dark-gray);
+    color: map.get($colors, dark-gray);
     .title__left,
     .title__right {
       display: block;
@@ -31,8 +36,8 @@
       .show__info {
         position: absolute;
         bottom: 15px;
-        background-color: map-get($colors, primary);
-        color: map-get($colors, black);
+        background-color: map.get($colors, primary);
+        color: map.get($colors, black);
         width: 92%;
         margin-left: 13px;
         text-align: left;
@@ -42,7 +47,7 @@
         .show__time {
           float: right;
           background-color: black;
-          color: map-get($colors, dark-green);
+          color: map.get($colors, dark-green);
           font-family: $font-family-display;
           letter-spacing: 1.5px;
           font-size: $font-size-large;
@@ -145,11 +150,10 @@
   margin-bottom: 32px;
 
   &:hover {
-    color: map-get($colors, dark-green);
+    color: map.get($colors, dark-green);
   }
 }
 
 .shows-container {
   margin-top: 8px;
-
 }

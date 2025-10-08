@@ -1,3 +1,7 @@
+@use "@/styles/setup/_variables.scss" as *;
+@use "@/styles/setup/_typography.scss" as *;
+@use "sass:map";
+
 $break-tiny: 360px;
 $break-small: 600px;
 $break-large: 900px;
@@ -25,7 +29,7 @@ body {
 }
 
 a:focus {
-  outline: 1px solid map-get($colors, dark-red);
+  outline: 1px solid map.get($colors, dark-red);
 }
 
 main {
@@ -37,7 +41,7 @@ main {
 
     h2 {
       margin: 2.8125rem 0;
-      color: map-get($colors, dark-gray);
+      color: map.get($colors, dark-gray);
       .title__left,
       .title__right {
         display: block;

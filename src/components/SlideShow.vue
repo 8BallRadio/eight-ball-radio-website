@@ -1,9 +1,9 @@
 <template>
   <div class="diy-slideshow">
     <figure
-      :class="{ show: current == key }"
       v-for="(collection, key) in collections"
       :key="key"
+      :class="{ show: current == key }"
     >
       <img
         :alt="collection.alt"
@@ -21,18 +21,18 @@ export default {
   props: {
     collections: {
       type: Array,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
       current: 0,
       totalImages: this.collections.length,
-      slideInterval: setInterval(this.nextSlide, 6000)
+      slideInterval: setInterval(this.nextSlide, 6000),
     };
   },
   methods: {
-    moveSlide: function(direction) {
+    moveSlide: function (direction) {
       if (direction == "prev") {
         this.current--;
       } else {
@@ -45,11 +45,14 @@ export default {
     nextSlide() {
       this.current++;
       this.current = Math.abs(this.current % this.totalImages);
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
+@use "sass:map";
+@use "@/styles/index" as *;
+
 .diy-slideshow {
   position: relative;
   display: block;
@@ -70,9 +73,9 @@ figure.show {
 }
 .next,
 .prev {
-  color: map-get($colors, primary);
+  color: map.get($colors, primary);
   position: absolute;
-  background: map-get($colors, dark-gray);
+  background: map.get($colors, dark-gray);
   top: 50%;
   z-index: 1;
   font-size: $font-size-xxxx-large;

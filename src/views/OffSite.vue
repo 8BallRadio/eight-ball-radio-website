@@ -1,6 +1,6 @@
 <template>
   <main id="maincontent">
-    <br />
+    <br>
     <iframe
       src="https://mixlr.com/users/2451151/embed"
       width="50%"
@@ -9,8 +9,7 @@
       frameborder="no"
       marginheight="0"
       marginwidth="0"
-    >
-    </iframe>
+    />
   </main>
 </template>
 <script>

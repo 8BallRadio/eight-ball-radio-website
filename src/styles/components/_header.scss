@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "@/styles/setup/common" as *;
+@use "@/styles/setup/variables" as *;
+@use "@/styles/setup/typography" as *;
+
 $duration: 30s;
 
 header {
@@ -64,7 +69,7 @@ header {
     }
   }
 }
-[class^='wave__'] {
+[class^="wave__"] {
   height: 25px;
   position: relative;
   top: 6px;
@@ -85,7 +90,7 @@ header {
   width: 0;
   height: 20px;
 
-  border-color: transparent transparent transparent map-get($colors, dark-gray);
+  border-color: transparent transparent transparent map.get($colors, dark-gray);
   transition: 100ms all ease;
   cursor: pointer;
 
@@ -100,7 +105,7 @@ header {
 
   &:hover {
     border-color: transparent transparent transparent
-      lighten(map-get($colors, dark-gray), 20%);
+      lighten(map.get($colors, dark-gray), 20%);
   }
 }
 
@@ -160,8 +165,8 @@ header {
 }
 
 .btn-channel {
-  background-color: map-get($colors, dark-green);
-  color: map-get($colors, dark-gray);
+  background-color: map.get($colors, dark-green);
+  color: map.get($colors, dark-gray);
   font-size: $font-size-tiny;
   text-decoration: none;
   padding: 8px 8px;
@@ -194,7 +199,7 @@ header {
   }
 
   &:hover {
-    color: map-get($colors, primary);
+    color: map.get($colors, primary);
   }
 }
 
@@ -221,7 +226,7 @@ header {
 
 #header-middle {
   width: 100%;
-  background-color: map-get($colors, dark-gray);
+  background-color: map.get($colors, dark-gray);
   height: 53px;
   position: fixed;
   top: 40px;
@@ -264,7 +269,7 @@ header {
 }
 
 .btn-donate {
-  color: map-get($colors, dark-green);
+  color: map.get($colors, dark-green);
   font-size: $font-size-x-large;
   text-decoration: none;
   padding-top: 8px;
@@ -279,7 +284,7 @@ header {
   }
 
   &:hover {
-    color: map-get($colors, primary);
+    color: map.get($colors, primary);
   }
 }
 
@@ -309,26 +314,26 @@ header {
 .nav__link,
 .dropbtn {
   font-family: $font-family-display;
-  color: map-get($colors, primary);
+  color: map.get($colors, primary);
   letter-spacing: 0.7px;
   text-decoration: none;
   font-size: $font-size-small;
 
   &.router-link-exact-active,
   &:hover {
-    color: map-get($colors, dark-green);
+    color: map.get($colors, dark-green);
   }
 }
 
 .dropbtn::after {
-  content: '▾';
+  content: "▾";
   position: relative;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: map-get($colors, dark-gray);
+  background-color: map.get($colors, dark-gray);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -338,7 +343,7 @@ header {
   font-size: 0.875rem;
   letter-spacing: 0.7px;
   float: none;
-  color: map-get($colors, primary);
+  color: map.get($colors, primary);
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -346,8 +351,8 @@ header {
   text-transform: uppercase;
 
   &:hover {
-    background-color: map-get($colors, dark-green);
-    color: map-get($colors, dark-gray);
+    background-color: map.get($colors, dark-green);
+    color: map.get($colors, dark-gray);
   }
 }
 
@@ -374,7 +379,7 @@ header {
       .btn-access {
         display: inline-block;
         width: 48%;
-        background-color: map-get($colors, dark-gray);
+        background-color: map.get($colors, dark-gray);
         height: 50px;
         padding: 12px 0;
         font-size: $font-size-large;
@@ -385,7 +390,7 @@ header {
         margin: 0 5px;
 
         &:hover {
-          color: map-get($colors, dark-green);
+          color: map.get($colors, dark-green);
         }
       }
     }

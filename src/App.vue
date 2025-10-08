@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <app-header></app-header>
+    <app-header />
     <!-- Routing guide temporaly -->
     <!-- <div id="nav">
       <router-link to="/">Home</router-link>|
       <router-link to="/about">About</router-link>
     </div>-->
     <router-view />
-    <app-footer></app-footer>
+    <app-footer />
   </div>
 </template>
 <script>
@@ -16,14 +16,17 @@ import AppHeader from "./components/layout/AppHeader.vue";
 import AppFooter from "./components/layout/AppFooter.vue";
 
 export default {
-  name: "Eight-Ball-Radio",
+  name: "EightBallRadio",
   components: {
     "app-header": AppHeader,
-    "app-footer": AppFooter
-  }
+    "app-footer": AppFooter,
+  },
 };
 </script>
 <style lang="scss">
+@use "@/styles/setup/_common.scss" as *;
+@use "@/styles/setup/_variables.scss" as *;
+@use "@/styles/setup/_typography.scss" as *;
 #app {
   font-family: $font-family-text;
   color: #000000;

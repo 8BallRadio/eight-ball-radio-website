@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "@/styles/setup/common" as *;
+@use "@/styles/setup/variables" as *;
+@use "@/styles/setup/typography" as *;
+
 #schedule {
   margin: auto;
   max-width: $max-width;
@@ -14,7 +19,7 @@
 
   h2 {
     margin: 1rem 0 2rem;
-    color: map-get($colors, dark-gray);
+    color: map.get($colors, dark-gray);
   }
   .title__left,
   .title__right {
@@ -55,7 +60,7 @@
   }
 
   .active {
-    color: map-get($colors, dark-green);
+    color: map.get($colors, dark-green);
   }
 
   @media screen and (min-width: $break-small) {

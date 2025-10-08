@@ -3,11 +3,11 @@
     <section id="contact">
       <h2>
         <span class="title__icon">
-          <img src="../assets/content/ball-icon.svg" alt />
+          <img src="../assets/content/ball-icon.svg" alt>
         </span>
         CONTACT
         <span class="title__icon">
-          <img src="../assets/content/ball-icon.svg" alt />
+          <img src="../assets/content/ball-icon.svg" alt>
         </span>
       </h2>
       <div align="left">
@@ -19,7 +19,9 @@
         <p>We will review your message as soon as we can.</p>
         <p>
           If you are interested in having a show at 8-Ball Radio, click
-          <router-link to="/showsubmission">here</router-link>.
+          <router-link to="/showsubmission">
+            here
+          </router-link>.
         </p>
         <!-- <p>Your proposal should contain the following:
           <ul>

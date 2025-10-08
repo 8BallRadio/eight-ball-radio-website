@@ -1,3 +1,8 @@
+@use "sass:map";
+@use "@/styles/setup/typography" as *;
+@use "@/styles/setup/common" as *;
+@use "@/styles/setup/variables" as *;
+
 #main-slide {
   height: 100%;
   width: 100%;
@@ -47,7 +52,7 @@
 #latest-shows {
   h2 {
     margin: 2.8125rem 0;
-    color: map-get($colors, dark-gray);
+    color: map.get($colors, dark-gray);
     .title__left,
     .title__right {
       display: block;
