@@ -1,6 +1,11 @@
 [build]
   command = "npm run build"  
-  publish = "dist"         
+  publish = "dist"     
+
+
+[dev]
+  port = 8080
+  publish = "dist"    
 
 [build.environment]
   NODE_VERSION = "18"
