@@ -7,7 +7,7 @@
           Voted listeners’ Choice Best Online Radio Station in North America -
           Mixcloud Online Radio Awards 2018.
         </p>
-        <p>© 2018 8 BALL COMMUNITY All rights reserved.</p>
+        <p>© {{ currentYear }} 8 BALL COMMUNITY All rights reserved.</p>
       </section>
       <section class="footer__col contact">
         <h3>CONTACT</h3>
@@ -68,6 +68,9 @@ export default {
   },
   computed: {
     ...mapState(["slug"]),
+    currentYear() {
+      return new Date().getFullYear();
+    },
   },
   methods: {
     ...mapActions(["removeSlug"]),
