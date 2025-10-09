@@ -7,7 +7,7 @@
       :src="url + slug + '%2F'"
       frameborder="0"
       allow="autoplay"
-    ></iframe>
+    />
   </div>
 </template>
 
@@ -16,21 +16,20 @@ import { mapState } from "vuex";
 
 export default {
   name: "Mixcloud",
-  data: function() {
+  data: function () {
     return {
-      url:
-        "//www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&light=1&feed=%2F8ballradio%2F"
+      url: "//www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&light=1&feed=%2F8ballradio%2F",
     };
   },
   mounted() {
     this.$root.$emit("streamMixcloud");
   },
   computed: {
-    ...mapState(["slug"])
-  }
+    ...mapState(["slug"]),
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
 .mixcloud__container {
   width: 100%;
 }

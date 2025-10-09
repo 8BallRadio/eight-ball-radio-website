@@ -6,27 +6,31 @@
         please try back later
       </div>
       <div v-else>
-        <div v-if="loading">Loading...</div>
-        <slide-show :collections="collections" v-else></slide-show>
+        <div v-if="loading">
+          Loading...
+        </div>
+        <slide-show v-else :collections="collections" />
       </div>
     </section>
     <section id="latest-shows">
       <h2>
         <span class="title__left">
-          <img src="../assets/content/stick-left.svg" alt />
+          <img src="../assets/content/stick-left.svg" alt>
         </span>
         LATEST SHOWS
         <span class="title__right">
-          <img src="../assets/content/stick-right.svg" alt />
+          <img src="../assets/content/stick-right.svg" alt>
         </span>
       </h2>
       <div v-if="errored" class="error__msg">
         We're sorry, we're not able to retrieve this information at the moment,
         please try back later
       </div>
-      <div class="latest-shows__container" v-else>
-        <div v-if="loading">Loading...</div>
-        <latest-shows :shows="shows" v-else></latest-shows>
+      <div v-else class="latest-shows__container">
+        <div v-if="loading">
+          Loading...
+        </div>
+        <latest-shows v-else :shows="shows" />
       </div>
     </section>
   </main>
@@ -41,7 +45,7 @@ import SlideShow from "@/components/SlideShow.vue";
 const LatestShows = () => import("@/components/LatestShows.vue");
 
 export default {
-  name: "home",
+  name: "Home",
   components: {
     LatestShows,
     SlideShow

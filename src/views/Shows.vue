@@ -3,11 +3,11 @@
     <section id="shows" class="shows">
       <h2>
         <span class="title__icon">
-          <img src="../assets/content/triangle.svg" alt />
+          <img src="../assets/content/triangle.svg" alt>
         </span>
         8 BALL SHOWS
         <span class="title__icon">
-          <img src="../assets/content/triangle.svg" alt />
+          <img src="../assets/content/triangle.svg" alt>
         </span>
       </h2>
       <button class="btn btn__sort" @click="mergeSort(showInfo)">
@@ -21,7 +21,7 @@
       </div>
       <div v-else class="shows-container">
         <ul class="shows__list">
-          <li v-for="show in showInfo" v-bind:key="show.slug" class="show">
+          <li v-for="show in showInfo" :key="show.slug" class="show">
             <router-link
               :to="{
                 path: '/show/' + show.slug,
@@ -35,9 +35,13 @@
               />
               <div class="show__info">
                 <!-- span class="show__time">2 pm</span> -->
-                <h3 class="show__name">{{ show.name }}</h3>
+                <h3 class="show__name">
+                  {{ show.name }}
+                </h3>
                 <!-- <p class="show__day">MONDAYS</p> -->
-                <p class="show__tags">{{ show.tags }}</p>
+                <p class="show__tags">
+                  {{ show.tags }}
+                </p>
               </div>
             </router-link>
           </li>

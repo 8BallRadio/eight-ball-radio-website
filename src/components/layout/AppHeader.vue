@@ -17,7 +17,7 @@
           />
         </h4>
         <div class="top__player">
-          <div class="player__controls" v-show="isStreaming">
+          <div v-show="isStreaming" class="player__controls">
             <button
               class="control__play"
               :class="{ paused: playing }"
@@ -34,7 +34,9 @@
             <div class="info__ticker">
               <div class="ticker-wrapper">
                 <div class="ticker">
-                  <div class="ticker__item">{{ showName }}</div>
+                  <div class="ticker__item">
+                    {{ showName }}
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,8 +115,9 @@
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
-                >EVENTS</a
               >
+                EVENTS
+              </a>
             </li>
             <li>
               <a
@@ -122,21 +125,23 @@
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
-                >ARCHIVE</a
               >
+                ARCHIVE
+              </a>
             </li>
             <li>
               <button class="btn dropbtn" @click.prevent="showDropDown">
                 8-BALL FAMILY
               </button>
-              <div class="dropdown-content" id="family-dropdown">
+              <div id="family-dropdown" class="dropdown-content">
                 <a
                   href="http://8balltv.club/"
                   target="_blank"
                   rel="noopener"
                   class="dropdown__link"
-                  >8 Ball TV</a
                 >
+                  8 Ball TV
+                </a>
               </div>
             </li>
             <li>
@@ -145,12 +150,17 @@
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
-                >SHOP</a
               >
+                SHOP
+              </a>
             </li>
             <li>
-              <router-link to="/showsubmission" class="nav__link" rel="noopener"
-                >SHOW SUBMISSON
+              <router-link
+                to="/showsubmission"
+                class="nav__link"
+                rel="noopener"
+              >
+                SHOW SUBMISSON
               </router-link>
             </li>
           </ul>
@@ -160,9 +170,10 @@
           class="btn btn-donate"
           target="_blank"
           rel="noopener"
-          >DONATE</a
         >
-        <button class="open-menu btn" id="btn-menu" @click="openMenu">
+          DONATE
+        </a>
+        <button id="btn-menu" class="open-menu btn" @click="openMenu">
           MENU
         </button>
       </div>
@@ -174,14 +185,14 @@
           US!
         </p>
         <div class="access">
-          <router-link to="/shows" class="btn btn-access">SHOWS</router-link>
-          <router-link to="/schedule" class="btn btn-access"
-            >SCHEDULE</router-link
-          >
+          <router-link to="/shows" class="btn btn-access"> SHOWS </router-link>
+          <router-link to="/schedule" class="btn btn-access">
+            SCHEDULE
+          </router-link>
         </div>
       </div>
     </section>
-    <app-mobile-menu></app-mobile-menu>
+    <app-mobile-menu />
   </header>
 </template>
 <script>
@@ -189,7 +200,10 @@ import AppMobileMenu from "./AppMobileMenu.vue";
 import axios from "axios";
 
 export default {
-  name: "top",
+  name: "Top",
+  components: {
+    "app-mobile-menu": AppMobileMenu,
+  },
   data() {
     return {
       isSideBarOpen: false,
@@ -201,11 +215,18 @@ export default {
       isStreaming: false,
       onAirText: "OFF - AIR",
       media_item_played: null,
-      load_stream: false
+      load_stream: false,
     };
   },
-  components: {
-    "app-mobile-menu": AppMobileMenu
+  computed: {
+    muted() {
+      return this.volume / 100 === 0;
+    },
+  },
+  watch: {
+    volume() {
+      this.stream.volume = this.volume / 100;
+    },
   },
   mounted() {
     this.$root.$on("streamMixcloud", () => {
@@ -217,31 +238,21 @@ export default {
     let streamAPI = "https://eightball.airtime.pro/api/live-info";
 
     let streamInfo = Promise.resolve(this.getStreamInfo(streamAPI));
-    streamInfo.then(val => {
+    streamInfo.then((val) => {
       this.streamAPIbreakdown(val);
     });
 
     this.$nextTick(() => {
       window.setInterval(() => {
         let streamInfo = Promise.resolve(this.getStreamInfo(streamAPI));
-        streamInfo.then(val => {
+        streamInfo.then((val) => {
           this.streamAPIbreakdown(val);
         });
       }, 30000);
     });
   },
-  beforeDestroy: function() {
+  beforeDestroy: function () {
     document.removeEventListener("click", this.onClick);
-  },
-  computed: {
-    muted() {
-      return this.volume / 100 === 0;
-    }
-  },
-  watch: {
-    volume() {
-      this.stream.volume = this.volume / 100;
-    }
   },
   methods: {
     openMenu() {
@@ -283,7 +294,7 @@ export default {
     showDropDown() {
       document.querySelector("#family-dropdown").classList.toggle("show");
     },
-    onClick: function(ev) {
+    onClick: function (ev) {
       if (!ev.target.matches(".dropbtn")) {
         const familyDropdown = document.querySelector("#family-dropdown");
         if (familyDropdown.classList.contains("show")) {
@@ -318,7 +329,7 @@ export default {
         // Need to crop date and file extension if they exist
         if (this.media_item_played) {
           // Date checking function
-          var isDate = function(date) {
+          var isDate = function (date) {
             return new Date(date) !== "Invalid Date" && !isNaN(new Date(date));
           };
 
@@ -351,11 +362,13 @@ export default {
         this.isStreaming = true;
         this.onAirText = "ON - AIR";
       }
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
+@use "@/styles/components/_header.scss" as *;
+
 .header-menu {
   background-image: url(../../assets/header/menu-pattern.svg);
 }

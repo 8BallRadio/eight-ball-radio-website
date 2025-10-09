@@ -1,5 +1,10 @@
+@use "sass:map";
+@use "@/styles/setup/typography" as *;
+@use "@/styles/setup/common" as *;
+@use "@/styles/setup/variables" as *;
+
 footer {
-  background-color: map-get($colors, dark-gray);
+  background-color: map.get($colors, dark-gray);
   padding: 40px 0 80px;
   position: absolute;
   bottom: 0;
@@ -12,13 +17,13 @@ footer {
 }
 
 .footer__col {
-  color: map-get($colors, primary);
+  color: map.get($colors, primary);
   padding: 2rem;
 }
 
 .family__link,
 .contact__link {
-  color: map-get($colors, light-green);
+  color: map.get($colors, light-green);
   display: block;
   padding: 15px 0 0;
   text-decoration: none;
@@ -26,7 +31,7 @@ footer {
 
 a.family__link:hover,
 a.contact__link:hover {
-  color: map-get($colors, light-red);
+  color: map.get($colors, light-red);
   text-decoration: underline;
 }
 
@@ -45,7 +50,7 @@ a.contact__link:hover {
 
 .visit__text {
   margin: 0;
-  color: map-get($colors, light-green);
+  color: map.get($colors, light-green);
 }
 
 @media (min-width: 600px) {

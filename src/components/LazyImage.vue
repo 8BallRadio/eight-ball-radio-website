@@ -4,7 +4,7 @@
     :data-srcset="lazySrcset"
     :style="style"
     class="AppImage"
-  />
+  >
 </template>
 
 <script>

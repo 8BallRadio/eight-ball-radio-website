@@ -3,33 +3,35 @@
     <section id="schedule">
       <h2>
         <span class="title__left">
-          <img src="../assets/content/wave-gray-left.svg" alt />
+          <img src="../assets/content/wave-gray-left.svg" alt>
         </span>
         LIVE SCHEDULE
         <span class="title__right">
-          <img src="../assets/content/wave-gray-right.svg" alt />
+          <img src="../assets/content/wave-gray-right.svg" alt>
         </span>
       </h2>
       <div v-if="errored" class="error__msg">
         We're sorry, we're not able to retrieve this information at the moment,
         please try back later
       </div>
-      <div class="schedule__container" v-else>
-        <div v-if="loading">Loading...</div>
-        <div class="day__select" v-else>
+      <div v-else class="schedule__container">
+        <div v-if="loading">
+          Loading...
+        </div>
+        <div v-else class="day__select">
           <div v-for="(btn, index) in days" :key="index">
             <button
-              class="btn"
               :id="btn.name"
-              @click="getCurrentDaySchedule(btn.name)"
+              class="btn"
               :class="[btn.name == currentDay ? 'active' : '']"
+              @click="getCurrentDaySchedule(btn.name)"
             >
               {{ btn.name.toUpperCase().trim() }}
             </button>
           </div>
           <!-- Remove :day when we get the real data -->
         </div>
-        <day-schedule :shows="dayShows" :day="currentDay"></day-schedule>
+        <day-schedule :shows="dayShows" :day="currentDay" />
       </div>
     </section>
   </main>

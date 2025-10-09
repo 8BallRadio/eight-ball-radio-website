@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="latest-shows">
-      <li class="show" v-for="(value, key) in shows" :key="key">
+      <li v-for="(value, key) in shows" :key="key" class="show">
         <button class="btn show__btn" @click="selectShow(value.slug)">
           <svg
             class="play__icon"
@@ -14,7 +14,7 @@
                 <g transform="translate(18)">
                   <path
                     d="M1260.4 651.3L882.8 861.2c-4.4 2.4-8.2 2.7-11.2 1-3.1-1.7-4.6-5.1-4.6-10.2V433.2c0-4.8 1.5-8.2 4.6-10.2 3.1-2 6.8-1.7 11.2 1l377.6 210c4.4 2.4 6.6 5.3 6.6 8.7 0 3.3-2.2 6.2-6.6 8.6z"
-                  ></path>
+                  />
                 </g>
               </g>
             </g>
@@ -27,8 +27,12 @@
           :alt="value.name"
         />
         <div class="show__info">
-          <h3 class="show__name">{{ value.name }}</h3>
-          <p class="show__tags">{{ printTags(value.tags) }}</p>
+          <h3 class="show__name">
+            {{ value.name }}
+          </h3>
+          <p class="show__tags">
+            {{ printTags(value.tags) }}
+          </p>
         </div>
       </li>
     </ul>
@@ -39,23 +43,23 @@ import { mapActions } from "vuex";
 import LazyImage from "@/components/LazyImage";
 
 export default {
+  components: {
+    LazyImage,
+  },
   props: {
     shows: {
       type: Array,
-      required: true
-    }
-  },
-  components: {
-    LazyImage
+      required: true,
+    },
   },
   methods: {
     ...mapActions(["showSelected"]),
-    selectShow: function(slug) {
+    selectShow: function (slug) {
       this.showSelected(slug);
     },
     printTags(tags) {
       let tempShowTags = [];
-      tags.forEach(tag => {
+      tags.forEach((tag) => {
         tempShowTags.push(tag["name"]);
       });
 
@@ -65,11 +69,16 @@ export default {
       }
 
       return tempShowTags.splice(0, 3).join(" - ");
-    }
-  }
+    },
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
+@use "@/styles/setup/_common.scss" as *;
+@use "@/styles/setup/_variables.scss" as *;
+@use "@/styles/setup/_typography.scss" as *;
+@use "sass:map";
+
 .latest-shows {
   @media screen and (min-width: $break-small) {
     @supports (display: grid) {
@@ -127,6 +136,8 @@ export default {
   height: 64px;
 }
 
+/*
+
 img {
   max-width: 250px;
 
@@ -135,10 +146,12 @@ img {
   }
 }
 
+*/
+
 .show__info {
   position: absolute;
   bottom: 15px;
-  background-color: map-get($colors, primary);
+  background-color: map.get($colors, primary);
   width: 92%;
   margin-left: 13px;
   text-align: left;

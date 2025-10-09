@@ -3,7 +3,7 @@
     No Schedule Available
   </div>
   <div v-else class="show__list">
-    <div class="show__slot" v-for="(show, index) in shows" :key="index">
+    <div v-for="(show, index) in shows" :key="index" class="show__slot">
       <div>
         {{ show.starts | showTime }} - {{ show.ends | showTime }}
         {{ show.name }}
@@ -13,12 +13,6 @@
 </template>
 <script>
 export default {
-  props: {
-    shows: {
-      type: Array,
-      required: true
-    }
-  },
   filters: {
     showTime: function(value) {
       if (!value) return "";
@@ -27,6 +21,12 @@ export default {
         .split(":")
         .slice(0, 2)
         .join(":");
+    }
+  },
+  props: {
+    shows: {
+      type: Array,
+      required: true
     }
   }
 };

@@ -2,23 +2,25 @@
   <main id="maincontent">
     <section id="inside-show">
       <div class="back">
-        <router-link to="/shows" class="btn back__btn"
-          >BACK TO LIST</router-link
-        >
+        <router-link to="/shows" class="btn back__btn">
+          BACK TO LIST
+        </router-link>
       </div>
       <div class="show__image">
-        <img v-bind:src="showImage" @error="imageLoadError" />
+        <img :src="showImage" @error="imageLoadError" />
       </div>
       <div class="show__info">
-        <h3>{{ this.name.toUpperCase() }}</h3>
-        <p class="show__description">{{ description }}</p>
-        <div class="show__tags" v-if="tags.length >= 1">
+        <h3>{{ name.toUpperCase() }}</h3>
+        <p class="show__description">
+          {{ description }}
+        </p>
+        <div v-if="tags.length >= 1" class="show__tags">
           <h4>TAGS:</h4>
           <ul>
             <li v-for="(tag, index) in tags" :key="index">
-              <div class="triangle left"></div>
+              <div class="triangle left" />
               <span>{{ tag.toUpperCase().trim() }}</span>
-              <div class="triangle right"></div>
+              <div class="triangle right" />
             </li>
           </ul>
         </div>
@@ -33,7 +35,7 @@
         </span>
       </h2>
       <ul class="archive-shows">
-        <li class="show" v-for="(value, key) in this.casts" :key="key">
+        <li v-for="(value, key) in casts" :key="key" class="show">
           <button class="btn show__btn" @click="selectShow(value.slug)">
             <svg
               class="play__icon"
@@ -50,7 +52,7 @@
                     <path
                       id="play"
                       d="M1260.4 651.3L882.8 861.2c-4.4 2.4-8.2 2.7-11.2 1-3.1-1.7-4.6-5.1-4.6-10.2V433.2c0-4.8 1.5-8.2 4.6-10.2 3.1-2 6.8-1.7 11.2 1l377.6 210c4.4 2.4 6.6 5.3 6.6 8.7 0 3.3-2.2 6.2-6.6 8.6z"
-                    ></path>
+                    />
                   </g>
                 </g>
               </g>
@@ -65,8 +67,9 @@
           class="btn more__btn"
           target="_blank"
           rel="noopener"
-          >MORE ARCHIVES</a
         >
+          MORE ARCHIVES
+        </a>
       </div>
     </section>
   </main>
@@ -88,10 +91,10 @@ export default {
   name: "Show",
   methods: {
     ...mapActions(["showSelected"]),
-    selectShow: function(slug) {
+    selectShow: function (slug) {
       this.showSelected(slug);
     },
-    imageLoadError: function() {
+    imageLoadError: function () {
       console.log("Loading alternative header image");
       this.showImage = require("../assets/show.png");
     },
@@ -110,7 +113,7 @@ export default {
           "/cloudcasts/?limit=100"
       );
       return response.data.data;
-    }
+    },
   },
   data() {
     return {
@@ -121,17 +124,17 @@ export default {
       showImage: "",
       altShowImage: "../assets/show.png",
       tags: [], //Temporal tags array,
-      exists: false
+      exists: false,
     };
   },
   mounted() {
     // Does show exist?
     let route_param_id = this.$route.params.id;
-    this.getShows().then(res => {
+    this.getShows().then((res) => {
       for (var show in res) {
         if (Object.values(res[show]).includes(route_param_id)) {
           // get cloudcasts + cloudinary image + description
-          this.getShowPage().then(res => {
+          this.getShowPage().then((res) => {
             for (var show in res) {
               if (res[show].slug === route_param_id) {
                 this.description = res[show].description;
@@ -141,27 +144,27 @@ export default {
               }
             }
           });
-          this.getCloudcasts(route_param_id).then(res => {
+          this.getCloudcasts(route_param_id).then((res) => {
             console.log(res);
             let tempShowTags = [];
-            res.forEach(show => {
-              show["tags"].forEach(tag => {
+            res.forEach((show) => {
+              show["tags"].forEach((tag) => {
                 tempShowTags.push(tag["name"]);
               });
             });
 
             // Calculates mostCommonTags
             // Taken from: https://stackoverflow.com/questions/22010520/sort-by-number-of-occurrencecount-in-javascript-array
-            var s = tempShowTags.reduce(function(m, v) {
+            var s = tempShowTags.reduce(function (m, v) {
               m[v] = (m[v] || 0) + 1;
               return m;
             }, {});
             var mostCommonTags = [];
             for (let k in s) mostCommonTags.push({ k: k, n: s[k] });
-            mostCommonTags.sort(function(mostCommonTags, b) {
+            mostCommonTags.sort(function (mostCommonTags, b) {
               return b.n - mostCommonTags.n;
             });
-            mostCommonTags = mostCommonTags.map(function(mostCommonTags) {
+            mostCommonTags = mostCommonTags.map(function (mostCommonTags) {
               return mostCommonTags.k;
             });
 
@@ -176,10 +179,13 @@ export default {
         }
       }
     });
-  }
+  },
 };
 </script>
-<style lang="scss" scoped>
+<style scoped lang="scss">
+@use "@/styles/index" as *;
+@use "sass:map";
+
 .show__btn {
   width: 100%;
   height: 100%;

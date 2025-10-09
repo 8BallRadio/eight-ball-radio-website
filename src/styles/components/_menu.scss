@@ -1,7 +1,12 @@
+@use "sass:map";
+@use "@/styles/setup/common" as *;
+@use "@/styles/setup/variables" as *;
+@use "@/styles/setup/typography" as *;
+
 .open-menu {
   height: 51px;
   font-size: $font-size-large;
-  color: map-get($colors, primary);
+  color: map.get($colors, primary);
   letter-spacing: 0.7px;
   padding: 0 12px;
 
@@ -17,7 +22,7 @@
   width: 100%;
 
   &:hover {
-    color: map-get($colors, dark-green);
+    color: map.get($colors, dark-green);
   }
 }
 
@@ -41,10 +46,10 @@
 
   .nav-content {
     width: 80%;
-    color: map-get($colors, light-gray);
+    color: map.get($colors, light-gray);
     padding: 15px 0;
     z-index: 9999;
-    background: map-get($colors, primary);
+    background: map.get($colors, primary);
     transform: translateX(-100%);
     position: fixed;
     overflow-y: auto;
@@ -66,7 +71,7 @@
     .nav__link {
       display: block;
       padding: 15px;
-      color: map-get($colors, regular-gray);
+      color: map.get($colors, regular-gray);
       font-family: $font-family-display;
       text-decoration: none;
       font-size: $font-size-large;
@@ -74,11 +79,11 @@
     }
 
     .nav__link:hover {
-      background-color: map-get($colors, light-green);
+      background-color: map.get($colors, light-green);
     }
 
     .router-link-active {
-      background-color: map-get($colors, dark-gray);
+      background-color: map.get($colors, dark-gray);
       color: white;
     }
     .btn__channel {
@@ -90,11 +95,11 @@
     .btn-donate {
       display: block;
       font-size: $font-size-large;
-      background-color: map-get($colors, primary);
-      color: map-get($colors, dark-red);
+      background-color: map.get($colors, primary);
+      color: map.get($colors, dark-red);
 
       &:hover {
-        color: darken(map-get($colors, dark-green), 20%);
+        color: darken(map.get($colors, dark-green), 20%);
       }
     }
   }
