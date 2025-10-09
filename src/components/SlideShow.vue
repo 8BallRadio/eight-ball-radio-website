@@ -55,21 +55,24 @@ export default {
 
 .diy-slideshow {
   position: relative;
-  display: block;
+  display: inline-block;
   overflow: hidden;
   max-width: 840px;
   margin: auto;
+  width: 100%;
 }
 figure {
   position: absolute;
   opacity: 0;
   transition: 1s opacity;
   margin: 0;
+  min-width: 100%;
 }
 figure.show {
   opacity: 1;
   position: static;
   transition: 1s opacity;
+  height: 100%;
 }
 .next,
 .prev {
