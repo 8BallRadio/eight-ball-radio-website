@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios";
 
-export default() => {
+export default () => {
   return axios.create({
-    baseURL: 'https://eightballradio-backend.herokuapp.com/'
+    baseURL: process.env.VUE_APP_API_URL || "http://127.0.0.1:8081",
   });
-}
+};
