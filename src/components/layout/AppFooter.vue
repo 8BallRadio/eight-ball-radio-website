@@ -16,13 +16,28 @@
           Drop us a line HERE
         </router-link>
         <p class="visit">Visit Us:</p>
+        <a
+          href="https://8ballcommunity.club/VISIT-OUR-OFFICE"
+          class="contact__link"
+          target="_blank"
+          rel="noopener"
+        >
+          See our office hours HERE
+        </a>
         <p class="visit__text">1 East Broadway</p>
 
         <p class="visit__text">New York, NY</p>
-        <p class="visit__text">Sundays 1-5PM</p>
       </section>
       <section class="footer__col community">
         <h3>8 BALL FAMILY</h3>
+        <a
+          href="https://8ballcommunity.club/"
+          class="family__link"
+          target="_blank"
+          rel="noopener"
+        >
+          8 BALL COMMUNITY
+        </a>
         <a
           href="http://8balltv.club/"
           class="family__link"
@@ -30,6 +45,14 @@
           rel="noopener"
         >
           8 BALL TV
+        </a>
+        <a
+          href="https://8ball-library.club/"
+          class="family__link"
+          target="_blank"
+          rel="noopener"
+        >
+          8 BALL LIBRARY
         </a>
         <a
           href="https://8ballmarket.com/"

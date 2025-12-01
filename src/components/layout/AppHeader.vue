@@ -111,29 +111,27 @@
           <ul>
             <li>
               <a
-                href="https://8ballcommunity.club/"
-                target="_blank"
-                rel="noopener"
-                class="nav__link"
-              >
-                EVENTS
-              </a>
-            </li>
-            <li>
-              <a
                 href="https://www.mixcloud.com/8ballradio/uploads/?order=oldest"
                 target="_blank"
                 rel="noopener"
                 class="nav__link"
               >
-                ARCHIVE
+                SHOW ARCHIVE
               </a>
             </li>
             <li>
               <button class="btn dropbtn" @click.prevent="showDropDown">
-                8-BALL FAMILY
+                8 BALL FAMILY
               </button>
               <div id="family-dropdown" class="dropdown-content">
+                <a
+                  href="https://8ballcommunity.club/"
+                  target="_blank"
+                  rel="noopener"
+                  class="dropdown__link"
+                >
+                  Wait, what's 8 Ball?
+                </a>
                 <a
                   href="http://8balltv.club/"
                   target="_blank"
@@ -141,6 +139,14 @@
                   class="dropdown__link"
                 >
                   8 Ball TV
+                </a>
+                <a
+                  href="https://8ball-library.club/"
+                  target="_blank"
+                  rel="noopener"
+                  class="dropdown__link"
+                >
+                  8 Ball Library
                 </a>
               </div>
             </li>
