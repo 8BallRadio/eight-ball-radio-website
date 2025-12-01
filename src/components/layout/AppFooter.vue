@@ -17,12 +17,12 @@
         </router-link>
         <p class="visit">Visit Us:</p>
         <a
-          href="https://8ballcommunity.club/VISIT-OUR-OFFICE"
+          href="https://8ballcommunity.club/VISIT-US"
           class="contact__link"
           target="_blank"
           rel="noopener"
         >
-          See our office hours HERE
+          See our open hours HERE
         </a>
         <p class="visit__text">1 East Broadway</p>
 
