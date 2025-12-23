@@ -8,7 +8,6 @@ const Shows = () => import("@/views/Shows");
 const Show = () => import("@/views/Show");
 const Contact = () => import("@/views/Contact");
 const Schedule = () => import("@/views/Schedule");
-const OffSite = () => import("@/views/OffSite");
 const ShowSubmission = () => import("@/views/ShowSubmission");
 
 Vue.use(Router);
@@ -45,11 +44,6 @@ export default new Router({
       path: "/schedule",
       name: "Schedule",
       component: Schedule
-    },
-    {
-      path: "/offsite",
-      name: "OffSite",
-      component: OffSite
     },
     {
       path: "/showsubmission",

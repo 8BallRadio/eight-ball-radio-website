@@ -6,23 +6,6 @@
         CLOSE X
       </button>
       <nav class="nav__items">
-        <router-link
-          to="/offsite"
-          class="nav__link btn__channel"
-          @click.native="closeMenu"
-        >
-          <img
-            src="../../assets/header/wave-left-color.svg"
-            class="wave__left blink-animation"
-            alt
-          >
-          OFF-SITE
-          <img
-            src="../../assets/header/wave-right-color.svg"
-            class="wave__right blink-animation"
-            alt
-          >
-        </router-link>
         <a
           href="https://fundraising.fracturedatlas.org/8-ball-community-inc"
           class="nav__link btn-donate"
@@ -44,18 +27,12 @@
           SCHEDULE
         </router-link>
         <a
-          href="https://8ballcommunity.club/"
-          target="_blank"
-          rel="noopener"
-          class="nav__link"
-        >EVENTS</a>
-        <a
           href="https://www.mixcloud.com/8ballradio/uploads/?order=oldest"
           target="_blank"
           rel="noopener"
           class="nav__link"
         >ARCHIVE</a>
-        <a href class="nav__link">8-BALL FAMILY</a>
+        <a href="https://8ballcommunity.club/" class="nav__link">8-BALL FAMILY</a>
         <router-link
           to="/showsubmission"
           class="nav__link"

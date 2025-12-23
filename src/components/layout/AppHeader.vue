@@ -80,19 +80,6 @@
             />
           </a>
         </div>
-        <router-link to="/offsite" class="btn btn-channel">
-          <img
-            src="../../assets/header/wave-left-color.svg"
-            class="wave__left"
-            alt
-          />
-          OFF-SITE CHANNEL
-          <img
-            src="../../assets/header/wave-right-color.svg"
-            class="wave__right"
-            alt
-          />
-        </router-link>
       </div>
     </section>
     <section id="header-middle" class="header-menu">

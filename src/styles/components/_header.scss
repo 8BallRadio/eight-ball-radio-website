@@ -122,23 +122,23 @@ header {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 170px;
+    width: 365px;
     padding: 0;
     margin: 0;
     text-transform: uppercase;
 
     @media only screen and (min-width: $break-small) {
-      width: 240px;
+      width: 435px;
     }
   }
   .ticker-wrapper {
-    width: 190px;
+    width: 385px;
     overflow: hidden;
     padding-left: 100%;
     box-sizing: content-box;
 
     @media only screen and (min-width: $break-small) {
-      width: 280px;
+      width: 475px;
     }
   }
   .ticker {
